@@ -120,6 +120,46 @@ public class If {
 
         // System.out.println("max = " + max);
 
+        // else if
+        // // exam 1
+        // // 난수 발생 코드
+        // int num = (int) (Math.random() * 6) + 1;
+        // if (num == 1) {
+        // System.out.print(num);
+        // } else if (num == 2) {
+        // System.out.print(num);
+        // } else if (num == 3) {
+        // System.out.print(num);
+        // } else if (num == 4) {
+        // System.out.print(num);
+        // } else if (num == 5) {
+        // System.out.print(num);
+        // } else {
+        // System.out.print(num);
+        // }
+        // System.out.println("번이 나왔습니다.");
+
+        // // exam 3
+        // String userID = scan.nextLine();
+        // String password = "1234";
+
+        // if (userID.equals("1")) {
+        // System.out.println(userID + ":관리자");
+        // System.out.print("패스워드 : ");
+        // String pw = scan.nextLine();
+        // if (pw.equals(password)) {
+        // System.out.println("관리자로 로그인 하였습니다.");
+        // } else {
+        // System.out.println("로그인 실패");
+        // }
+        // } else if (userID.equals("2")) {
+        // System.out.println(userID + ":판매자");
+        // } else if (userID.equals("3")) {
+        // System.out.println(userID + ":구매자");
+        // } else {
+        // System.out.println("올바른 값 입력하세요.");
+        // }
+
         scan.close();
     }
 }
