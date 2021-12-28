@@ -64,7 +64,7 @@ public class Switch {
         System.out.print("점수 입력 : ");
         try {
             int grade = sc.nextInt();
-            if (grade <= 100) {
+            if (grade <= 100 && grade >= 0) {
                 switch (grade / 10) {
                     case 9:
                         System.out.println("A");
@@ -89,7 +89,6 @@ public class Switch {
         } catch (Exception e) {
             System.out.println("숫자를 입력해 주세요.");
         }
-
         sc.close();
 
     }

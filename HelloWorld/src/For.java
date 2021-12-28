@@ -64,7 +64,7 @@ public class For {
         // }
 
         // 마름모 찍기
-        final int STAR = 3;
+        final int STAR = 5;
         for (int i = 1; i <= STAR; i++) {
             for (int j = 0; j < STAR - i; j++) {
                 System.out.print(" ");

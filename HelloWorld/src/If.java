@@ -139,26 +139,28 @@ public class If {
         // }
         // System.out.println("번이 나왔습니다.");
 
-        // // exam 3
-        // String userID = scan.nextLine();
-        // String password = "1234";
+        // exam 3
+        System.out.print("UID : ");
 
-        // if (userID.equals("1")) {
-        // System.out.println(userID + ":관리자");
-        // System.out.print("패스워드 : ");
-        // String pw = scan.nextLine();
-        // if (pw.equals(password)) {
-        // System.out.println("관리자로 로그인 하였습니다.");
-        // } else {
-        // System.out.println("로그인 실패");
-        // }
-        // } else if (userID.equals("2")) {
-        // System.out.println(userID + ":판매자");
-        // } else if (userID.equals("3")) {
-        // System.out.println(userID + ":구매자");
-        // } else {
-        // System.out.println("올바른 값 입력하세요.");
-        // }
+        String userID = scan.nextLine();
+        String password = "1234";
+
+        if (userID.equals("1")) {
+            System.out.println(userID + ":관리자");
+            System.out.print("패스워드 : ");
+            String pw = scan.nextLine();
+            if (pw.equals(password)) {
+                System.out.println("관리자로 로그인 하였습니다.");
+            } else {
+                System.out.println("로그인 실패");
+            }
+        } else if (userID.equals("2")) {
+            System.out.println(userID + ":판매자");
+        } else if (userID.equals("3")) {
+            System.out.println(userID + ":구매자");
+        } else {
+            System.out.println("올바른 값 입력하세요.");
+        }
 
         scan.close();
     }

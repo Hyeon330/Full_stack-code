@@ -22,7 +22,6 @@ public class While {
         Scanner sc = new Scanner(System.in);
         final int com = (int) (Math.random() * 100) + 1;
         int user = 0;
-        System.out.println(com);
         do {
             System.out.print("값 입력 : ");
             try {
