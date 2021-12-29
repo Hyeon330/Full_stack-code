@@ -158,23 +158,23 @@ public class Array {
         // System.out.println(Arrays.toString(arr));
         // System.out.println(Arrays.toString(changeArr));
 
-        ArrayList<Integer> arr = new ArrayList<Integer>();
-        int arrSize = 10;
-        for (int i = 0; i < arrSize; i++) {
-            arr.add((int) (Math.random() * 5 + 1));
-        }
-        System.out.println(arr);
-        for (int i = 1; i < arrSize; i++) {
-            for (int j = i - 1; j >= 0; j--) {
-                if (arr.get(i) == arr.get(j)) {
-                    arr.remove(i);
-                    i--;
-                    arrSize--;
-                    break;
-                }
-            }
-        }
-        System.out.println(arr);
+        // ArrayList<Integer> arr = new ArrayList<Integer>();
+        // int arrSize = 10;
+        // for (int i = 0; i < arrSize; i++) {
+        // arr.add((int) (Math.random() * 5 + 1));
+        // }
+        // System.out.println(arr);
+        // for (int i = 1; i < arrSize; i++) {
+        // for (int j = i - 1; j >= 0; j--) {
+        // if (arr.get(i) == arr.get(j)) {
+        // arr.remove(i);
+        // i--;
+        // arrSize--;
+        // break;
+        // }
+        // }
+        // }
+        // System.out.println(arr);
 
         // exam 중복제거 위에문제 (백용민님 코드)
         // // int[] random = new int[10];
