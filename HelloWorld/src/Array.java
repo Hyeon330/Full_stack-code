@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Array {
@@ -123,39 +124,57 @@ public class Array {
         // exam
         // 1~5 사이의 랜덤한 값이 10개 저장된 배열에서 중복된 값이 제거된 배열을 만들어주세요.
         // ex)[1,3,3,2,1,1,4,5,5,1,3] -> [1,3,2,4,5]
-        int[] arr = new int[10];
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = (int) (Math.random() * 5 - 1);
+        // int[] arr = new int[10];
+        // for (int i = 0; i < arr.length; i++) {
+        // arr[i] = (int) (Math.random() * 5 - 1);
+        // }
+
+        // int count = 0;
+
+        // for (int i = 1; i < arr.length; i++) {
+        // for (int j = i - 1; j >= 0; j--) {
+        // if (arr[i] == arr[j]) {
+        // count++;
+        // break;
+        // }
+        // }
+        // }
+        // int[] changeArr = new int[arr.length - count];
+        // changeArr[0] = arr[0];
+        // count = 1;
+        // for (int i = 1; i < arr.length; i++) {
+        // boolean check = true;
+        // for (int j = i - 1; j >= 0; j--) {
+        // if (arr[i] == arr[j]) {
+        // check = false;
+        // break;
+        // }
+        // }
+        // if (check) {
+        // changeArr[count] = arr[i];
+        // count++;
+        // }
+        // }
+        // System.out.println(Arrays.toString(arr));
+        // System.out.println(Arrays.toString(changeArr));
+
+        ArrayList<Integer> arr = new ArrayList<Integer>();
+        int arrSize = 10;
+        for (int i = 0; i < arrSize; i++) {
+            arr.add((int) (Math.random() * 5 + 1));
         }
-
-        int count = 0;
-
-        for (int i = 1; i < arr.length; i++) {
+        System.out.println(arr);
+        for (int i = 1; i < arrSize; i++) {
             for (int j = i - 1; j >= 0; j--) {
-                if (arr[i] == arr[j]) {
-                    count++;
+                if (arr.get(i) == arr.get(j)) {
+                    arr.remove(i);
+                    i--;
+                    arrSize--;
                     break;
                 }
             }
         }
-        int[] changeArr = new int[arr.length - count];
-        changeArr[0] = arr[0];
-        count = 1;
-        for (int i = 1; i < arr.length; i++) {
-            boolean check = true;
-            for (int j = i - 1; j >= 0; j--) {
-                if (arr[i] == arr[j]) {
-                    check = false;
-                    break;
-                }
-            }
-            if (check) {
-                changeArr[count] = arr[i];
-                count++;
-            }
-        }
-        System.out.println(Arrays.toString(arr));
-        System.out.println(Arrays.toString(changeArr));
+        System.out.println(arr);
 
         // exam 중복제거 위에문제 (백용민님 코드)
         // // int[] random = new int[10];
