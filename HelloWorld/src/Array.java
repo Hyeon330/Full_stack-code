@@ -112,8 +112,8 @@ public class Array {
         // 거스름돈에 동전의 단위마다 몇개의 동전이 필요한지 출력
         // ex) 거스름돈:2860원 / 500원:5개 / 100원:3개 / 50원:1개 / 10원:1개
         // int[] changeMny = { 1000, 500, 100, 50, 10 };
-        // System.out.print("거스름돈 : 2860원");
         // int money = 2860;
+        // System.out.print("거스름돈 : " + money + "원");
 
         // for (int i = 0; i <= changeMny.length - 1; i++) {
         // System.out.print(" / " + changeMny[i] + "원:" + money / changeMny[i] + "개");
@@ -125,7 +125,7 @@ public class Array {
         // ex)[1,3,3,2,1,1,4,5,5,1,3] -> [1,3,2,4,5]
         int[] arr = new int[10];
         for (int i = 0; i < arr.length; i++) {
-            arr[i] = (int) (Math.random() * 20);
+            arr[i] = (int) (Math.random() * 5 - 1);
         }
 
         int count = 0;
