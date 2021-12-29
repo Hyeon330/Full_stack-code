@@ -1,4 +1,4 @@
-public class Main {
+public class ClassMain {
     public static void main(String[] args) {
         Tv tv = new Tv();
 
