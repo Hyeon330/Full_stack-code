@@ -63,26 +63,52 @@ public class For {
         // System.out.println();
         // }
 
-        // 마름모 찍기
-        final int STAR = 5;
-        for (int i = 1; i <= STAR; i++) {
-            for (int j = 0; j < STAR - i; j++) {
-                System.out.print(" ");
-            }
-            for (int k = 0; k < i * 2 - 1; k++) {
-                System.out.print("*");
-            }
-            System.out.println();
-        }
-        for (int i = STAR - 1; i >= 1; i--) {
-            for (int j = 0; j < STAR - i; j++) {
-                System.out.print(" ");
-            }
-            for (int k = 0; k < i * 2 - 1; k++) {
-                System.out.print("*");
-            }
-            System.out.println();
-        }
+        // // 마름모 찍기
+        // final int STAR = 5;
+        // for (int i = 1; i <= STAR; i++) {
+        // for (int j = 0; j < STAR - i; j++) {
+        // System.out.print(" ");
+        // }
+        // for (int k = 0; k < i * 2 - 1; k++) {
+        // System.out.print("*");
+        // }
+        // System.out.println();
+        // }
+        // for (int i = STAR - 1; i >= 1; i--) {
+        // for (int j = 0; j < STAR - i; j++) {
+        // System.out.print(" ");
+        // }
+        // for (int k = 0; k < i * 2 - 1; k++) {
+        // System.out.print("*");
+        // }
+        // System.out.println();
+        // }
 
+        // int num = 5;
+        // System.out.println(String.format("%" + num + "s", "*"));
+
+        // final int STARLINE = 5;
+        // // int HalfLine = (int) Math.ceil((float) STARLINE / 2);
+
+        // for (int i = 1; i <= STARLINE; i++) {
+        // for (int j = 0; j < STARLINE + i; j++) {
+        // if (j <= STARLINE - i) {
+        // System.out.print("#");
+        // } else {
+        // System.out.print("*");
+        // }
+        // }
+        // System.out.println();
+        // }
+        // for (int i = STARLINE - 1; i >= 1; i--) {
+        // for (int j = 0; j <= STARLINE + i - 1; j++) {
+        // if (j <= STARLINE - i) {
+        // System.out.print("#");
+        // } else {
+        // System.out.print("*");
+        // }
+        // }
+        // System.out.println();
+        // }
     }
 }

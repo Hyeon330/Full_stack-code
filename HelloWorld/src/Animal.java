@@ -1,13 +1,17 @@
+import java.util.Scanner;
+
 public class Animal {
 
     String name;
-    int Weight;
+    static int Weight;
+
+    static Scanner sc = new Scanner(System.in);
 
     void eatFood() {
         Weight++;
     }
 
-    void exercise() {
+    static void exercise() {
         Weight--;
     }
 }

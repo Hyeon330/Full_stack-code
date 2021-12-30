@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Array {
     public static void main(String[] args) {
@@ -124,25 +123,22 @@ public class Array {
         // exam
         // 1~5 사이의 랜덤한 값이 10개 저장된 배열에서 중복된 값이 제거된 배열을 만들어주세요.
         // ex)[1,3,3,2,1,1,4,5,5,1,3] -> [1,3,2,4,5]
-        // int[] arr = new int[10];
-        // for (int i = 0; i < arr.length; i++) {
-        // arr[i] = (int) (Math.random() * 5 - 1);
-        // }
 
-        // int count = 0;
-
-        // for (int i = 1; i < arr.length; i++) {
-        // for (int j = i - 1; j >= 0; j--) {
-        // if (arr[i] == arr[j]) {
-        // count++;
-        // break;
-        // }
-        // }
-        // }
+        // // 카운트 한것만큼 원래 배열길이에서 빼준 길이만큼의 배열을 재생성
         // int[] changeArr = new int[arr.length - count];
+
+        // // 첫번째 값은 비교대상이 없기때문에 바로 입력
         // changeArr[0] = arr[0];
         // count = 1;
+
         // for (int i = 1; i < arr.length; i++) {
+        // /*
+        // * 안쪽의 for문으로 진입 후 원래의 배열의 두 번째 숫자부터
+        // * 중복된 값이 있나 검증과정을 거친다. 만약 중복된 값이 있을 시
+        // * check값은 false가 되고 해당 숫자의 검증은 즉시 끝이난다.
+        // * 그리고 해당 숫자를 새로만든 배열에 넣어주는 과정은 생략하고,
+        // * 다음 숫자의 검증으로 넘어가며, check의 값은 다시 true로 초기화 된다.
+        // */
         // boolean check = true;
         // for (int j = i - 1; j >= 0; j--) {
         // if (arr[i] == arr[j]) {
@@ -150,6 +146,11 @@ public class Array {
         // break;
         // }
         // }
+
+        // /*
+        // * 중복된 값이 없을 때에만 check가 true를 유지하게 되고 마지막에 오는
+        // * 해당 if문에 접근할 수 있게 된다.
+        // */
         // if (check) {
         // changeArr[count] = arr[i];
         // count++;
@@ -158,23 +159,46 @@ public class Array {
         // System.out.println(Arrays.toString(arr));
         // System.out.println(Arrays.toString(changeArr));
 
-        // ArrayList<Integer> arr = new ArrayList<Integer>();
-        // int arrSize = 10;
-        // for (int i = 0; i < arrSize; i++) {
-        // arr.add((int) (Math.random() * 5 + 1));
+        // 배열 생성
+        ArrayList<Integer> arr = new ArrayList<Integer>();
+
+        int arrSize = 10; // 해당 변수의 값 만큼 배열 내부로 숫자가 들어갑니다.
+        for (int i = 0; i < arrSize; i++) { // 난수를 arrSize만큼 배열에 넣어주는 작업 입니다.
+            arr.add((int) (Math.random() * 5 + 1));
+        }
+
+        System.out.println(arr); // 만들어진 배열 값들을 우선 보여줍니다.
+        // 저는 값을 비교할 때 어떤 순서로 비교하게 했냐면,
+        // 우선 1번, 0번 비교하고, (2번, 1번), (2번, 0번), (3번, 2번), (3번, 1번), (3번, 0번),...
+        // 순서로 비교되게 짜봤습니다.
+        // 그래서 자신과는 비교를 하지 않기 때문에
+        // i는 1번부터 시작하게 했습니다.
+        for (int i = 1; i < arrSize; i++) {
+            for (int j = i - 1; j >= 0; j--) {
+                if (arr.get(i) == arr.get(j)) { // 순서대로 비교하다가 중복되는 값이 나오면 if문 실행
+                    System.out.println(arr);
+                    arr.remove(i); // 인덱스 번호가 i인 값 삭제
+                    i--; // remove를 해줌으로써 값들의 인덱스가 한칸씩 앞으로 땡겨지기 때문에 i--를 했습니다.
+                    arrSize--; // 이것도 remove로 값을 없애주면서, 배열의 총 size가 줄어들었기 때문에 반복 횟수도 줄여야 했습니다.
+                    break;
+                }
+            }
+        }
+        System.out.println(arr);
+
+        // // 윤경한님 코드
+        // ArrayList<Integer> before = new ArrayList<Integer>(); // 중복 제거 전 배열
+        // for (int i = 0; i < 10; i++) { // 10개의 랜덤 정수를 넣는 for문
+        // before.add((int) (Math.random() * 5 + 1)); // 1<=before[i]<6 범위의 정수를 추가
         // }
-        // System.out.println(arr);
-        // for (int i = 1; i < arrSize; i++) {
-        // for (int j = i - 1; j >= 0; j--) {
-        // if (arr.get(i) == arr.get(j)) {
-        // arr.remove(i);
-        // i--;
-        // arrSize--;
-        // break;
+        // System.out.println(before); // 중복 제거 전 배열 출력
+        // ArrayList<Integer> after = new ArrayList<Integer>(); // 중복 제거 후 배열
+        // for (int tmp : before) { // 제거 전 배열에서 숫자를 하나씩 가져옴(앞에서부터)
+        // if (!after.contains(tmp)) { // 가져온 숫자가 제거후 배열에 있지 않다면
+        // after.add(tmp); // 제거 후 배열에 추가
         // }
         // }
-        // }
-        // System.out.println(arr);
+        // System.out.println(after); // 중복 제거 후 배열 출력
 
         // exam 중복제거 위에문제 (백용민님 코드)
         // // int[] random = new int[10];
