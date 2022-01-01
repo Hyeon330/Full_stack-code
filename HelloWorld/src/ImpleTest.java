@@ -22,8 +22,6 @@ interface InterfaceTest2 {
     void func1();
 
     void func2();
-
-    void func3();
 }
 
 class InterfaceExam implements InterfaceTest1, InterfaceTest2 {
@@ -41,12 +39,6 @@ class InterfaceExam implements InterfaceTest1, InterfaceTest2 {
     @Override
     public void func2() {
         System.out.println("world");
-
-    }
-
-    @Override
-    public void func3() {
-        // TODO Auto-generated method stub
 
     }
 

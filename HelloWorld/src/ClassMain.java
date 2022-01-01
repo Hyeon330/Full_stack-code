@@ -1,5 +1,6 @@
 public class ClassMain {
     public static void main(String[] args) {
+
         Tv tv = new Tv();
 
         tv.setChannel(7);
