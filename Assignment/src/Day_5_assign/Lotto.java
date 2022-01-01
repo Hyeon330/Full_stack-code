@@ -14,8 +14,8 @@ public class Lotto {
         int randNum = 0;
 
         for (int i = 1; i <= num; i++) {
-            this.lottoDto = new LottoNumDto();
-            this.lottoNum = new ArrayList<Integer>();
+            lottoDto = new LottoNumDto();
+            lottoNum = new ArrayList<Integer>();
 
             for (int j = 0; j < 7; j++) {
                 randNum = (int) (Math.random() * 45 + 1);

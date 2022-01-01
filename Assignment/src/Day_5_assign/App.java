@@ -23,10 +23,6 @@ public class App {
         System.out.println("======================== Computer ==========================");
         System.out.println();
 
-        Computer computer = new Computer();
-        boolean power = false;
-        computer.board.powerOnOff(power);
-
         System.out.println();
         System.out.println("======================== Lotto ============================");
         System.out.println();
