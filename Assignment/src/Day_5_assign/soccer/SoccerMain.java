@@ -33,17 +33,23 @@ public class SoccerMain {
         System.out.println("경기 시작합니다!!");
         System.out.println("==========================================================");
 
-        final int EVENT = 5;
-
         team1.FW1.ballStateChange();
-        for (int a = 0; a <= 90; a += (int) (Math.random() * 20)) {
-            for (int j = 0; j < EVENT; j++) { // 1회마다 이벤트 발생 슛을 날릴시 1회 종료
+        for (int a = 0; a <= 90; a += (int) (Math.random() * 10)) {
+            for (int t = 0; t < allTeam.length; t++) {
+                for (int k = 0; k < allTeam[t].playerList.length; k++) {
+                    if (allTeam[t].playerList[k].ball) {
+                        System.out.println("현재 공은 " + allTeam[t].playerList[k].getName() + "선수에게 있습니다.\n");
+                    }
+                }
+            }
+            int randEvent = (int) (Math.random() * 8) + 2;
+            for (int j = 0; j < randEvent; j++) { // 1회마다 이벤트 발생 슛을 날릴시 1회 종료
                 for (int t = 0; t < allTeam.length; t++) { // 공이 어떤 팀에 있는지 체크
                     int shootCk = 0;
                     int passCk = 0;
                     for (int k = 0; k < allTeam[t].playerList.length; k++) { // 공이 누구에게 있는지 체크
                         if (allTeam[t].playerList[k].ball) { // 공이 있는 사람을 찾으면 행동(이벤트: 슛, 패스, 태클 당함) 발생
-                            if (j == EVENT - 1) { // j가 마지막까지 오면 공을 갖고 있는 선수가 슛을 날림
+                            if (j == randEvent - 1) { // j가 마지막까지 오면 공을 갖고 있는 선수가 슛을 날림
                                 System.out.println("[" + a + "분" + "]");
                                 shootCk = 1; // 슛을 날렸는지 체크 값이 1이면 for(t)를 빠져나감
                                 System.out.println(allTeam[t].playerList[k].getName() + " 슛!!!");
@@ -83,7 +89,7 @@ public class SoccerMain {
                                             System.out.println("공은 " + allTeam[t].playerList[k].getName()
                                                     + "선수에서 " + allTeam[1].playerList[randPlayer].getName()
                                                     + "선수로 넘어갑니다!!");
-                                            j = EVENT - j;
+                                            j -= j - 1;
                                         }
 
                                     } else {
@@ -99,7 +105,7 @@ public class SoccerMain {
                                             System.out.println("공은 " + allTeam[t].playerList[k].getName()
                                                     + "선수에서 " + allTeam[0].playerList[randPlayer].getName()
                                                     + "선수로 넘어갑니다!!");
-                                            j = EVENT - j;
+                                            j -= j - 1;
                                         }
                                     }
                                     System.out.println();
@@ -127,9 +133,9 @@ public class SoccerMain {
                                         // 랜덤한 선수에게 공이감
                                         System.out
                                                 .println("공은 " + allTeam[whatTeam].playerList[nextPlayer].getName()
-                                                        + "선수에게 가게 됩니다.");
+                                                        + "선수에게 갔습니다.");
                                         if (t != whatTeam) {
-                                            j = EVENT - j;
+                                            j = randEvent - j;
                                         }
                                     } else { // 패스 성공
                                         allTeam[t].playerList[k].ballStateChange();
@@ -148,6 +154,10 @@ public class SoccerMain {
                     if (shootCk == 1 || passCk == 1) { // 슛을 날렸는지 체크 값이 1이면 for(t)를 빠져나감
                         break;
                     }
+                }
+                a += 1;
+                if (a == 90) {
+                    break;
                 }
             }
 

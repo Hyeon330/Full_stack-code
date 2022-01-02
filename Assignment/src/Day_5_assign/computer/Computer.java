@@ -25,19 +25,19 @@ class Monitor {
     int resolutionLength = 1080; // 해상도 세로
     int refreshRate = 144; // 주사율
     boolean monitorPower; // 전원
-    private String output; // 모니터 출력
+    String output; // 모니터 출력
 
     // 모니터 전원 on/off
     public void powerOnOff() {
         this.monitorPower = !this.monitorPower;
     }
 
-    public void setOutput(String input) {
-        this.output = input;
+    public void printOutput() {
+        System.out.println("출력 : " + this.output);
     }
 
-    public void getOutput() {
-        System.out.println("출력 : " + this.output);
+    public void setOutput(String output) {
+        this.output = output;
     }
 }
 
@@ -49,6 +49,7 @@ class Keyboard {
         Monitor monitor = new Monitor();
 
         String str = sc.nextLine();
+        System.out.println(str);
         monitor.setOutput(str);
 
         sc.close();

@@ -37,7 +37,7 @@ class Team {
 class Player {
     private String name;
     Boolean ball = false;
-    int baseShoot = 5; // 기본 슈팅 능력치
+    int baseShoot = 4; // 기본 슈팅 능력치
     int basePass = 5; // 기본 패스 능력치
     int baseTackle = 3; // 기본 태클 능력치
 
