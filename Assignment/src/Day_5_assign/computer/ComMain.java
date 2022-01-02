@@ -8,9 +8,9 @@ public class ComMain {
         System.out.println();
 
         System.out.print("키보드 입력 : ");
-        computer.keyboard.Input();
-        System.out.println(computer.monitor.output);
-        computer.monitor.printOutput();
+        String str = computer.keyboard.Input();
+        computer.monitor.setOutput(str);
+        System.out.println(computer.monitor.getOutput());
 
         System.out.println();
         computer.mouse.clickRight();

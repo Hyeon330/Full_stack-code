@@ -25,34 +25,32 @@ class Monitor {
     int resolutionLength = 1080; // 해상도 세로
     int refreshRate = 144; // 주사율
     boolean monitorPower; // 전원
-    String output; // 모니터 출력
+    String output;
+
+    public String getOutput() {
+        return this.output;
+    }
+
+    public void setOutput(String out) {
+        this.output = out;
+    }
 
     // 모니터 전원 on/off
     public void powerOnOff() {
         this.monitorPower = !this.monitorPower;
     }
 
-    public void printOutput() {
-        System.out.println("출력 : " + this.output);
-    }
-
-    public void setOutput(String output) {
-        this.output = output;
-    }
 }
 
 class Keyboard {
     String model = "CORSAIR K65 RAPIDFIRE RGB";
 
-    public void Input() {
+    public String Input() {
         Scanner sc = new Scanner(System.in);
-        Monitor monitor = new Monitor();
-
         String str = sc.nextLine();
-        System.out.println(str);
-        monitor.setOutput(str);
-
         sc.close();
+
+        return str;
     }
 }
 
