@@ -41,9 +41,8 @@ class Player {
     int basePass = 5; // 기본 패스 능력치
     int baseTackle = 3; // 기본 태클 능력치
 
-    public boolean ballStateChange() {
+    public void ballStateChange() {
         this.ball = !this.ball;
-        return this.ball;
     }
 
     public int shoot() {
