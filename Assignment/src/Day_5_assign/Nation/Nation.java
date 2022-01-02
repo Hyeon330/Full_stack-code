@@ -1,4 +1,4 @@
-package Day_5_assign;
+package Day_5_assign.Nation;
 
 public class Nation {
 

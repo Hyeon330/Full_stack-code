@@ -1,4 +1,4 @@
-package Day_5_assign;
+package Day_5_assign.RSP;
 
 import java.util.ArrayList;
 
@@ -20,13 +20,12 @@ public class RSP {
         System.out.print("Player1 : " + cho.get(Player1));
         System.out.println("    Player2 : " + cho.get(Player2));
 
-        System.out.println();
-        if (Player1 == Player2) {
-            System.out.println("무승부");
+        int result = Player1 - Player2;
 
-        } else if ((Player1 == 1 && Player2 == 2) ||
-                (Player1 == 2 && Player2 == 0) ||
-                (Player1 == 0 && Player2 == 1)) {
+        System.out.println();
+        if (result == 0) {
+            System.out.println("무승부");
+        } else if (result == -1 || result == 2) {
             System.out.println("Player2 승");
         } else {
             System.out.println("Player1 승");
