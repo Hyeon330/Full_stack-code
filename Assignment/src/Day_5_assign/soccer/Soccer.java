@@ -32,15 +32,6 @@ class Team {
     Player DF2 = new PlayerDF();
     Player[] playerList = { FW1, FW2, MD1, MD2, DF1, DF2 };
 
-    public void playerNames() {
-        System.out.println(this.FW1.getName());
-        System.out.println(this.FW2.getName());
-        System.out.println(this.MD1.getName());
-        System.out.println(this.MD2.getName());
-        System.out.println(this.DF1.getName());
-        System.out.println(this.DF2.getName());
-    }
-
 }
 
 class Player {
@@ -48,7 +39,7 @@ class Player {
     Boolean ball = false;
     int baseShoot = 5; // 기본 슈팅 능력치
     int basePass = 5; // 기본 패스 능력치
-    int baseTackle = 3; // 기본 태클 능력
+    int baseTackle = 3; // 기본 태클 능력치
 
     public boolean ballStateChange() {
         this.ball = !this.ball;
