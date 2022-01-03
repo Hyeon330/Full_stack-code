@@ -18,10 +18,6 @@ public class Soccer {
         System.out.println();
     }
 
-    public void Goal() {
-
-    }
-
     public Team[] getAllteam() {
         return this.allTeam;
     }
