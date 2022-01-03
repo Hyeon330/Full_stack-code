@@ -49,7 +49,7 @@ public class SoccerMain {
                     int passCk = 0;
                     for (int k = 0; k < allTeam[t].playerList.length; k++) { // 공이 누구에게 있는지 체크
                         if (allTeam[t].playerList[k].ball) { // 공이 있는 사람을 찾으면 행동(이벤트: 슛, 패스, 태클 당함) 발생
-                            if (j == randEvent - 1) { // j가 마지막까지 오면 공을 갖고 있는 선수가 슛을 날림
+                            if (j == randEvent - 1) { // j가 마지막까지 오면 공을 갖고 있는 선수가 슛을 날림(j는 축구장 크기라고 생각)
                                 System.out.println("[" + a + "분" + "]");
                                 shootCk = 1; // 슛을 날렸는지 체크 값이 1이면 for(t)를 빠져나감
                                 System.out.println(allTeam[t].playerList[k].getName() + " 슛!!!");
