@@ -147,7 +147,7 @@ public class SoccerMain {
                                 break;
                             }
                         }
-                        if (shootCk == 1 || passCk == 1) { // 슛을 날렸는지 체크 값이 1이면 for(k)를 빠져나감
+                        if (shootCk == 1 || passCk == 1) { // 패스/태클 체크 값이 1이면 for(k)를 빠져나감
                             break;
                         }
                     }
