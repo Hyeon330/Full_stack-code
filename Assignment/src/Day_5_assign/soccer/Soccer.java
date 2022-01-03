@@ -24,13 +24,8 @@ public class Soccer {
 
 class Team {
     String teamName;
-    Player FW1 = new PlayerFW();
-    Player FW2 = new PlayerFW();
-    Player MD1 = new PlayerMD();
-    Player MD2 = new PlayerMD();
-    Player DF1 = new PlayerDF();
-    Player DF2 = new PlayerDF();
-    Player[] playerList = { FW1, FW2, MD1, MD2, DF1, DF2 };
+    Player[] playerList = { new PlayerFW(), new PlayerFW(), new PlayerMD(), new PlayerMD(), new PlayerDF(),
+            new PlayerDF() };
 
 }
 

@@ -33,7 +33,7 @@ public class SoccerMain {
         System.out.println("경기 시작합니다!!");
         System.out.println("==========================================================");
 
-        team1.FW1.ballStateChange();
+        team1.playerList[0].ballStateChange();
         for (int a = 0; a <= 90; a += (int) (Math.random() * 10)) {
             for (int t = 0; t < allTeam.length; t++) {
                 for (int k = 0; k < allTeam[t].playerList.length; k++) {
