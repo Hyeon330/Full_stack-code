@@ -33,25 +33,30 @@ public class SoccerMain {
         System.out.println("경기 시작합니다!!");
         System.out.println("==========================================================");
 
-        team1.playerList[0].ballStateChange();
-        for (int a = 0; a <= 90; a += (int) (Math.random() * 10)) {
+        team1.playerList[0].ballStateChange(); // 경기 시작시 공은 항상 1팀의 1번 선수에서 시작
+        for (int minute = 0; minute <= 90; minute += (int) (Math.random() * 10)) {
             for (int t = 0; t < allTeam.length; t++) {
+                int shootCk = 0;
+                int passCk = 0;
                 for (int k = 0; k < allTeam[t].playerList.length; k++) {
                     if (allTeam[t].playerList[k].ball) {
                         System.out.println("현재 공은 " + allTeam[t].playerList[k].getName() + "선수에게 있습니다.\n");
+                        break;
                     }
+                }
+                if (shootCk == 1 || passCk == 1) { // 이벤트(슛 or 패스 or 태클)가 1회 끝나면 for(t)를 빠져나감
+                    break;
                 }
             }
             int randEvent = (int) (Math.random() * 8) + 2;
-            for (int j = 0; j < randEvent; j++) { // 1회마다 이벤트 발생 슛을 날릴시 1회 종료
+            for (int event = 0; event < randEvent; event++) { // 1회마다 이벤트 발생 슛을 날릴시 1회 종료
                 for (int t = 0; t < allTeam.length; t++) { // 공이 어떤 팀에 있는지 체크
                     int shootCk = 0;
                     int passCk = 0;
                     for (int k = 0; k < allTeam[t].playerList.length; k++) { // 공이 누구에게 있는지 체크
                         if (allTeam[t].playerList[k].ball) { // 공이 있는 사람을 찾으면 행동(이벤트: 슛, 패스, 태클 당함) 발생
-                            if (j == randEvent - 1) { // j가 마지막까지 오면 공을 갖고 있는 선수가 슛을 날림(j는 축구장 크기라고 생각)
-                                System.out.println("[" + a + "분" + "]");
-                                shootCk = 1; // 슛을 날렸는지 체크 값이 1이면 for(t)를 빠져나감
+                            if (event == randEvent - 1) { // event가 마지막까지 오면 공을 갖고 있는 선수가 슛을 날림(event는 축구장 크기라고 생각)
+                                System.out.println("[" + minute + "분" + "]");
                                 System.out.println(allTeam[t].playerList[k].getName() + " 슛!!!");
                                 System.out.println();
                                 if (allTeam[t].playerList[k].shoot() > 2) { // 골이 들어감
@@ -62,19 +67,26 @@ public class SoccerMain {
                                     }
                                     System.out.println("들어갔어요!!!");
                                     System.out.println("현재 스코어 " + soccer.score1 + " : " + soccer.score2);
+                                    allTeam[t].playerList[k].ballStateChange(); // 현재 공을 들고 있는 선수가 공을 놈
+                                    if (t == 0) { // 슛을 했기때문에 상대방 선수에게 공을 넘겨 줌
+                                        allTeam[1].playerList[0].ballStateChange();
+                                    } else {
+                                        allTeam[0].playerList[0].ballStateChange();
+                                    }
                                 } else { // 골이 빗나감
                                     System.out.println("아!! 아쉽게 빗나갑니다.");
+                                    allTeam[t].playerList[k].ballStateChange(); // 현재 공을 들고 있는 선수가 공을 놈
+                                    if (t == 0) { // 슛을 했기때문에 상대방 선수에게 공을 넘겨 줌
+                                        allTeam[1].playerList[5].ballStateChange();
+                                    } else {
+                                        allTeam[0].playerList[5].ballStateChange();
+                                    }
                                 }
                                 System.out.println();
-                                allTeam[t].playerList[k].ballStateChange(); // 현재 공을 들고 있는 선수가 공을 놈
-                                if (t == 0) { // 슛을 했기때문에 상대방 선수에게 공을 넘겨 줌
-                                    allTeam[1].playerList[0].ballStateChange();
-                                } else {
-                                    allTeam[0].playerList[0].ballStateChange();
-                                }
-                                break;
+
+                                shootCk = 1; // 슛을 날렸는지 체크 값이 1이면 for(t)를 빠져나감
                             } else { // 태클/패스 이벤트
-                                if ((int) (Math.random() * 4) == 0) { // 태클
+                                if ((int) (Math.random() * 4) == 0) { // 태클 걸 확율 1/4
                                     int randPlayer = (int) (Math.random() * allTeam[t].playerList.length);
                                     if (t == 0) {
                                         System.out
@@ -89,7 +101,7 @@ public class SoccerMain {
                                             System.out.println("공은 " + allTeam[t].playerList[k].getName()
                                                     + "선수에서 " + allTeam[1].playerList[randPlayer].getName()
                                                     + "선수로 넘어갑니다!!");
-                                            j -= j - 1;
+                                            event -= event - 1;
                                         }
 
                                     } else {
@@ -105,7 +117,7 @@ public class SoccerMain {
                                             System.out.println("공은 " + allTeam[t].playerList[k].getName()
                                                     + "선수에서 " + allTeam[0].playerList[randPlayer].getName()
                                                     + "선수로 넘어갑니다!!");
-                                            j -= j - 1;
+                                            event -= event - 1;
                                         }
                                     }
                                     System.out.println();
@@ -119,7 +131,7 @@ public class SoccerMain {
                                         }
                                     }
                                     System.out.println(allTeam[t].playerList[k].getName() + " 선수가 "
-                                            + allTeam[t].playerList[nextPlayer].getName() + "에게 패스합니다.");
+                                            + allTeam[t].playerList[nextPlayer].getName() + " 선수에게 패스합니다.");
 
                                     if (allTeam[t].playerList[k].pass() == 0) { // 패스 실수
                                         nextPlayer = (int) (Math.random() * allTeam[t].playerList.length);
@@ -135,7 +147,7 @@ public class SoccerMain {
                                                 .println("공은 " + allTeam[whatTeam].playerList[nextPlayer].getName()
                                                         + "선수에게 갔습니다.");
                                         if (t != whatTeam) {
-                                            j = randEvent - j;
+                                            event = randEvent - event;
                                         }
                                     } else { // 패스 성공
                                         allTeam[t].playerList[k].ballStateChange();
@@ -144,19 +156,16 @@ public class SoccerMain {
                                     System.out.println();
                                 }
                                 passCk = 1;
-                                break;
                             }
-                        }
-                        if (shootCk == 1 || passCk == 1) { // 패스/태클 체크 값이 1이면 for(k)를 빠져나감
                             break;
                         }
                     }
-                    if (shootCk == 1 || passCk == 1) { // 슛을 날렸는지 체크 값이 1이면 for(t)를 빠져나감
+                    if (shootCk == 1 || passCk == 1) { // 이벤트(슛 or 패스 or 태클)가 1회 끝나면 for(t)를 빠져나감
                         break;
                     }
                 }
-                a += 1;
-                if (a == 90) {
+                minute += 1;
+                if (minute == 90) {
                     break;
                 }
             }

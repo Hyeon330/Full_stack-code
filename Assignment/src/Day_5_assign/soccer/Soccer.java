@@ -4,15 +4,15 @@ package Day_5_assign.soccer;
 // player을 상속한 공격수, 미드필더, 수비수 클래스를 만들었습니다.
 public class Soccer {
 
+    int score1;
+    int score2;
+
     Soccer() {
         System.out.println("축구 시뮬레이션 게임!!");
-        System.out.println("============================");
+        System.out.println("=================================");
         System.out.println("선수들의 이름을 정해주세요!!");
         System.out.println();
     }
-
-    int score1;
-    int score2;
 
     public void Goal1() {
         this.score1++;
@@ -21,7 +21,6 @@ public class Soccer {
     public void Goal2() {
         this.score2++;
     }
-
 }
 
 class Team {
