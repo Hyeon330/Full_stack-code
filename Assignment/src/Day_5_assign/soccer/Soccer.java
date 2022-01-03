@@ -1,5 +1,7 @@
 package Day_5_assign.soccer;
 
+// scooer, team, player을 어떻게 상속시킬지 모르겠어서
+// player을 상속한 공격수, 미드필더, 수비수 클래스를 만들었습니다.
 public class Soccer {
 
     Soccer() {
