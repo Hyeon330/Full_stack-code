@@ -26,7 +26,7 @@ class Mother {
 class Son extends Mother {
     int sonAge = 23;
     String hometown = "서울";
-// String boodType; << 정말 선언하지 않았는데 변수가 존재하는지?
+    // String boodType; << 정말 선언하지 않았는데 변수가 존재하는지?
 
     public Son() {
         System.out.println("welcome to sub class");
@@ -34,14 +34,14 @@ class Son extends Mother {
 
     public void printMotherAge() {
         System.out.println("Mother's Age : "
-         + super.motherAge);
+                + super.motherAge);
     }
 
-    public String getBoodType(){
+    public String getBoodType() {
         return this.bloodType;
     }
 
-    public void setBoodType(String bloodType){
+    public void setBoodType(String bloodType) {
         this.bloodType = bloodType;
     }
 
