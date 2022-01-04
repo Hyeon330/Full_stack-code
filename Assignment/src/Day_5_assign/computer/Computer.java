@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Computer {
     Monitor monitor = new Monitor();
-    public Keyboard keyboard = new Keyboard();
+    Keyboard keyboard = new Keyboard();
     Mouse mouse = new Mouse();
     Desktop desktop = new Desktop();
 
