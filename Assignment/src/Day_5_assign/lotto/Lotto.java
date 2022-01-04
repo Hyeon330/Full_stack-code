@@ -14,26 +14,26 @@ public class Lotto {
         int randNum = 0;
 
         for (int i = 1; i <= num; i++) {
-            lottoDto = new LottoNumDto();
-            lottoNum = new ArrayList<Integer>();
+            this.lottoDto = new LottoNumDto();
+            this.lottoNum = new ArrayList<Integer>();
 
             for (int j = 0; j < 7; j++) {
                 randNum = (int) (Math.random() * 45 + 1);
-                if (lottoNum.contains(randNum)) {
+                if (this.lottoNum.contains(randNum)) {
                     j--;
                 } else if (j == 6) {
-                    lottoDto.setBonusNum(randNum);
+                    this.lottoDto.setBonusNum(randNum);
                 } else {
-                    lottoNum.add(randNum);
+                    this.lottoNum.add(randNum);
                 }
             }
-            Collections.sort(lottoNum);
+            Collections.sort(this.lottoNum);
 
-            lottoDto.setMainNum(lottoNum);
-            lottoNums.add(lottoDto);
+            this.lottoDto.setMainNum(this.lottoNum);
+            this.lottoNums.add(this.lottoDto);
         }
 
-        return lottoNums;
+        return this.lottoNums;
     }
 }
 

@@ -7,10 +7,16 @@ public class LottoMain {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Lotto lotto = new Lotto();
+        int num = 0;
 
         System.out.print("로또 몇 줄? : ");
-        int num = sc.nextInt();
-        System.out.println();
+        try {
+            num = sc.nextInt();
+        } catch (Exception e) {
+            System.out.println("숫자를 입력해주세요.");
+        }
+
+        System.out.println(num + "줄");
 
         ArrayList<LottoNumDto> lottos = new ArrayList<LottoNumDto>();
         lottos = lotto.LottoNums(num);
