@@ -98,6 +98,5 @@ interface InterName {
 
 class inter implements InterName {
     public static void main(String[] args) {
-        HELLO = "haha";
     }
 }
