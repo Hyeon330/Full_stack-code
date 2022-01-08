@@ -37,6 +37,14 @@ public abstract class Airplane {
         System.out.println(sdf.format(getArrivalCal().getTime()));
     }
 
+    public String getIsDomestic() {
+        return isDomestic;
+    }
+
+    public void setIsDomestic(String isDomestic) {
+        this.isDomestic = isDomestic;
+    }
+
     abstract void Domestic(String Domestic);
 
     abstract void Overseas(String Overseas);
@@ -80,9 +88,13 @@ class AirplaneChild extends Airplane {
     }
 
     @Override
-    String flight(String Domestic) {
-        Domestic();
-        return null;
+    String flight(String DepartCal) {
+        if (this.domesticArr.contains(DepartCal)) {
+            setIsDomestic("국내선");
+        } else if (this.domesticArr.contains(DepartCal)) {
+            setIsDomestic("국외선");
+        }
+        return this.getIsDomestic();
     }
 
 }
