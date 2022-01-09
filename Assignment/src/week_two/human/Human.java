@@ -1,11 +1,27 @@
 package week_two.human;
 
-import week_two.animal.Animal;
-import week_two.animal.Tiger;
+import week_two.airplane.AirplaneChild;
 
 public class Human implements Runnable, Speak {
 
-    Animal animal = new Tiger();
+    private AirplaneChild airplane = new AirplaneChild();
+    private int speed;
+
+    public AirplaneChild getAirplane() {
+        return airplane;
+    }
+
+    public void setAirplane(AirplaneChild airplane) {
+        this.airplane = airplane;
+    }
+
+    public int getSpeed() {
+        return this.speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
 
     @Override
     public void silent() {
