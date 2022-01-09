@@ -45,15 +45,15 @@ public class AirMain {
                 System.out.print(count + "번째 ");
                 System.out.print("출발 날짜 입력(yyyy-MM-dd) : ");
 
-                // String DepartureStr = sc.nextLine(); // 직접입력할 시 입력
+                // String DepartureStr = sc.nextLine(); // 직접 입력할 시 입력
 
                 // -------- 랜덤값 입력시 ----------
                 Departuredate = today.plusDays((int) (Math.random() * 7));
                 System.out.println(Departuredate);
                 // --------------------------------
 
-                try {
-                    // Departuredate = LocalDate.parse(DepartureStr); // 직접 입력할시 예외 처리
+                try { // 직접 입력할 시 예외 처리
+                    // Departuredate = LocalDate.parse(DepartureStr); // 직접 입력
                     Arrivaldate = Departuredate.plusDays(1);
 
                     if (DepartureDates.contains(Departuredate)) {
