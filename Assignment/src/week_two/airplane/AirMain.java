@@ -29,7 +29,7 @@ public class AirMain {
         Scanner sc = new Scanner(System.in);
 
         LocalDate today = LocalDate.now();
-        LocalDate TodayAfter7Days = today.plusDays(7);
+        LocalDate TodayAfter7Days = today.plusDays(7);ㄴ
 
         LocalDate Departuredate = null;
         LocalDate Arrivaldate = null;
@@ -53,7 +53,7 @@ public class AirMain {
                 // --------------------------------
 
                 try { // 직접 입력할 시 예외 처리
-                    // Departuredate = LocalDate.parse(DepartureStr); // String to LocalDate
+                      // Departuredate = LocalDate.parse(DepartureStr); // String to LocalDate
                     Arrivaldate = Departuredate.plusDays(1);
 
                     if (DepartureDates.contains(Departuredate)) {
@@ -61,18 +61,19 @@ public class AirMain {
                     } else if (Departuredate.getDayOfMonth() > TodayAfter7Days.getDayOfMonth()) {
                         System.out.println("7일 이내로 입력해 주세요.");
                     } else {
+                        System.out.println();
                         break;
                     }
                 } catch (DateTimeParseException e) {
                     System.out.println("날짜를 정확히 확인 후 yyyy(년)-MM(월)-dd(일) 형식으로 입력해 주세요.");
                 }
-                System.out.println();
             }
             DepartureDates.add(Departuredate);
             ArrivalDates.add(Arrivaldate);
         }
         System.out.println(DepartureDates);
         System.out.println(ArrivalDates);
+        System.out.println();
 
         // -------------------- 무작위로 speed와 국내선, 국제선 중 1개 세팅------------------
 

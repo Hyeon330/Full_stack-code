@@ -5,8 +5,8 @@ import java.util.Calendar;
 
 public abstract class Airplane {
 
-    private Calendar DepartCal;
-    private Calendar ArrivalCal;
+    private Calendar DepartCal; // 출발 날짜
+    private Calendar ArrivalCal; // 도착 날짜
     private String isDomestic;
 
     public Calendar getDepartCal() {
