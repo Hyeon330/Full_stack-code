@@ -74,14 +74,13 @@ public class AirMain {
         System.out.println(DepartureDates);
         System.out.println(ArrivalDates);
 
-        // --------------------------------------------------------------
+        // -------------------- 무작위로 speed와 국내선, 국제선 중 1개 세팅------------------
 
         ArrayList<Human> humans = new ArrayList<Human>(Arrays.asList(new Human(), new Human(), new Human()));
         int randDomesticAndOverseas = 0;
         String randAirplane;
         ArrayList<String> DomesticAndOverseasList = new ArrayList<String>();
 
-        // -------------------- 무작위로 speed와 국내선, 국제선 중 1개 세팅------------------
         for (Human human : humans) {
             randDomesticAndOverseas = (int) (Math.random() * 2);
             DomesticAndOverseasList = human.getAirplane().getDomesticAndOverseas().get(randDomesticAndOverseas);
