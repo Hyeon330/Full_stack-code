@@ -30,13 +30,9 @@ public class AirMain {
 
         LocalDate today = LocalDate.now();
         LocalDate TodayAfter7Days = today.plusDays(7);
+
         LocalDate Departuredate = null;
         LocalDate Arrivaldate = null;
-
-        int todayYear = today.getYear();
-        int todayMonth = today.getMonthValue();
-        int todayDay = today.getDayOfMonth();
-
         ArrayList<LocalDate> DepartureDates = new ArrayList<LocalDate>(); // 출발 날짜
         ArrayList<LocalDate> ArrivalDates = new ArrayList<LocalDate>(); // 도착 날짜
 
@@ -94,20 +90,7 @@ public class AirMain {
             human.setSpeed(((int) (Math.random() * 7)) + 1);
 
             System.out.println(human.getAirplane().flight(randAirplane));
-
-            // human.getAirplane().flight(human.getAirplane().getDomesticAndOverseas().get(randDomesticAndOverseas));
         }
-
-        // LocalDate hh = DepartureDates.get(0);
-
-        // SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        // try {
-        // Date d = sdf.parse(hh.toString());
-        // System.out.println(d);
-        // } catch (ParseException e) {
-        // // TODO Auto-generated catch block
-        // e.printStackTrace();
-        // }
 
         sc.close();
     }
