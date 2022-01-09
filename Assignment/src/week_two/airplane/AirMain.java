@@ -29,6 +29,7 @@ public class AirMain {
         Scanner sc = new Scanner(System.in);
 
         LocalDate today = LocalDate.now();
+        LocalDate TodayAfter7Days = today.plusDays(7);
         LocalDate Departuredate = null;
         LocalDate Arrivaldate = null;
 
@@ -61,9 +62,7 @@ public class AirMain {
 
                     if (DepartureDates.contains(Departuredate)) {
                         System.out.println("중복된 값이 있습니다.");
-                    } else if (Departuredate.getYear() == todayYear &&
-                            Departuredate.getMonthValue() == todayMonth &&
-                            Departuredate.getDayOfMonth() == todayDay + 7) {
+                    } else if (Departuredate.getDayOfMonth() > TodayAfter7Days.getDayOfMonth()) {
                         System.out.println("7일 이내로 입력해 주세요.");
                     } else {
                         break;
