@@ -25,11 +25,11 @@ public class AirMain {
         airplaneChild.OutputDepartDate();
         airplaneChild.OutputArrivalDate();
 
-        // -------------------------아래부터 10번 과제------------------------------
+        // -------아래부터 10번 과제(Airplane 객체 이용해도 되지만 LocalDaet연습 해보고 싶었습니다.)--------
         Scanner sc = new Scanner(System.in);
 
         LocalDate today = LocalDate.now();
-        LocalDate TodayAfter7Days = today.plusDays(7);ㄴ
+        LocalDate TodayAfter7Days = today.plusDays(7);
 
         LocalDate Departuredate = null;
         LocalDate Arrivaldate = null;
