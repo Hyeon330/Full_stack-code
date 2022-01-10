@@ -16,13 +16,11 @@ public class AirplaneChild extends Airplane {
 
     @Override
     public void setDepartCal(Calendar DepartCal) {
-        // DepartCal = Calendar.getInstance();
         super.setDepartCal(DepartCal);
     }
 
     @Override
     public void setArrivalCal(Calendar ArrivalCal) {
-        // ArrivalCal = Calendar.getInstance();
         super.setArrivalCal(ArrivalCal);
     }
 
