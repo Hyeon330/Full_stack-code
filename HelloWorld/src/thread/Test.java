@@ -1,5 +1,8 @@
 package thread;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.function.Function;
 
 public class Test {
@@ -7,7 +10,11 @@ public class Test {
         Function<String, Integer> f = (String s) -> Integer.parseInt(s);
         Function<String, Integer> h = Integer::parseInt;
 
-        System.out.println(h.apply("3"));
+        System.out.println();
 
+        DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT);
+        String shortFormat = formatter.format(LocalDate.of(2000, 1, 1));
+
+        System.out.println(shortFormat);
     }
 }
