@@ -7,7 +7,6 @@ public class ProductTest {
         System.out.println("-------------------------------------------------");
 
         ArrayList<Product> products = new ArrayList<Product>();
-
         products.add(new Product("001", "노트북", 1200000, "2021", "삼성"));
         products.add(new Product("002", "모니터", 300000, "2021", "LG"));
         products.add(new Product("003", "마우스", 30000, "2020", "로지텍"));

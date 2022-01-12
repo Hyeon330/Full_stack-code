@@ -9,6 +9,6 @@ public class Magazine extends Book {
 
     @Override
     public String toString() {
-        return String.format(super.toString() + "%s", month);
+        return String.format(super.toString() + "%3s", month);
     }
 }
