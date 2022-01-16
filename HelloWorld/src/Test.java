@@ -1,19 +1,21 @@
-import java.util.HashMap;
-
-import javax.activity.InvalidActivityException;
+import java.util.StringJoiner;
 
 public class Test {
-    public static void main(String[] args) {
-        HashMap map = new HashMap();
-        map.put("홍길동", new Integer(90));
-        map.put("홍길동", new Integer(100));
 
-        Set set = map.entrySet();
-        Iterator it = set.iterator();
+}
 
-        while (it.hasNext()) {
-            Map.Entry e = (Map.Entry) it.next();
-            System.out.println("이름 : " + e.getKey() + ", 점수 : " + e.getValue());
-        }
+class StringBufferEx {
+    public static void main(String[] agrs) {
+        StringBuffer sb1 = new StringBuffer("abc");
+        StringBuffer sb2 = new StringBuffer("abc");
+
+        System.out.println("sb1 == sb2 ? " + (sb1 == sb2));
+        System.out.println("sb1.equals(sb2) ? " + sb1.equals(sb2));
+
+        // StringBuffer의 내용을 String으로 변환한다.
+        String s1 = sb1.toString();
+        String s2 = sb2.toString();
+
+        System.out.println("s1.equals(s2)" + s1.equals(s2));
     }
 }
