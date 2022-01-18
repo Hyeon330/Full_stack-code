@@ -27,22 +27,22 @@ public class SelectTest {
 			conn = DriverManager.getConnection(url, uid, upw);
 			
 			// 쿼리문 작성
-			String sql = "select empno, ename, hiredate, sal from emp order by ename asc";
+			String sql = "select empno, ename, hiredate, sal from emp order by empno";
 			
-			// DB로 쿼리문을 보냄
+			// 쿼리문 ps변수에 저장
 			ps = conn.prepareStatement(sql);
 			
 			// rs변수에 쿼리에 해당하는 응답 저장
 			rs = ps.executeQuery();
 			
-			System.out.printf("%s\t%s\t%s\t\t%s\n","empno","ename","hiredate","sal");
+			System.out.printf("%5s%8s%16s%18s\n","empno","ename","hiredate","sal");
 			while(rs.next()) { // 필드의 첫 번째 행부터 시작하고 현재 행에 값이 있을경우 수행
 				int empno = rs.getInt(1);
 				String ename = rs.getString(2);
 				String hiredate = rs.getString("hiredate");
 				double sal = rs.getDouble("sal");
 				
-				System.out.printf("%d\t%s\t%s\t%.2f\t\n",empno,ename,hiredate,sal);
+				System.out.printf("%5d%8s%22s%12.2f\n",empno,ename,hiredate,sal);
 			} 
 			
 		} catch (ClassNotFoundException e) {

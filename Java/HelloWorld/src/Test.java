@@ -1,37 +1,26 @@
-import static java.util.Objects.isNull;
-import static java.util.Objects.nonNull;
-
-import java.util.Arrays;
-import java.util.Objects;
+import java.util.regex.*;
 
 public class Test {
 
 }
 
-class ObjectTest {
+class RegularEx {
     public static void main(String[] args) {
-        String[][] str2D = new String[][] { { "aaa", "bbb" }, { "AAA", "BBB" } };
-        String[][] str2D_2 = new String[][] { { "aaa", "bbb" }, { "AAA", "BBB" } };
+        String[] data = { "bat", "baby", "bonus", "c", "cA", "ca", "co", "c.", "c0", "c#", "car", "combat", "count",
+                "date", "disc" };
 
-        System.out.print("strD = {");
-        for (String[] tmp : str2D) {
-            System.out.print(Arrays.toString(tmp));
+        String[] pattern = { ".*", "c[a-z]*", "c[a-z]", "c[a-zA-Z]", "c[a-zA-Z0-9]", "c.", "c.*", "c\\.", "c\\w",
+                "c\\d", "c.*t", "[b|c].*", ".*a.*", ".*a.+", "[b|c].{2}" };
+
+        for (int x = 0; x < pattern.length; x++) {
+            Pattern p = Pattern.compile(pattern[x]);
+            System.out.print("Pattern : " + pattern[x] + " 결과: ");
+            for (int i = 0; i < data.length; i++) {
+                Matcher m = p.matcher(data[i]);
+                if (m.matches())
+                    System.out.print(data[i] + ",");
+            }
+            System.out.println();
         }
-        System.out.println("}");
-
-        System.out.print("strD_2 = {");
-        for (String[] tmp : str2D_2) {
-            System.out.print(Arrays.toString(tmp));
-        }
-        System.out.println("}");
-
-        System.out.println("equals(str2D, str2D_2)=" + Objects.equals(str2D, str2D_2));
-        System.out.println("deepEquals(str2D, str2D_2)=" + Objects.deepEquals(str2D, str2D_2));
-
-        System.out.println("isNull(null) =" + isNull(null));
-        System.out.println("nonNull(null) =" + nonNull(null));
-        System.out.println("hashCode(null) =" + Objects.hashCode(null));
-        System.out.println("toString(null) = " + Objects.toString(null));
-        System.out.println("toString(null, \"\") =" + Objects.toString(null, ""));
     }
 }

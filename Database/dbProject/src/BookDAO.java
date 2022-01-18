@@ -37,10 +37,15 @@ public class BookDAO {
 			ps.setInt(5, bookDTO.getBookPrice());
 			ps.setString(6, bookDTO.getBookPublisher());
 			
-			ps.executeUpdate();
-			System.out.println("insert 완료.");
+			int result = ps.executeUpdate();
+			if(result>0) {
+				System.out.println("레코드가 추가되었습니다.");
+			} else {
+				System.out.println("실패하였습니다.");
+			}
+			
 		} catch (SQLException e) {
-			System.out.println("insert 실패.");
+			e.printStackTrace();
 		}
 	}
 	
@@ -74,8 +79,12 @@ public class BookDAO {
 	// dao객체를 새로 생성해야 하기 때문에 close()메서드를 따로 만들어 줘서
 	// 모든 과정이 끝나면 메인에서 close()메서드를 실행하는 방식으로 만들었습니다.
 	public void close() {
-        if (ps != null) try { ps.close(); } catch(Exception e) {}
-        if (conn != null) try { conn.close(); } catch(Exception e) {}
+        try {
+        	if(ps != null) { ps.close(); }
+        	if(conn != null) { conn.close(); }
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 	
 }
