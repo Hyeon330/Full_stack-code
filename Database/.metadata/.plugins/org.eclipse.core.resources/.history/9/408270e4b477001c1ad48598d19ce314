@@ -1,0 +1,14 @@
+
+public class BookTest {
+
+	public static void main(String[] args) {
+		BookDAO dao = new BookDAO();
+		BookDTO dto1 = new BookDTO("B004", "자바스크립트", "강길동", 2020, 28000, "서울출판사");
+		BookDTO dto2 = new BookDTO("B005", "자바스크립트", "강길동", 2020, 28000, "서울출판하");
+		
+		dao.insertBook(dto1);
+		dao.insertBook(dto2);
+
+	}
+
+}

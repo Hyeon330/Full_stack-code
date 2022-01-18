@@ -1,0 +1,8 @@
+
+public class BookDTO {
+
+	public BookDTO() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

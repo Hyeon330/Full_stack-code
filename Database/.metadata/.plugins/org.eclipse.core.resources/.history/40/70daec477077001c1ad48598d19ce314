@@ -1,0 +1,54 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class SelectTest {
+
+	public SelectTest() {
+		
+	}
+	
+	public static void start() {
+		
+		Connection conn = null;
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			String url = "jdbc:mysql://localhost:3306/demo";
+			String uid = "root";
+			String upw = "1234";
+			
+			conn = DriverManager.getConnection(url, uid, upw);
+			
+			if(conn != null) {
+				System.out.println("접속 성공");
+			} else {
+				System.out.println("접속 실패");
+			}
+			
+			String sql = "select empno, ename, hiredate, sal from emp order by ename asc";
+			
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				String empno = rs.getString("empno");
+				System.out.println(empno);
+			}
+			
+			
+		} catch (ClassNotFoundException e) {
+			System.out.println("드라이브 로딩 실패");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+	public static void main(String[] args) {
+		start();
+	}
+
+}

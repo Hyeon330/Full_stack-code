@@ -1,0 +1,11 @@
+
+public class BookTest {
+
+	public static void main(String[] args) {
+		BookDAO dao = new BookDAO();
+		
+		dao.selectBook();
+		dao.close();
+	}
+
+}
