@@ -1,26 +1,37 @@
-import java.util.regex.*;
+import java.math.*;
+import static java.math.BigDecimal.*;
+import static java.math.RoundingMode.*;
 
 public class Test {
 
 }
 
-class RegularEx {
+class BigDecimalEx {
     public static void main(String[] args) {
-        String[] data = { "bat", "baby", "bonus", "c", "cA", "ca", "co", "c.", "c0", "c#", "car", "combat", "count",
-                "date", "disc" };
+        BigDecimal bd1 = new BigDecimal("123.45");
+        BigDecimal bd2 = new BigDecimal("1.0");
 
-        String[] pattern = { ".*", "c[a-z]*", "c[a-z]", "c[a-zA-Z]", "c[a-zA-Z0-9]", "c.", "c.*", "c\\.", "c\\w",
-                "c\\d", "c.*t", "[b|c].*", ".*a.*", ".*a.+", "[b|c].{2}" };
+        System.out.print("bd1=" + bd1);
+        System.out.print(",\tvalue=" + bd1.unscaledValue());
+        System.out.print(",\tscale=" + bd1.scale());
+        System.out.print(",\tprecision=" + bd1.precision());
+        System.out.println();
 
-        for (int x = 0; x < pattern.length; x++) {
-            Pattern p = Pattern.compile(pattern[x]);
-            System.out.print("Pattern : " + pattern[x] + " 결과: ");
-            for (int i = 0; i < data.length; i++) {
-                Matcher m = p.matcher(data[i]);
-                if (m.matches())
-                    System.out.print(data[i] + ",");
-            }
-            System.out.println();
-        }
+        System.out.print("bd2=" + bd2);
+        System.out.print(",\tvalue=" + bd2.unscaledValue());
+        System.out.print(",\tscale=" + bd2.scale());
+        System.out.print(",\tprecision=" + bd2.precision());
+        System.out.println();
+
+        BigDecimal bd3 = bd1.multiply(bd2);
+        System.out.print("bd3=" + bd3);
+        System.out.print(",\tvalue=" + bd3.unscaledValue());
+        System.out.print(",\tscale=" + bd3.scale());
+        System.out.print(",\tprecision=" + bd3.precision());
+        System.out.println();
+
+        System.out.println(bd1.divide(bd2, 2, HALF_UP)); // 123.46
+        System.out.println(bd1.setScale(2, HALF_UP)); // 123.46
+        System.out.println(bd1.divide(bd2, new MathContext(2, HALF_UP)));
     }
 }
