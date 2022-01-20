@@ -1,12 +1,8 @@
 
 public class BookDTO {
 
-	private String bookNo;
-	private String bookTitle;
-	private String bookAuthor;
-	private int bookYear;
-	private int bookPrice;
-	private String bookPublisher;
+	private String bookNo, bookTitle, bookAuthor, bookPublisher;
+	private int bookYear, bookPrice;
 	
 	public BookDTO(String bookNo, String bookTitle, String bookAuthor, int bookYear, int bookPrice, String bookPublisher) {
 		this.bookNo = bookNo;
@@ -24,19 +20,19 @@ public class BookDTO {
 	public String getBookTitle() {
 		return bookTitle;
 	}
-
+	
 	public String getBookAuthor() {
 		return bookAuthor;
 	}
-
+	
 	public int getBookYear() {
 		return bookYear;
 	}
-
+	
 	public int getBookPrice() {
 		return bookPrice;
 	}
-
+	
 	public String getBookPublisher() {
 		return bookPublisher;
 	}
