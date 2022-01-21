@@ -2,12 +2,14 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class BookDAO {
 	private static BookDAO dao = new BookDAO();
 	private Connection conn = null;
 	private PreparedStatement ps = null;
 	private ResultSet rs = null;
+	private ArrayList<BookDTO> dtos = null;
 	
 	public static BookDAO getDAO() {return dao;}
 	
@@ -53,20 +55,27 @@ public class BookDAO {
 	}
 	
 	public void selectBook() {
+		dtos = new ArrayList<BookDTO>();
 		conn = getConnection();
 		String sql = "select * from book";
 		try {
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				dtos.add(new BookDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getString(6)));
+			}
+			
 			System.out.printf("%s\t%s\t%s\t%s\t%s\t%s\n",
 					"bookNo","bookTitle","bookAuthor",
 					"bookYear","bookPrice","bookPublisher");
-			while(rs.next()) {
-				System.out.printf("%s\t%s\t%s\t\t%s\t\t%s\t\t%s\n",
-						rs.getString(1),rs.getString(2),rs.getString(3),
-						rs.getString(4),rs.getInt(5),rs.getString(6));
+			for (BookDTO dto : dtos) {
+				System.out.printf("%s\t%s\t%s\t\t%d\t\t%d\t\t%s\n",
+						dto.getBookNo(),dto.getBookTitle(), dto.getBookAuthor(), 
+						dto.getBookYear(), dto.getBookPrice(), dto.getBookPublisher());
 			}
 			System.out.println();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
