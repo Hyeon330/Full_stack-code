@@ -1,11 +1,9 @@
 package test;
 /*삼성 아카데미 - 최빈수 구하기(1204번)*/
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.StringTokenizer;
 
-public class Solution2 {
+public class Solution_X {
 	public static void main(String[] args) throws IOException   {
 		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
 		int[] grades = new int[1000];
