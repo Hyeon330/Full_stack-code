@@ -13,7 +13,7 @@ public class IntQueueMain {
 
     // 메뉴를 입력받는 메소드
     static String getMenu() throws IOException {
-        System.out.println("[Menu]1.enQueue, 2.dequeue, 3.peek, 4.info 0.end");
+        System.out.println("[Menu]1.enQueue, 2.deQueue, 3.Peek, 4.Info 0.End");
         System.out.print("==>");
         return br.readLine();
     }
@@ -54,12 +54,22 @@ public class IntQueueMain {
                         }
                         break;
                     case "4": // info: 큐의 크기, 데이터의 수, front 인덱스, rear 인덱스, 처음 값, 마지막 값을 구하라.
-                        System.out.printf("Queue Size\t: %d\n", queue.getCapacity());
-                        System.out.printf("Data Count\t: %d\n", queue.getDataCnt());
-                        System.out.printf("front index\t: %d\n", queue.getFront());
-                        System.out.printf("front value\t: %d\n", queue.peek());
-                        System.out.printf("rear index\t: %d\n", queue.getRear());
-                        System.out.printf("rear value\t: %d\n", queue.getRearData());
+                        String fv = "null";
+                        String lv = Integer.toString(queue.getRearData());
+                        if (lv.equals("0")) {
+                            lv = "null";
+                        }
+                        try {
+                            fv = Integer.toString(queue.peek());
+                        } catch (EmptyIntQueueException e) {
+                        } finally {
+                            System.out.printf("Queue Size\t: %d\n", queue.getCapacity());
+                            System.out.printf("Data Count\t: %d\n", queue.getDataCnt());
+                            System.out.printf("Front Index\t: %d\n", queue.getFront());
+                            System.out.printf("Rear Index\t: %d\n", queue.getRear());
+                            System.out.printf("First Value\t: %s\n", fv);
+                            System.out.printf("Last Value\t: %s\n", lv);
+                        }
                         break;
                     default:
                         System.out.println("Wrong Number!!");

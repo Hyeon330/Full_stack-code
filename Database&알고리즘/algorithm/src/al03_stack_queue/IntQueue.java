@@ -77,7 +77,13 @@ public class IntQueue {
 
     // 마지막 값
     public int getRearData() {
-        return queue[rear - 1];
+        if (dataCnt <= 0) {
+            return 0;
+        } else if (rear <= 0) {
+            return queue[dataCnt - 1];
+        } else {
+            return queue[rear - 1];
+        }
     }
 
     // 오버플로우 발생
@@ -100,7 +106,7 @@ public class IntQueue {
         }
     }
 
-    // 오버플로우 발생시 처리할 예외
+    // 오버플로우 발생시 처리할 예외 클래스
     class OverflowIntQueueException extends RuntimeException {
         OverflowIntQueueException() {
         }

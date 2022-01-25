@@ -1,27 +1,32 @@
+package al02_sort;
+
 import java.util.Arrays;
 import java.util.HashSet;
 
-public class Test {
+public class ArrayInsertionSort {
 
-    public static void swap(Integer[] arr, int j) {
-        int tmp = arr[j];
-        arr[j] = arr[j + 1];
-        arr[j + 1] = tmp;
+    public static int swap(Integer[] arr, int n) {
+        int tmp = arr[n - 1];
+        arr[n - 1] = arr[n];
+        arr[n] = tmp;
+
+        return tmp;
     }
 
     public static void mySort(Integer[] arr) {
-        for (int i = arr.length; i > 0; i--) {
-            for (int j = 0; j < i - 1; j++) {
-                if (arr[j] > arr[j + 1]) {
-                    swap(arr, j);
-                }
+        for (int i = 1; i < arr.length; i++) {
+            int tmp = arr[i];
+            int j = 0;
+            for (j = i; j > 0 && arr[j - 1] > tmp; j--) {
+                arr[j] = arr[j - 1];
+
             }
+            arr[j] = tmp;
         }
     }
 
     public static void main(String[] args) {
-
-        final int ARR_SIZE = 30;
+        final int ARR_SIZE = 10;
         HashSet<Integer> set = new HashSet<>(ARR_SIZE);
         while (true) {
             set.add((int) (Math.random() * 99) + 1);
@@ -29,7 +34,6 @@ public class Test {
                 break;
             }
         }
-
         Integer[] intarr = set.toArray(new Integer[ARR_SIZE]);
 
         System.out.println(Arrays.toString(intarr));
