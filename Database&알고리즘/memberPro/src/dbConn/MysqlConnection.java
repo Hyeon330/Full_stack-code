@@ -11,31 +11,34 @@ public class MysqlConnection {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (Exception e) {
-			System.out.println("µÂ∂Û¿Ã∫Í ∑ŒµÂ Ω«∆–");
+			System.out.println("ÎìúÎùºÏù¥Î∏å Î°úÎìú Ïã§Ìå®");
 		}
 	}
-	
+
 	protected Connection conn = null;
 	protected PreparedStatement ps = null;
 	protected ResultSet rs = null;
-	
+
 	public void getConn() {
 		String url = "jdbc:mysql://localhost:3306/mydb";
 		String uid = "root";
 		String upw = "1234";
-		
+
 		try {
 			conn = DriverManager.getConnection(url, uid, upw);
 		} catch (Exception e) {
-			System.out.println("DB ø¨∞· Ω«∆–");
+			System.out.println("DB Ïó∞Í≤∞ Ïã§Ìå®");
 		}
 	}
-	
+
 	public void dbClose() {
 		try {
-			if(conn != null) conn.close();
-			if(ps != null) ps.close();
-			if(rs != null) rs.close();
+			if (conn != null)
+				conn.close();
+			if (ps != null)
+				ps.close();
+			if (rs != null)
+				rs.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

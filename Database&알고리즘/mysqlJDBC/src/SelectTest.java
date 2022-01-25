@@ -7,55 +7,60 @@ import java.sql.SQLException;
 public class SelectTest {
 
 	public SelectTest() {
-		
+
 	}
-	
+
 	public static void start() {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		try {
-			// JVM¿¡ ¼³Ä¡ÇÑ jarÆÄÀÏÀÇ DriverÆÄÀÏÀÇ À§Ä¡¸¦ ¿Ã·ÁÁØ´Ù
+			// JVMì— ì„¤ì¹˜í•œ jaríŒŒì¼ì˜ DriveríŒŒì¼ì˜ ìœ„ì¹˜ë¥¼ ì˜¬ë ¤ì¤€ë‹¤
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			
-			// DBÁ¢¼Ó Á¤º¸µéÀ» ÀÔ·ÂÇØ ÁØ´Ù.
-			String url = "jdbc:mysql://localhost:3306/demo"; // ³» DB°æ·Î
+
+			// DBì ‘ì† ì •ë³´ë“¤ì„ ì…ë ¥í•´ ì¤€ë‹¤.
+			String url = "jdbc:mysql://localhost:3306/demo"; // ë‚´ DBê²½ë¡œ
 			String uid = "root";
 			String upw = "1234";
-			
-			// À§ÀÇ Á¤º¸µéÀ» ÀÌ¿ëÇÏ¿© DB¿¡ Á¢¼ÓÇÑ´Ù.
+
+			// ìœ„ì˜ ì •ë³´ë“¤ì„ ì´ìš©í•˜ì—¬ DBì— ì ‘ì†í•œë‹¤.
 			conn = DriverManager.getConnection(url, uid, upw);
-			
-			// Äõ¸®¹® ÀÛ¼º
+
+			// ì¿¼ë¦¬ë¬¸ ì‘ì„±
 			String sql = "select empno, ename, hiredate, sal from emp order by empno";
-			
-			// Äõ¸®¹® psº¯¼ö¿¡ ÀúÀå
+
+			// ì¿¼ë¦¬ë¬¸ psë³€ìˆ˜ì— ì €ì¥
 			ps = conn.prepareStatement(sql);
-			
-			// rsº¯¼ö¿¡ Äõ¸®¿¡ ÇØ´çÇÏ´Â ÀÀ´ä ÀúÀå
+
+			// rsë³€ìˆ˜ì— ì¿¼ë¦¬ì— í•´ë‹¹í•˜ëŠ” ì‘ë‹µ ì €ì¥
 			rs = ps.executeQuery();
-			
-			System.out.printf("%5s%8s%16s%18s\n","empno","ename","hiredate","sal");
-			while(rs.next()) { // ÇÊµåÀÇ Ã¹ ¹øÂ° ÇàºÎÅÍ ½ÃÀÛÇÏ°í ÇöÀç Çà¿¡ °ªÀÌ ÀÖÀ»°æ¿ì ¼öÇà
+
+			System.out.printf("%5s%8s%16s%18s\n", "empno", "ename", "hiredate", "sal");
+			while (rs.next()) { // í•„ë“œì˜ ì²« ë²ˆì§¸ í–‰ë¶€í„° ì‹œì‘í•˜ê³  í˜„ì¬ í–‰ì— ê°’ì´ ìˆì„ê²½ìš° ìˆ˜í–‰
 				int empno = rs.getInt(1);
 				String ename = rs.getString(2);
 				String hiredate = rs.getString("hiredate");
 				double sal = rs.getDouble("sal");
-				
-				System.out.printf("%5d%8s%22s%12.2f\n",empno,ename,hiredate,sal);
-			} 
-			
+
+				System.out.printf("%5d%8s%22s%12.2f\n", empno, ename, hiredate, sal);
+			}
+
 		} catch (ClassNotFoundException e) {
-			System.out.println("µå¶óÀÌºê ·Îµù ½ÇÆĞ");
+			System.out.println("ë“œë¼ì´ë¸Œ ë¡œë”© ì‹¤íŒ¨");
 		} catch (SQLException e) {
-			System.out.println("DB¿¬°á ¿¡·¯ ¹ß»ı");
-		} finally { // DB Á¾·á
+			System.out.println("DBì—°ê²° ì—ëŸ¬ ë°œìƒ");
+		} finally { // DB ì¢…ë£Œ
 			try {
-				if(rs!=null) {rs.close();}
-				if(ps!=null) {ps.close();}
-				if(conn!=null) {conn.close();}
+				if (rs != null) {
+					rs.close();
+				}
+				if (ps != null) {
+					ps.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
 			} catch (Exception e2) {
-				// TODO: handle exception
 			}
 		}
 	}

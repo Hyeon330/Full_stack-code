@@ -3,8 +3,8 @@ public class BookTest {
 
 	public static void main(String[] args) {
 		BookDAO dao = BookDAO.getDAO();
-		BookDTO dto = new BookDTO("B004", "ÀÚ¹Ù½ºÅ©¸³Æ®", "°­±æµ¿", 2020, 28000, "¼­¿ïÃâÆÇ»ç");
-		
+		BookDTO dto = new BookDTO("B004", "ìë°”ìŠ¤í¬ë¦½íŠ¸", "ê°•ê¸¸ë™", 2020, 28000, "ì„œìš¸ì¶œíŒì‚¬");
+
 		dao.insertBook(dto);
 		dao.selectBook();
 	}

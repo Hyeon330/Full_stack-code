@@ -3,33 +3,33 @@ package al02_search;
 import java.util.Scanner;
 
 public class BinarySearch {
-	// ÀÌÁø°Ë»ö(BinarySearch)
-	// µ¥ÀÌÅÍ°¡ Á¤·ÄµÇ¾î ÀÖ¾î¾ß ÇÑ´Ù.
-	// °¡¿îµ¥ À§Ä¡¸¦ ±¸ÇÏ¿© °Ë»öÇÑ´Ù.
+	// ì´ì§„ê²€ìƒ‰(BinarySearch)
+	// ë°ì´í„°ê°€ ì •ë ¬ë˜ì–´ ìˆì–´ì•¼ í•œë‹¤.
+	// ê°€ìš´ë° ìœ„ì¹˜ë¥¼ êµ¬í•˜ì—¬ ê²€ìƒ‰í•œë‹¤.
 	static int binarySearch(int[] arr, int n, int key) {
-		int left = 0; // ¿ŞÂÊ ½ÃÀÛ index
-		int right = n - 1; // ¿À¸¥ÂÊ ¸¶Áö¸· index
+		int left = 0; // ì™¼ìª½ ì‹œì‘ index
+		int right = n - 1; // ì˜¤ë¥¸ìª½ ë§ˆì§€ë§‰ index
 
 		do {
-			// Áß°£ index¸¦ ±¸ÇÑ´Ù.
+			// ì¤‘ê°„ indexë¥¼ êµ¬í•œë‹¤.
 			int center = (left + right) / 2;
-			if (key == arr[center]) { // °Ë»öÇÒ °ªÀÌ Áß°£ index¿¡ ÀÖÀ» °æ¿ì
+			if (key == arr[center]) { // ê²€ìƒ‰í•  ê°’ì´ ì¤‘ê°„ indexì— ìˆì„ ê²½ìš°
 				return center;
-			} else if (arr[center] < key) { // Ã£°íÀÚÇÏ´Â °ªÀÌ Áß¾Ó°ªº¸´Ù Å©¸é
-				left = center + 1; // left¸¦ center+1
+			} else if (arr[center] < key) { // ì°¾ê³ ìí•˜ëŠ” ê°’ì´ ì¤‘ì•™ê°’ë³´ë‹¤ í¬ë©´
+				left = center + 1; // leftë¥¼ center+1
 			} else {
 				right = center - 1;
 			}
 
 		} while (left <= right);
-		// °Ë»öÇÑ °ªÀÌ ¾øÀ» °æ¿ì
+		// ê²€ìƒ‰í•œ ê°’ì´ ì—†ì„ ê²½ìš°
 		return -1;
 	}
 
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
 
-		System.out.println("µ¥ÀÌÅÍ¼ö=");
+		System.out.println("ë°ì´í„°ìˆ˜=");
 		int n = s.nextInt();
 
 		int arr[] = new int[n];
@@ -39,15 +39,15 @@ public class BinarySearch {
 			arr[i] = s.nextInt();
 		}
 
-		// °Ë»öÇÒ ¼ö ÀÔ·Â
+		// ê²€ìƒ‰í•  ìˆ˜ ì…ë ¥
 		int key = s.nextInt();
 
-		// ÀÌÁø°Ë»ö
+		// ì´ì§„ê²€ìƒ‰
 		int result = binarySearch(arr, n, key);
 		if (result >= 0) {
-			System.out.println(key + "´Â arr[" + result + "]À§Ä¡¿¡ Á¸ÀçÇÕ´Ï´Ù.");
+			System.out.println(key + "ëŠ” arr[" + result + "]ìœ„ì¹˜ì— ì¡´ì¬í•©ë‹ˆë‹¤.");
 		} else {
-			System.out.println(key + "´Â Á¸ÀçÇÏÁö ¾Ê´Â µ¥ÀÌÅÍÀÔ´Ï´Ù.");
+			System.out.println(key + "ëŠ” ì¡´ì¬í•˜ì§€ ì•ŠëŠ” ë°ì´í„°ì…ë‹ˆë‹¤.");
 		}
 		s.close();
 	}

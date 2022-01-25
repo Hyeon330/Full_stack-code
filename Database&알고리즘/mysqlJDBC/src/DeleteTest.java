@@ -8,14 +8,15 @@ public class DeleteTest {
 	Scanner sc = new Scanner(System.in);
 	Connection conn = null;
 	PreparedStatement ps = null;
-	
+
 	public DeleteTest() {
-		
+
 	}
+
 	public void start() {
 		try {
-			// »ç¿ø¹øÈ£¸¦ ÀÔ·Â¹Ş¾Æ ÀÔ·Â¹ŞÀº »ç¿øÀ» »èÁ¦ÇÏ¶ó
-			System.out.print("»èÁ¦ÇÒ »ç¿ø ¹øÈ£ ->");
+			// ì‚¬ì›ë²ˆí˜¸ë¥¼ ì…ë ¥ë°›ì•„ ì…ë ¥ë°›ì€ ì‚¬ì›ì„ ì‚­ì œí•˜ë¼
+			System.out.print("ì‚­ì œí•  ì‚¬ì› ë²ˆí˜¸ ->");
 			int empno = Integer.parseInt(sc.nextLine());
 			// 1.
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -24,22 +25,24 @@ public class DeleteTest {
 			// 3.
 			String sql = "delete from emp where empno=?";
 			ps = conn.prepareStatement(sql);
-			
+
 			ps.setInt(1, empno);
-			
+
 			int result = ps.executeUpdate();
-			if(result > 0) {
-				System.out.println(result + "°³ ·¹ÄÚµå »èÁ¦ ¿Ï·á.");
+			if (result > 0) {
+				System.out.println(result + "ê°œ ë ˆì½”ë“œ ì‚­ì œ ì™„ë£Œ.");
 			} else {
-				System.out.println("»èÁ¦µÈ Ç×¸ñÀÌ ¾ø½À´Ï´Ù.");
+				System.out.println("ì‚­ì œëœ í•­ëª©ì´ ì—†ìŠµë‹ˆë‹¤.");
 			}
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				if(ps!= null) ps.close();
-				if(conn != null) conn.close();
+				if (ps != null)
+					ps.close();
+				if (conn != null)
+					conn.close();
 			} catch (Exception e2) {
 				e2.printStackTrace();
 			}

@@ -2,25 +2,25 @@ package al03_stack_queue;
 
 public class IntStack {
 
-	int capacity; // ÃÖ´ë·Î ÀúÀåÇÒ ¼ö ÀÖ´Â °´Ã¼ÀÇ ¼ö
-	int stk[]; // Á¤¼ö¸¦ ÀúÀåÇÒ ¼ö ÀÖ´Â ¹è¿­À» »ı¼º
-	int point; // stackÀÇ Ã¤¿öÁø °ªÀÇ À§Ä¡ +1
+	int capacity; // ìµœëŒ€ë¡œ ì €ì¥í•  ìˆ˜ ìˆëŠ” ê°ì²´ì˜ ìˆ˜
+	int stk[]; // ì •ìˆ˜ë¥¼ ì €ì¥í•  ìˆ˜ ìˆëŠ” ë°°ì—´ì„ ìƒì„±
+	int point; // stackì˜ ì±„ì›Œì§„ ê°’ì˜ ìœ„ì¹˜ +1
 
 	IntStack() {
 	}
 
 	IntStack(int max) {
-		capacity = max; // °ªÀ» ÀúÀåÇÒ ¼ö ÀÖ´Â Å©±â
+		capacity = max; // ê°’ì„ ì €ì¥í•  ìˆ˜ ìˆëŠ” í¬ê¸°
 		point = 0;
 		stk = new int[max];
 	}
 
-	// µ¥ÀÌÅÍÀÇ ¼ö¸¦ ¸®ÅÏÇÏ´Â ¸Ş¼Òµå
+	// ë°ì´í„°ì˜ ìˆ˜ë¥¼ ë¦¬í„´í•˜ëŠ” ë©”ì†Œë“œ
 	public int getPoint() {
 		return point;
 	}
 
-	// ¸Ş¸ğ¸®Å©±â¸¦ ¸®ÅÏÇÏ´Â ¸Ş¼Òµå
+	// ë©”ëª¨ë¦¬í¬ê¸°ë¥¼ ë¦¬í„´í•˜ëŠ” ë©”ì†Œë“œ
 	public int getCapacity() {
 		return capacity;
 	}
@@ -32,16 +32,16 @@ public class IntStack {
 		return stk[point++] = data;
 	}
 
-	// ½ºÅÃÀÇ Á¦ÀÏ ³ªÁß¿¡ ÀúÀåµÈ À§Ä¡ÀÇ(point -1)ÀÇ °ªÀ» ¸®ÅÏ ÇÏ´Â ¸Ş¼­µå
+	// ìŠ¤íƒì˜ ì œì¼ ë‚˜ì¤‘ì— ì €ì¥ëœ ìœ„ì¹˜ì˜(point -1)ì˜ ê°’ì„ ë¦¬í„´ í•˜ëŠ” ë©”ì„œë“œ
 	public int pop() throws EmptyIntStackException {
-		// ½ºÅÃÀÌ ºñ¾îÀÖÀ¸¸é empty¿¹¿Ü ¹ß»ı½ÃÅ´
+		// ìŠ¤íƒì´ ë¹„ì–´ìˆìœ¼ë©´ emptyì˜ˆì™¸ ë°œìƒì‹œí‚´
 		if (point <= 0) {
 			throw new EmptyIntStackException();
 		}
 		return stk[--point];
 	}
 
-	// Á¦ÀÏ À§¿¡ ÀÖ´Â µ¥ÀÌÅÍ(point -1)¸¦ ¸®ÅÏÇÑ´Ù.
+	// ì œì¼ ìœ„ì— ìˆëŠ” ë°ì´í„°(point -1)ë¥¼ ë¦¬í„´í•œë‹¤.
 	public int peek() throws EmptyIntStackException {
 		if (point <= 0) {
 			throw new EmptyIntStackException();
@@ -49,7 +49,7 @@ public class IntStack {
 		return stk[point - 1];
 	}
 
-	// stackÀÇ ¸ğµç µ¥ÀÌÅÍ Ãâ·ÂÇÏ±â
+	// stackì˜ ëª¨ë“  ë°ì´í„° ì¶œë ¥í•˜ê¸°
 	public void print() {
 		if (point <= 0) {
 			IntStackMain.emptyMsg();
@@ -59,36 +59,34 @@ public class IntStack {
 			}
 		}
 	}
-	
-	// µ¥ÀÌÅÍÀÇ index±¸ÇÏ±â
+
+	// ë°ì´í„°ì˜ indexêµ¬í•˜ê¸°
 	public int indexOf(int search) {
-		for (int i = point-1; i >=0; i--) { // point-1, point-2, point-3
-			if(stk[i]==search) {
+		for (int i = point - 1; i >= 0; i--) { // point-1, point-2, point-3
+			if (stk[i] == search) {
 				return i;
 			}
 		}
 		return -1;
 	}
-	
-	// ½ºÅÃ¿¡ µ¥ÀÌÅÍ°¡ Á¸ÀçÇÏ´ÂÁö È®ÀÎÇÏ´Â ¸Ş¼­µå
+
+	// ìŠ¤íƒì— ë°ì´í„°ê°€ ì¡´ì¬í•˜ëŠ”ì§€ í™•ì¸í•˜ëŠ” ë©”ì„œë“œ
 	public boolean isEmpty() {
-		// beerÀÖÀ¸¸é true
-		return point<=0;
-	}
-	
-	public boolean isFull() {
-		return point>=capacity;
+		// beerìˆìœ¼ë©´ true
+		return point <= 0;
 	}
 
-	// ¿À¹öÇÃ·Î¿ì ¹ß»ı½Ã ¿¹¿ÜÃ³¸® Å¬·¡½º
-	@SuppressWarnings("serial")
+	public boolean isFull() {
+		return point >= capacity;
+	}
+
+	// ì˜¤ë²„í”Œë¡œìš° ë°œìƒì‹œ ì˜ˆì™¸ì²˜ë¦¬ í´ë˜ìŠ¤
 	class OverflowIntStackException extends RuntimeException {
 		public OverflowIntStackException() {
 		};
 	}
 
-	// ½ºÅÃÀÌ ºñ¾îÀÖÀ» ¶§ ¹ß»ı½ÃÅ³ ¿¹¿Ü Å¬·¡½º
-	@SuppressWarnings("serial")
+	// ìŠ¤íƒì´ ë¹„ì–´ìˆì„ ë•Œ ë°œìƒì‹œí‚¬ ì˜ˆì™¸ í´ë˜ìŠ¤\
 	class EmptyIntStackException extends RuntimeException {
 		public EmptyIntStackException() {
 		};

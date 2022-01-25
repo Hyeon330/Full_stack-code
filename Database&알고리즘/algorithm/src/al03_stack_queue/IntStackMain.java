@@ -12,22 +12,22 @@ public class IntStackMain {
 		System.out.print("Stack size : ");
 		int max = s.nextInt();
 
-		// ½ºÅÃ°´Ã¼ »ı¼º
+		// ìŠ¤íƒê°ì²´ ìƒì„±
 		IntStack stack = new IntStack(max);
 
 		while (true) {
-			// ÇöÀç½ºÅÃÀÇ µ¥ÀÌÅÍ°³¼ö¿Í ½ºÅÃÀÇ Å©±â¸¦ Ãâ·ÂÇÏ°í
+			// í˜„ì¬ìŠ¤íƒì˜ ë°ì´í„°ê°œìˆ˜ì™€ ìŠ¤íƒì˜ í¬ê¸°ë¥¼ ì¶œë ¥í•˜ê³ 
 			System.out.print("Data -> " + stack.getPoint());
 			System.out.println(", Memory -> " + stack.getCapacity());
-			// ¸Ş´ºÇ¥½Ã : push, pop, peek, print, search, empty, stackÁ¤º¸Ç¥½Ã, Á¾·á
+			// ë©”ë‰´í‘œì‹œ : push, pop, peek, print, search, empty, stackì •ë³´í‘œì‹œ, ì¢…ë£Œ
 			System.out.println("[Option]1.push, 2.pop, 3.peek, 4.print, 5.search, 6.empty, 7.info, 8.exit");
 			int menu = s.nextInt();
 			if (menu == 8)
 				break;
-			// º¯¼ö, ¼ö½Ä, »ó¼ö -> Á¤¼öÇü, char, String
+			// ë³€ìˆ˜, ìˆ˜ì‹, ìƒìˆ˜ -> ì •ìˆ˜í˜•, char, String
 			switch (menu) {
 			
-			case 1: // ½ºÅÃ¿¡ °ªÀ» Ãß°¡ÇÑ´Ù.
+			case 1: // ìŠ¤íƒì— ê°’ì„ ì¶”ê°€í•œë‹¤.
 				System.out.print("Push Number : ");
 				int data = s.nextInt();
 				try {
@@ -37,7 +37,7 @@ public class IntStackMain {
 				}
 				break;
 				
-			case 2: // ½ºÅÃ¿¡¼­ °ªÀ» ¾ò¾î¿Â´Ù.
+			case 2: // ìŠ¤íƒì—ì„œ ê°’ì„ ì–»ì–´ì˜¨ë‹¤.
 				try {
 					System.out.println("Pop : " + stack.pop());
 				} catch (EmptyIntStackException eise) {
@@ -45,7 +45,7 @@ public class IntStackMain {
 				}
 				break;
 				
-			case 3: // ½ºÅÃ¿¡¼­ Á¦ÀÏ À§¿¡ÀÖ´Â µ¥ÀÌÅÍ °¡Á®¿À±â
+			case 3: // ìŠ¤íƒì—ì„œ ì œì¼ ìœ„ì—ìˆëŠ” ë°ì´í„° ê°€ì ¸ì˜¤ê¸°
 				try {
 					System.out.println("Top of Number : " + stack.peek());
 				} catch (EmptyIntStackException eise) {
@@ -54,33 +54,33 @@ public class IntStackMain {
 				break;
 				
 			case 4:
-				// ½ºÅÃÀÇ ¸ğµç µ¥ÀÌÅÍ Ãâ·Â
+				// ìŠ¤íƒì˜ ëª¨ë“  ë°ì´í„° ì¶œë ¥
 				stack.print();
 				break;
 				
-			case 5: // °Ë»ö : °ªÀ» ÀÔ·ÂÇÏ¸é °ªÀÌ ÀÖ´Â index±¸ÇÏ±â
-				System.out.print("°Ë»öÇÒ µ¥ÀÌÅÍ : ");
+			case 5: // ê²€ìƒ‰ : ê°’ì„ ì…ë ¥í•˜ë©´ ê°’ì´ ìˆëŠ” indexêµ¬í•˜ê¸°
+				System.out.print("ê²€ìƒ‰í•  ë°ì´í„° : ");
 				int search = s.nextInt();
 				int idx = stack.indexOf(search);
 				if (idx >= 0)
-					System.out.println(search + "´Â ½ºÅÃÀÇ " + idx + "À§Ä¡¿¡ Á¸ÀçÇÕ´Ï´Ù.");
+					System.out.println(search + "ëŠ” ìŠ¤íƒì˜ " + idx + "ìœ„ì¹˜ì— ì¡´ì¬í•©ë‹ˆë‹¤.");
 				else 
-					System.out.println(search + "´Â ½ºÅÃ¿¡ ¾ø½À´Ï´Ù.");
+					System.out.println(search + "ëŠ” ìŠ¤íƒì— ì—†ìŠµë‹ˆë‹¤.");
 				break;
 				
-			case 6: // ½ºÅÃÀÌ ºñ¾îÀÖ´ÂÁö È®ÀÎ
+			case 6: // ìŠ¤íƒì´ ë¹„ì–´ìˆëŠ”ì§€ í™•ì¸
 				if(stack.isEmpty()) {
 					emptyMsg();
 				} else {
-					System.out.println("½ºÅÃ¿¡ µ¥ÀÌÅÍ°¡ ÀÖ½À´Ï´Ù.");
+					System.out.println("ìŠ¤íƒì— ë°ì´í„°ê°€ ìˆìŠµë‹ˆë‹¤.");
 				}
 				break;
 				
-			case 7: // ½ºÅÃ Á¤º¸ Ç¥½Ã
-				System.out.println("½ºÅÃÀÇ Å©±â : " + stack.getCapacity());
-				System.out.println("µ¥ÀÌÅÍÀÇ °¹¼ö : "+stack.getPoint());
-				System.out.println("µ¥ÀÌÅÍ Á¸Àç À¯¹« : " + (stack.isEmpty() ? "beer":"µ¥ÀÌÅÍ ÀÖÀ½"));
-				System.out.println("³²Àº µ¥ÀÌÅÍ ¿ë·® : "+(stack.isFull() ? "Full":"¿©À¯ÀÖÀ½"));
+			case 7: // ìŠ¤íƒ ì •ë³´ í‘œì‹œ
+				System.out.println("ìŠ¤íƒì˜ í¬ê¸° : " + stack.getCapacity());
+				System.out.println("ë°ì´í„°ì˜ ê°¯ìˆ˜ : "+stack.getPoint());
+				System.out.println("ë°ì´í„° ì¡´ì¬ ìœ ë¬´ : " + (stack.isEmpty() ? "beer":"ë°ì´í„° ìˆìŒ"));
+				System.out.println("ë‚¨ì€ ë°ì´í„° ìš©ëŸ‰ : "+(stack.isFull() ? "Full":"ì—¬ìœ ìˆìŒ"));
 				break;
 			default:
 				break;
@@ -88,7 +88,7 @@ public class IntStackMain {
 			System.out.println();
 		}
 		s.close();
-		System.out.println("ÇÁ·Î±×·¥ÀÌ Á¾·áµÇ¾ú½À´Ï´Ù.");
+		System.out.println("í”„ë¡œê·¸ë¨ì´ ì¢…ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
 	}
 	
 	public static void emptyMsg() {

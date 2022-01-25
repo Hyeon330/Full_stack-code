@@ -9,7 +9,6 @@ public class MemberDTO {
 	String birth;
 	String gender;
 	String Writedate;
-	
 
 	public int getNum() {
 		return num;
@@ -58,7 +57,7 @@ public class MemberDTO {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	
+
 	public String getWritedate() {
 		return Writedate;
 	}

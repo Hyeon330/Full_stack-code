@@ -1,42 +1,42 @@
 package test;
-/*»ï¼º ¾ÆÄ«µ¥¹Ì - ÃÖºó¼ö ±¸ÇÏ±â(1204¹ø)*/
+/*ì‚¼ì„± ì•„ì¹´ë°ë¯¸ - ìµœë¹ˆìˆ˜ êµ¬í•˜ê¸°(1204ë²ˆ)*/
 import java.io.*;
 import java.util.*;
 
 public class Solution {
 	public static void main(String[] args) throws IOException {
 		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-		Integer[] grade = new Integer[101];		// 0~100Á¡±îÁö ¹è¿­(°¢ Á¡¼öº°·Î °³¼ö°¡ ¹è¿­¿¡ µî·ÏµÉ °ÍÀÓ)
-		int num = 0;							// Á¡¼öÀÇ °³¼ö°¡ µé¾î°¥ º¯¼ö
-		int result = 0;							// ÃÖºó¼ö°¡ µé¾î°¥ º¯¼ö
+		Integer[] grade = new Integer[101];		// 0~100ì ê¹Œì§€ ë°°ì—´(ê° ì ìˆ˜ë³„ë¡œ ê°œìˆ˜ê°€ ë°°ì—´ì— ë“±ë¡ë  ê²ƒì„)
+		int num = 0;							// ì ìˆ˜ì˜ ê°œìˆ˜ê°€ ë“¤ì–´ê°ˆ ë³€ìˆ˜
+		int result = 0;							// ìµœë¹ˆìˆ˜ê°€ ë“¤ì–´ê°ˆ ë³€ìˆ˜
 		
-		// ¹è¿­ ÀüºÎ ÃÊ±âÈ­
+		// ë°°ì—´ ì „ë¶€ ì´ˆê¸°í™”
 		for (int i = 0; i < grade.length; i++) {
 			grade[i] = 0;
 		}
 
-		// Å×½ºÆ®ÄÉÀÌ½º È¸¼ö ÀÔ·Â
+		// í…ŒìŠ¤íŠ¸ì¼€ì´ìŠ¤ íšŒìˆ˜ ì…ë ¥
 		int T = Integer.parseInt(bf.readLine());
 
 		for (int i = 0; i < T; i++) {
-			bf.readLine(); // case¹øÈ£ ÀÔ·Â¹öÆÛ •ûÁÖ±â
-			String inputGrade = bf.readLine(); // Á¡¼ö ÀÔ·Â
-			StringTokenizer st = new StringTokenizer(inputGrade);	// ÀÔ·ÂÇÑ Á¡¼ö ÅäÅ©³ªÀÌÀú Çü½ÄÀ¸·Î ¹Ù²ã ÁÜ
+			bf.readLine(); // caseë²ˆí˜¸ ì…ë ¥ë²„í¼ ëº´ì£¼ê¸°
+			String inputGrade = bf.readLine(); // ì ìˆ˜ ì…ë ¥
+			StringTokenizer st = new StringTokenizer(inputGrade);	// ì…ë ¥í•œ ì ìˆ˜ í† í¬ë‚˜ì´ì € í˜•ì‹ìœ¼ë¡œ ë°”ê¿” ì¤Œ
 			while (st.hasMoreTokens()) {
-				grade[Integer.parseInt(st.nextToken())]++;	// °¢ Á¡¼öÀ§Ä¡ÀÇ ¹è¿­ÀÇ °³¼ö¸¦ ¿Ã·ÁÁÜ
+				grade[Integer.parseInt(st.nextToken())]++;	// ê° ì ìˆ˜ìœ„ì¹˜ì˜ ë°°ì—´ì˜ ê°œìˆ˜ë¥¼ ì˜¬ë ¤ì¤Œ
 			}
 
-			for (int j = 0; j < grade.length; j++) {	// Á¡¼öº°·Î °³¼ö ºñ±³
+			for (int j = 0; j < grade.length; j++) {	// ì ìˆ˜ë³„ë¡œ ê°œìˆ˜ ë¹„êµ
 				if (num < grade[j] || (num == grade[j] && Arrays.asList(grade).indexOf(num) < j)) {
-					// °¡Àå ¸¹ÀÌ³ª¿Â Á¡¼öÀÇ °³¼ö < ÇöÀç Á¡¼öÀÇ °³¼ö || ( °¡Àå ¸¹ÀÌ³ª¿Â Á¡¼öÀÇ °³¼ö == ÇöÀç Á¡¼öÀÇ °³¼ö && °¡Àå ¸¹ÀÌ ³ª¿Â Á¡¼ö < ÇöÀç Á¡¼ö)
-					// À§ÀÇ Á¶°Ç ¸¸Á·½Ã ÁøÀÔ
-					num = grade[j];	// °¡Àå ¸¹ÀÌ³ª¿Â Á¡¼öÀÇ °³¼ö º¯°æ
-					result = j;		// ÃÖºó¼ö º¯°æ
+					// ê°€ì¥ ë§ì´ë‚˜ì˜¨ ì ìˆ˜ì˜ ê°œìˆ˜ < í˜„ì¬ ì ìˆ˜ì˜ ê°œìˆ˜ || ( ê°€ì¥ ë§ì´ë‚˜ì˜¨ ì ìˆ˜ì˜ ê°œìˆ˜ == í˜„ì¬ ì ìˆ˜ì˜ ê°œìˆ˜ && ê°€ì¥ ë§ì´ ë‚˜ì˜¨ ì ìˆ˜ < í˜„ì¬ ì ìˆ˜)
+					// ìœ„ì˜ ì¡°ê±´ ë§Œì¡±ì‹œ ì§„ì…
+					num = grade[j];	// ê°€ì¥ ë§ì´ë‚˜ì˜¨ ì ìˆ˜ì˜ ê°œìˆ˜ ë³€ê²½
+					result = j;		// ìµœë¹ˆìˆ˜ ë³€ê²½
 				}
 			}
-			System.out.println("#" + (i+1) + " " + result);	// Ãâ·Â
+			System.out.println("#" + (i+1) + " " + result);	// ì¶œë ¥
 			
-			// ¹Ø¿¡ 3°³ ÀüºÎ ÃÊ±âÈ­
+			// ë°‘ì— 3ê°œ ì „ë¶€ ì´ˆê¸°í™”
 			Arrays.fill(grade, 0);	
 			num = 0;
 			result = 0;

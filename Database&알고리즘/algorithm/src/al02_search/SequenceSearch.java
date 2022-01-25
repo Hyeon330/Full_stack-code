@@ -2,13 +2,13 @@ package al02_search;
 
 import java.util.Scanner;
 
-// ¼±Çü°Ë»ö(linearSearch, SequenceSearch)
+// ì„ í˜•ê²€ìƒ‰(linearSearch, SequenceSearch)
 public class SequenceSearch {
-	// for¹®À» ÀÌ¿ëÇÏ¿© °Ë»öÇÏ±â
-	// keyÀÇ °ªÀÌ ÀÖ´Â À§Ä¡¸¦ ±¸ÇÏ¿© index¸¦ ¹İÈ¯ÇÏ´Â ¸Ş¼Òµå
+	// forë¬¸ì„ ì´ìš©í•˜ì—¬ ê²€ìƒ‰í•˜ê¸°
+	// keyì˜ ê°’ì´ ìˆëŠ” ìœ„ì¹˜ë¥¼ êµ¬í•˜ì—¬ indexë¥¼ ë°˜í™˜í•˜ëŠ” ë©”ì†Œë“œ
 	static int linearSearch1(int[] data, int n, int key) {
-		// ¹è¿­¿¡¼­ key°ªÀ» °Ë»öÇÏ¸é index¸¦ ¸®ÅÏÇÑ´Ù.
-		// ¸¸¾à °Ë»öµÈ index°¡ ¾øÀ¸¸é -1À» ¸®ÅÏÇÑ´Ù
+		// ë°°ì—´ì—ì„œ keyê°’ì„ ê²€ìƒ‰í•˜ë©´ indexë¥¼ ë¦¬í„´í•œë‹¤.
+		// ë§Œì•½ ê²€ìƒ‰ëœ indexê°€ ì—†ìœ¼ë©´ -1ì„ ë¦¬í„´í•œë‹¤
 		for (int i = 0; i < n; i++) {
 			if(data[i]==key) {
 				return i;
@@ -18,54 +18,54 @@ public class SequenceSearch {
 		return 0;
 	}
 	
-	// while¹®À» ÀÌ¿ëÇÑ µ¥ÀÌÅÍÀ§Ä¡ °Ë»ö
+	// whileë¬¸ì„ ì´ìš©í•œ ë°ì´í„°ìœ„ì¹˜ ê²€ìƒ‰
 	static int linearSearch2(int[] data, int n, int k) {
-		// ¹è¿­¿¡¼­ key°ªÀ» °Ë»öÇÏ¿© index¸¦ ¸®ÅÏÇÑ´Ù.
-        // ¸¸¾à °Ë»öµÈ index°¡ ¾øÀ¸¸é -1À» ¸®ÅÏÇÑ´Ù.
+		// ë°°ì—´ì—ì„œ keyê°’ì„ ê²€ìƒ‰í•˜ì—¬ indexë¥¼ ë¦¬í„´í•œë‹¤.
+        // ë§Œì•½ ê²€ìƒ‰ëœ indexê°€ ì—†ìœ¼ë©´ -1ì„ ë¦¬í„´í•œë‹¤.
         int i=0;
         while(true) { // 0,1,2,3....
-            if(i==n) {// i indexÀ§Ä¡°¡ Á¸ÀçÇÏ´Â°¡
+            if(i==n) {// i indexìœ„ì¹˜ê°€ ì¡´ì¬í•˜ëŠ”ê°€
                 return -1;
             }
-            if(data[i]==k) { // °Ë»öÇÒ µ¥ÀÌÅÍ¸¦ Ã£Àº °æ¿ì
+            if(data[i]==k) { // ê²€ìƒ‰í•  ë°ì´í„°ë¥¼ ì°¾ì€ ê²½ìš°
                 return i;
             }
-            // ´ÙÀ½ indexÀÇ °ªÀ» È®ÀÎÇÏ±â À§ÇØ index¸¦ 1Áõ°¡
-            ++i;  // ++i, i++, i=i+1, i+=1 ³İ Áß ÇÏ³ª
+            // ë‹¤ìŒ indexì˜ ê°’ì„ í™•ì¸í•˜ê¸° ìœ„í•´ indexë¥¼ 1ì¦ê°€
+            ++i;  // ++i, i++, i=i+1, i+=1 ë„· ì¤‘ í•˜ë‚˜
         }
     }
 	
 	
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		// µ¥ÀÌÅÍÀÇ °¹¼ö ÀÔ·Â : ¹è¿­À» »ı¼º
-		System.out.print("µ¥ÀÌÅÍ¼ö->");
+		// ë°ì´í„°ì˜ ê°¯ìˆ˜ ì…ë ¥ : ë°°ì—´ì„ ìƒì„±
+		System.out.print("ë°ì´í„°ìˆ˜->");
 		int n = sc.nextInt();
-		// ¹è¿­À» »ı¼º
+		// ë°°ì—´ì„ ìƒì„±
 		int data[] = new int[n];	// 5-> 0,1,2,3,4
 		
-		// µ¥ÀÌÅÍ ÀÔ·Â
+		// ë°ì´í„° ì…ë ¥
 		for (int i = 0; i < n; i++) {
 			System.out.print("data["+i+"]=");
 			data[i] = sc.nextInt();
 		}
-		// Ã£À» ¼ıÀÚ¸¦ ÀÔ·Â¹Ş´Â´Ù.
-		System.out.print("°Ë»öÇÒ µ¥ÀÌÅÍ->");
+		// ì°¾ì„ ìˆ«ìë¥¼ ì…ë ¥ë°›ëŠ”ë‹¤.
+		System.out.print("ê²€ìƒ‰í•  ë°ì´í„°->");
 		int key = sc.nextInt();
 		
-		// for¸¦ ÀÌ¿ëÇÑ ¼±Çü°Ë»ö È£Ãâ
+		// forë¥¼ ì´ìš©í•œ ì„ í˜•ê²€ìƒ‰ í˜¸ì¶œ
 		int idx = linearSearch1(data, n, key);
-		if(idx>0) { // °Ë»öÇÑ µ¥ÀÌÅÍ°¡ ÀÖÀ» ¶§
-			System.out.println(key + "´Â data[" + idx +"]À§Ä¡¿¡ ÀÖ½À´Ï´Ù.");
-		} else { // °Ë»öÇÑ µ¥ÀÌÅÍ ¾øÀ»¶§
-			System.out.println(key + "´Â Á¸ÀçÇÏÁö ¾Ê´Â µ¥ÀÌÅÍÀÔ´Ï´Ù.");
+		if(idx>0) { // ê²€ìƒ‰í•œ ë°ì´í„°ê°€ ìˆì„ ë•Œ
+			System.out.println(key + "ëŠ” data[" + idx +"]ìœ„ì¹˜ì— ìˆìŠµë‹ˆë‹¤.");
+		} else { // ê²€ìƒ‰í•œ ë°ì´í„° ì—†ì„ë•Œ
+			System.out.println(key + "ëŠ” ì¡´ì¬í•˜ì§€ ì•ŠëŠ” ë°ì´í„°ì…ë‹ˆë‹¤.");
 		}
 		
 		int idx2 = linearSearch2(data, n, key);
-		if(idx>0) { // °Ë»öÇÑ µ¥ÀÌÅÍ°¡ ÀÖÀ» ¶§
-			System.out.println(key + "´Â data[" + idx2 +"]À§Ä¡¿¡ ÀÖ½À´Ï´Ù.");
-		} else { // °Ë»öÇÑ µ¥ÀÌÅÍ ¾øÀ»¶§
-			System.out.println(key + "´Â Á¸ÀçÇÏÁö ¾Ê´Â µ¥ÀÌÅÍÀÔ´Ï´Ù.");
+		if(idx>0) { // ê²€ìƒ‰í•œ ë°ì´í„°ê°€ ìˆì„ ë•Œ
+			System.out.println(key + "ëŠ” data[" + idx2 +"]ìœ„ì¹˜ì— ìˆìŠµë‹ˆë‹¤.");
+		} else { // ê²€ìƒ‰í•œ ë°ì´í„° ì—†ì„ë•Œ
+			System.out.println(key + "ëŠ” ì¡´ì¬í•˜ì§€ ì•ŠëŠ” ë°ì´í„°ì…ë‹ˆë‹¤.");
 		}
 		
 		sc.close();

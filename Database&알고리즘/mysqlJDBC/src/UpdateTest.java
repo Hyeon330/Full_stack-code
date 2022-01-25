@@ -6,45 +6,50 @@ import java.util.Scanner;
 public class UpdateTest {
 
 	Scanner sc = new Scanner(System.in);
+
 	public UpdateTest() {
-		
+
 	}
+
 	public void start() {
-		// »ç¿ø¹øÈ£¿Í ±Ş¿©¸¦ ÀÔ·Â¹Ş¾Æ ÇØ´ç»ç¿øÀÇ ±Ş¿©¸¦ ¼öÁ¤ÇÏ´Â ÇÁ·Î±×·¥ÀÛ¼º
-		// µ¥ÀÌÅÍ ÀÔ·Â
-		System.out.print("¼öÁ¤ÇÒ »ç¿ø¹øÈ£ = ");
+		// ì‚¬ì›ë²ˆí˜¸ì™€ ê¸‰ì—¬ë¥¼ ì…ë ¥ë°›ì•„ í•´ë‹¹ì‚¬ì›ì˜ ê¸‰ì—¬ë¥¼ ìˆ˜ì •í•˜ëŠ” í”„ë¡œê·¸ë¨ì‘ì„±
+		// ë°ì´í„° ì…ë ¥
+		System.out.print("ìˆ˜ì •í•  ì‚¬ì›ë²ˆí˜¸ = ");
 		int empno = sc.nextInt();
-		System.out.print("¼öÁ¤ÇÒ ±Ş¿© = ");
+		System.out.print("ìˆ˜ì •í•  ê¸‰ì—¬ = ");
 		int sal = sc.nextInt();
-		
+
 		Connection conn = null;
 		PreparedStatement ps = null;
 		try {
-			//1.µå¶óÀÌºê ·Îµù
+			// 1.ë“œë¼ì´ë¸Œ ë¡œë”©
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			//2. db¿¬°á
+			// 2. dbì—°ê²°
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/demo", "root", "1234");
-			//3.
+			// 3.
 			String sql = "update emp set sal=? where empno=?";
 			ps = conn.prepareStatement(sql);
-			//3-1.
+			// 3-1.
 			ps.setInt(1, sal);
 			ps.setInt(2, empno);
-			//4.
+			// 4.
 			int result = ps.executeUpdate();
-			if(result>0) {
-				System.out.println(result + "°³ÀÇ ·¹ÄÚµå°¡ ¼öÁ¤µÇ¾ú½À´Ï´Ù.");
+			if (result > 0) {
+				System.out.println(result + "ê°œì˜ ë ˆì½”ë“œê°€ ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤.");
 			} else {
-				System.out.println("¼öÁ¤ÇÑ ·¹ÄÚµå°¡ ¾ø½À´Ï´Ù.");
+				System.out.println("ìˆ˜ì •í•œ ë ˆì½”ë“œê°€ ì—†ìŠµë‹ˆë‹¤.");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			//5.
+			// 5.
 			try {
-				if(ps != null) ps.close();
-				if(conn != null) ps.close();
-			} catch (Exception e2) { }
+				if (ps != null)
+					ps.close();
+				if (conn != null)
+					ps.close();
+			} catch (Exception e2) {
+			}
 		}
 	}
 

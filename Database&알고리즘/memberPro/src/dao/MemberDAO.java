@@ -7,19 +7,19 @@ import dbConn.MysqlConnection;
 import dto.MemberDTO;
 
 public class MemberDAO extends MysqlConnection {
-	
+
 	public List<MemberDTO> memberList() {
 		List<MemberDTO> list = new ArrayList<MemberDTO>();
-		
+
 		try {
-			getConn();  // db¿¬°á
-			
+			getConn(); // dbì—°ê²°
+
 			String sql = "select num, username, tel, email, birth, gender, writedate from member order by num";
-//			String sql = "select * from member order by num";
+			// String sql = "select * from member order by num";
 			ps = conn.prepareStatement(sql);
-			
+
 			rs = ps.executeQuery();
-			
+
 			while (rs.next()) {
 				MemberDTO dto = new MemberDTO();
 				dto.setNum(rs.getInt(1));
@@ -29,91 +29,90 @@ public class MemberDAO extends MysqlConnection {
 				dto.setBirth(rs.getString(5));
 				dto.setGender(rs.getString(6));
 				dto.setWritedate(rs.getString(7));
-				
+
 				list.add(dto);
-				
+
 			}
 		} catch (Exception e) {
-			System.out.println("È¸¿ø ¼±ÅÃ ¿¹¿Ü ¹ß»ı");
+			System.out.println("íšŒì› ì„ íƒ ì˜ˆì™¸ ë°œìƒ");
 			e.printStackTrace();
 		} finally {
 			dbClose();
 		}
 		return list;
 	}
-	
-	
-	//È¸¿øµî·Ï
+
+	// íšŒì›ë“±ë¡
 	public int memberInsert(MemberDTO dto) {
-		int result = 0; //°á°ú¸¦ ¸®ÅÏ½ÃÅ³ º¯¼ö
+		int result = 0; // ê²°ê³¼ë¥¼ ë¦¬í„´ì‹œí‚¬ ë³€ìˆ˜
 		try {
 			getConn();
-			
+
 			String sql = "insert into member(username, tel, email, birth, gender) values(?,?,?,?,?)";
-			
+
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, dto.getUsername()); // °ªÀ» ¼¼ÆÃ
+			ps.setString(1, dto.getUsername()); // ê°’ì„ ì„¸íŒ…
 			ps.setString(2, dto.getTel());
 			ps.setString(3, dto.getEmail());
 			ps.setString(4, dto.getBirth());
 			ps.setString(5, dto.getGender());
-			
-			// Ãß°¡µÈ ·¹ÄÚµåÀÇ ¼ö¸¦ ¹İÈ¯
+
+			// ì¶”ê°€ëœ ë ˆì½”ë“œì˜ ìˆ˜ë¥¼ ë°˜í™˜
 			result = ps.executeUpdate();
 		} catch (Exception e) {
-			System.out.println("È¸¿øµî·Ï¿¹¿Ü¹ß»ı.....");
+			System.out.println("íšŒì›ë“±ë¡ì˜ˆì™¸ë°œìƒ.....");
 			e.printStackTrace();
-		}finally {
+		} finally {
 			dbClose();
 		}
 		return result;
 	}
-	
-	// È¸¿ø¼öÁ¤
+
+	// íšŒì›ìˆ˜ì •
 	public int memberUpdate(String que, MemberDTO dto) {
 		int result = 0;
 		try {
 			getConn();
-			
+
 			String sql = "update member set ";
-			if(que.equals("1")) {
+			if (que.equals("1")) {
 				sql += "tel=? where num=?";
 				ps.setString(1, dto.getTel());
-			} else if(que.equals("2")) {
+			} else if (que.equals("2")) {
 				sql += "email=? where num=?";
 				ps.setString(1, dto.getEmail());
 			}
 			ps = conn.prepareStatement(sql);
 			ps.setInt(2, dto.getNum());
-			
+
 			result = ps.executeUpdate();
-			
+
 		} catch (Exception e) {
-			System.out.println("È¸¿ø¼öÁ¤ ¿¹¿Ü¹ß»ı");
+			System.out.println("íšŒì›ìˆ˜ì • ì˜ˆì™¸ë°œìƒ");
 			e.printStackTrace();
 		} finally {
 			dbClose();
 		}
 		return result;
 	}
-	
-	// È¸¿ø»èÁ¦
+
+	// íšŒì›ì‚­ì œ
 	public int memberDelete(int num) {
 		int result = 0;
 		try {
 			getConn();
-			
+
 			String sql = "delete from member where num=?";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, num);
 			result = ps.executeUpdate();
 		} catch (Exception e) {
-			System.out.println("È¸¿ø»èÁ¦ ¿¹¿Ü¹ß»ı");
+			System.out.println("íšŒì›ì‚­ì œ ì˜ˆì™¸ë°œìƒ");
 			e.printStackTrace();
 		} finally {
 			dbClose();
 		}
-		
+
 		return result;
 	}
 }

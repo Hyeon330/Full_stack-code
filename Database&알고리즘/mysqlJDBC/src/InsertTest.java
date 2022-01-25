@@ -7,43 +7,47 @@ public class InsertTest {
 	PreparedStatement ps = null;
 
 	public InsertTest() {
-		// TODO Auto-generated constructor stub
 	}
+
 	public void empInsert() {
-		// »ç¿ø¹øÈ£, ÀÌ¸§, ±Ş¿©, ÀÔ»çÀÏÀ» ·¹ÄÚµå Ãß°¡ÇÏ±â
+		// ì‚¬ì›ë²ˆí˜¸, ì´ë¦„, ê¸‰ì—¬, ì…ì‚¬ì¼ì„ ë ˆì½”ë“œ ì¶”ê°€í•˜ê¸°
 		try {
-			// 1. µå¶óÀÌºê ·Îµù
+			// 1. ë“œë¼ì´ë¸Œ ë¡œë”©
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			
-			// 2. DB¿¬°á
+
+			// 2. DBì—°ê²°
 			conn = DriverManager.getConnection("jdbc:mysql://localhost/demo", "root", "1234");
-			
-			// 3. prepareStatement °´Ã¼ »ı¼º : Äõ¸®¹® ÀÌ¿ëÇÏ¿©
-			// »ç¿ø¹øÈ£ : 5555, ÀÌ¸§ : kim, ±Ş¿© : 4500, ÀÔ»çÀÏ : ÇöÀç ³¯Â¥¿Í ½Ã°£À¸·Î ¼³Á¤
+
+			// 3. prepareStatement ê°ì²´ ìƒì„± : ì¿¼ë¦¬ë¬¸ ì´ìš©í•˜ì—¬
+			// ì‚¬ì›ë²ˆí˜¸ : 5555, ì´ë¦„ : kim, ê¸‰ì—¬ : 4500, ì…ì‚¬ì¼ : í˜„ì¬ ë‚ ì§œì™€ ì‹œê°„ìœ¼ë¡œ ì„¤ì •
 			String sql = "insert into emp(empno, ename, sal, hiredate) values(?,?,?,now())";
 			ps = conn.prepareStatement(sql);
-			
-			// ?¿¡ °ª ¼¼ÆÃ
+
+			// ?ì— ê°’ ì„¸íŒ…
 			ps.setInt(1, 1111);
 			ps.setString(2, "lee");
 			ps.setInt(3, 3500);
-			
-			// 4. ½ÇÇà
+
+			// 4. ì‹¤í–‰
 			int cnt = ps.executeUpdate();
-			if(cnt>0) {
-				System.out.println("·¹ÄÚµå°¡ Ãß°¡ µÇ¾ú½À´Ï´Ù.");
+			if (cnt > 0) {
+				System.out.println("ë ˆì½”ë“œê°€ ì¶”ê°€ ë˜ì—ˆìŠµë‹ˆë‹¤.");
 			} else {
-				System.out.println("·¹ÄÚµåÃß°¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù.");
+				System.out.println("ë ˆì½”ë“œì¶”ê°€ ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.");
 			}
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
-				if(ps != null) ps.close();
-				if(conn != null) conn.close();
-			} catch (Exception e2) { e2.printStackTrace(); }
-			
+				if (ps != null)
+					ps.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+
 		}
 	}
 

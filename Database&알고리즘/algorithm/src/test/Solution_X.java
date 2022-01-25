@@ -1,5 +1,5 @@
 package test;
-/*»ï¼º ¾ÆÄ«µ¥¹Ì - ÃÖºó¼ö ±¸ÇÏ±â(1204¹ø)*/
+/*ì‚¼ì„± ì•„ì¹´ë°ë¯¸ - ìµœë¹ˆìˆ˜ êµ¬í•˜ê¸°(1204ë²ˆ)*/
 import java.io.*;
 import java.util.StringTokenizer;
 

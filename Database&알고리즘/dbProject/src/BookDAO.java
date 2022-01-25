@@ -10,11 +10,14 @@ public class BookDAO {
 	private PreparedStatement ps = null;
 	private ResultSet rs = null;
 	private ArrayList<BookDTO> dtos = null;
-	
-	public static BookDAO getDAO() {return dao;}
-	
-	private BookDAO() {}
-	
+
+	public static BookDAO getDAO() {
+		return dao;
+	}
+
+	private BookDAO() {
+	}
+
 	public Connection getConnection() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -23,10 +26,10 @@ public class BookDAO {
 			String upw = "1234";
 			return DriverManager.getConnection(url, uid, upw);
 		} catch (ClassNotFoundException e) {
-			System.out.println("µÂ∂Û¿Ãπˆ ∑Œµ˘ Ω«∆–");
+			System.out.println("ÎìúÎùºÏù¥Î≤Ñ Î°úÎî© Ïã§Ìå®");
 			e.printStackTrace();
 		} catch (Exception e) {
-			System.out.println("DB¡¢º” Ω«∆–");
+			System.out.println("DBÏ†ëÏÜç Ïã§Ìå®");
 			e.printStackTrace();
 		}
 		return null;
@@ -44,16 +47,26 @@ public class BookDAO {
 			ps.setInt(5, bookDTO.getBookPrice());
 			ps.setString(6, bookDTO.getBookPublisher());
 			ps.executeUpdate();
-			System.out.println("∑πƒ⁄µÂ∞° √ﬂ∞°µ«æ˙Ω¿¥œ¥Ÿ.");
+			System.out.println("Î†àÏΩîÎìúÍ∞Ä Ï∂îÍ∞ÄÎêòÏóàÏäµÎãàÎã§.");
 			System.out.println();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			if(ps != null) try {ps.close();} catch (Exception e2) {e2.printStackTrace();}
-			if(conn != null) try {conn.close();} catch (Exception e2) {e2.printStackTrace();}
+			if (ps != null)
+				try {
+					ps.close();
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
 		}
 	}
-	
+
 	public void selectBook() {
 		dtos = new ArrayList<BookDTO>();
 		conn = getConnection();
@@ -61,27 +74,43 @@ public class BookDAO {
 		try {
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
-			
-			while(rs.next()) {
-				dtos.add(new BookDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getString(6)));
+
+			while (rs.next()) {
+				dtos.add(new BookDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5),
+						rs.getString(6)));
 			}
-			
+
 			System.out.printf("%s\t%s\t%s\t%s\t%s\t%s\n",
-					"bookNo","bookTitle","bookAuthor",
-					"bookYear","bookPrice","bookPublisher");
+					"bookNo", "bookTitle", "bookAuthor",
+					"bookYear", "bookPrice", "bookPublisher");
 			for (BookDTO dto : dtos) {
 				System.out.printf("%s\t%s\t%s\t\t%d\t\t%d\t\t%s\n",
-						dto.getBookNo(),dto.getBookTitle(), dto.getBookAuthor(), 
+						dto.getBookNo(), dto.getBookTitle(), dto.getBookAuthor(),
 						dto.getBookYear(), dto.getBookPrice(), dto.getBookPublisher());
 			}
 			System.out.println();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			if(rs!=null) try {rs.close();} catch (Exception e2) {e2.printStackTrace();}
-			if(ps!=null) try {ps.close();} catch (Exception e2) {e2.printStackTrace();}
-			if(conn!=null) try {conn.close();} catch (Exception e2) {e2.printStackTrace();}
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+			if (ps != null)
+				try {
+					ps.close();
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
 		}
 	}
 }
