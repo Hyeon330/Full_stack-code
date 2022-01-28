@@ -23,9 +23,7 @@ public class Factorial {
     }
 
     public static int factorial(int max) {
-        if (max == 1)
-            return max;
-
+        if (max == 1) return max;
         return max *= factorial(max - 1);
     }
 

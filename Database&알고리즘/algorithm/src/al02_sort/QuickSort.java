@@ -41,7 +41,8 @@ public class QuickSort {
             if (pl <= pr) { // pl의 위치 값과, pr위치의 값을 교환한다.
                 swap(arr, pl++, pr--);
             }
-        } while (pl <= pr);
+            System.out.println(Arrays.toString(arr));
+        } while (pl < pr);
 
         // 정렬 후 왼쪽을 재정렬할 재귀호출
         if (left < pr) {
