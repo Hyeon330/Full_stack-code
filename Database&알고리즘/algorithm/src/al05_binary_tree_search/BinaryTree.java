@@ -47,13 +47,6 @@ public class BinaryTree<K, V> {
 
 	// // return ((Comparable<K>) key1).compareTo(key2);
 	// }
-	public int comp(K key1, K key2) {
-		// key1 - key2 = 0 : key1과 key2가 같다.
-		// = + : 왼쪽
-		// = - : 오른쪽
-
-		return ((Comparable<K>) key1).compareTo(key2);
-	}
 
 	// 노드추가(위치를 찾아서 노드추가)
 	// public void addNode(Node<K, V> node, K key, V data) {
@@ -74,6 +67,14 @@ public class BinaryTree<K, V> {
 	// }
 	// }
 
+	public int comp(K key1, K key2) {
+		// key1 - key2 = 0 : key1과 key2가 같다.
+		// = + : 왼쪽
+		// = - : 오른쪽
+
+		return ((Comparable<K>) key1).compareTo(key2);
+	}
+
 	public void addNode(Node<K, V> node, K key, V data) {
 		// 비교
 
@@ -82,11 +83,10 @@ public class BinaryTree<K, V> {
 		if (result == 0) { // 이미 있는 키값일 때
 			return;
 		} else if (result < 0) { // 음수 : 왼쪽노드 검색
-			Node<K, V> noded = node.left;
-			if (noded == null) { // node의 왼쪽이 비어있으면, 새로운 노드를 왼쪽에 생성한다.
-				noded = new Node<K, V>(key, data, null, null);
+			if (node.left == null) { // node의 왼쪽이 비어있으면, 새로운 노드를 왼쪽에 생성한다.
+				node.left = new Node<K, V>(key, data, null, null);
 			} else {
-				addNode(noded, key, data);
+				addNode(node.left, key, data);
 			}
 		} else { // 양수 : 오른쪽노드 검색
 			if (node.right == null) {
@@ -151,7 +151,6 @@ public class BinaryTree<K, V> {
 			// 삭제할 노드가 root이면 오른쪽노드를 root
 			if (point == root) {
 				root = point.right;
-				System.out.println("삭제할 노드가 root이면 오른쪽 노드를");
 			} else if (isLeftChild) {
 				parent.left = point.right;
 			} else {
@@ -160,7 +159,6 @@ public class BinaryTree<K, V> {
 		} else if (point.right == null) { // 삭제할 노드의 right가 없을 때
 			if (point == root) {
 				root = point.left;
-				System.out.println("삭제할 노드가 root이고 오른쪽 노드가 없을경우");
 			} else if (isLeftChild) {
 				parent.left = point.left;
 			} else {
@@ -214,7 +212,7 @@ public class BinaryTree<K, V> {
 		}
 	}
 
-	public void subNodePrint(Node node) {
+	public void subNodePrint(Node<K, V> node) {
 		if (node != null) {
 			subNodePrint(node.left);
 			System.out.println(node.getKey() + " " + node.data);

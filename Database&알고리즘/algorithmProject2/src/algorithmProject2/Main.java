@@ -11,7 +11,7 @@ public class Main {
 		final int NO = 1;
 		final int NAME = 2;
 
-		public Integer getNo() {
+		public Integer getNum() {
 			return num;
 		}
 
@@ -21,8 +21,8 @@ public class Main {
 		}
 
 		public void inputData(Menu m, int sw) {
+			System.out.println();
 			System.out.println(m.getMessage());
-
 			if ((sw & NO) == NO) {
 				System.out.print("상품 번호 입력 : ");
 				num = Integer.parseInt(s.nextLine());
@@ -31,7 +31,6 @@ public class Main {
 				System.out.print("상품명 입력 : ");
 				name = s.nextLine();
 			}
-			System.out.println();
 		}
 	}
 
@@ -72,7 +71,6 @@ public class Main {
 			}
 			System.out.printf("\n메뉴 선택 : ");
 			menuNo = Integer.parseInt(s.nextLine()) - 1;
-			System.out.println();
 		} while (menuNo < Menu.ADD.ordinal() || menuNo > Menu.TERMINATE.ordinal());
 		return Menu.menuAt(menuNo);
 	}
@@ -89,24 +87,41 @@ public class Main {
 				case ADD:
 					data = new Data();
 					data.inputData(m, data.NO | data.NAME);
+					tree.add(data.getNum(), data);
 					break;
 
 				case DELETE:
-
+					data = new Data();
+					data.inputData(m, data.NO);
+					boolean result = tree.remove(data.getNum());
+					if (result) {
+						System.out.println("상품 삭제 완료");
+					}
 					break;
 
 				case SEARCH:
-
+					data = new Data();
+					data.inputData(m, data.NO);
+					Data searchData = tree.search(data.getNum());
+					if (searchData == null) {
+						System.out.println("해당 상품은 존재하지 않습니다.");
+					} else {
+						System.out.println("상품명 : " + searchData.toString());
+					}
 					break;
 
 				case ALL_PRODUCT:
-
+					tree.print();
 					break;
 
 				default:
 					break;
 			}
+			if (m != Menu.TERMINATE) {
+				System.out.println();
+			}
 		} while (m != Menu.TERMINATE);
+		System.out.println("종료합니다.");
 	}
 
 }
