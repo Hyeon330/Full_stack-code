@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>이미지 일부 링크걸기</h1>
+<img src="../img/jeju_map.jpg" usemap="#jejuMap">
+
+<map name="jejuMap">
+	<!-- 링크걸기 사각형 모양       x1  y1  x2  y2 -->
+	<area shape="rect" coords="200,125,265,150" href="https://www.airport.co.kr/jeju/index.do" title="제주공항 사이트" target="_blank"/>
+	<!-- 원모양                    x    y    r -->
+	<area shape="circle" coords="330, 260, 30" href="https://visithalla.jeju.go.kr/contents/contents.do?id=61" target="_blank"/>
+	<!-- 다각형모양 -->
+	<area shape="poly" coords="65,123,160,270,50,190,20,245" href="http://www.jeju.go.kr" target="_blank"/>
+</map>
+</body>
+</html>
