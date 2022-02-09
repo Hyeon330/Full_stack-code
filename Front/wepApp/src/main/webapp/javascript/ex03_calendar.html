@@ -4,12 +4,94 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <script>
-        let now = new Date();
+        function setDate(){
+            // 현재 날짜
+            let now = new Date();
+
+            let y = now.getFullYear();
+            let m = now.getMonth();
+            let d = now.getDate();
+
+            // 1일에 대한 요일
+            let w = new Date(y, m, 1).getDay();
+
+            // 마지막구하기 이번달을 기준으로 다음달 0일을 날짜 객체로 만든다.
+            let lastDay = new Date(y, m+1, 0).getDate();
+
+            // 년월 셋팅
+            document.querySelector("#dateTitle").innerHTML = y+"년 "+(m+1)+"월"; 
+            
+            // 요일
+            let weekName = ['일','월','화','수','목','금','토'];
+
+            let dateTag = "";
+            weekName.forEach(week => {
+                dateTag += "<li>" + week + "</li>";
+            });
+
+            for(let i=0; i<w; i++){
+                dateTag += "<li>&nbsp;</li>";
+            }
+            // 날짜를 1부터 마지막 날까지 li태그로 생성
+            for(let i=1; i<=lastDay; i++) {
+                if(d==i) {//오늘이면 
+                    dateTag += "<li class='txtRed'>"+i+"</li>";
+                }else if((i+w)%7==1) {
+                    dateTag += "<li class='sunday'>"+i+"</li>";
+                }else if((i+w)%7==0) {
+                    dateTag += "<li class='saturday'>"+i+"</li>";
+                } else {
+                    dateTag += "<li>"+i+"</li>";
+                }
+            }
+
+            document.getElementById("dateView").innerHTML = dateTag;
+        }
     </script>
+    <style>
+        ul, li{
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            overflow: auto;
+        }
+        #cal{
+            width: 300px;
+            border: 1px solid #ddd;
+            margin: 0 auto;
+        }
+
+        #cal > h2{
+            text-align: center;
+        }
+
+        #cal > img{
+            width: 100%;
+        }
+
+        #cal > ul > li {
+            float: left;
+            width: 14.2%;
+            text-align: center;
+        }
+
+        .txtRed{
+            font-weight: 900;
+        }
+        
+        .sunday{
+            color: red;
+        }
+
+        .saturday{
+            color: blue;
+        }
+
+    </style>
 </head>
-<body>
+<body onload="setDate()">
     <div id="cal">
-        <h2>2002년 3월</h2>
+        <h2 id="dateTitle"></h2>
         <img src="../html5_css3/html&css/img/1.jpg">
         <ul id="dateView"></ul>
     </div>
