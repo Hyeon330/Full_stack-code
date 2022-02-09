@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	#frame{
+		width:500px;
+		height:100px;
+		margin:100px auto;
+		padding:0px;
+		text-align:center;
+	}
+	#frame>div{
+		float:left;
+		height:100px;
+		margin:0px;
+		padding:0px;
+
+	}
+	
+	#left{
+		border-radius: 8px 0 0 8px;
+	}
+	#center{width:90%; overflow:hidden; white-space:nowrap;}
+	#right{
+		border-radius: 0 8px 8px 0;
+	}
+	#left,#right{
+		width:5%; background-color:lightgray; line-height:100px;
+		font-weight:bold; font-size:1.2em;
+	}
+	#left,#right:hover{
+		cursor:pointer;
+	}
+	img{width:100px; height:100px;}
+</style>
+<script>
+	var moving;
+	var direction;
+	var intervalTime = 50;
+	function placeImage(){
+		for(var i=1; i<=20; i++){
+			document.getElementById("center").innerHTML += "<img src='../postImg/m"+i+".png'>";
+		}
+	}
+	function moveLeft(){
+		direction = 'left';
+		document.getElementById("center").scrollBy(-1,0);
+	}
+	function moveRight(){
+		direction = 'right';
+		document.getElementById("center").scrollBy(1,0);
+	}
+	function restart(){
+		if(direction=='left'){
+			moving = setInterval('moveLeft()',intervalTime);
+		}else{
+			moving = setInterval('moveRight()',intervalTime);
+		}
+	}
+</script>
+</head>
+<body onload="placeImage(); moving = setInterval('moveRight()',intervalTime)">
+	<div id="frame">
+		<div id="left" onclick="clearInterval(moving); moving = setInterval('moveLeft()',intervalTime)">
+		&lt;
+		</div>
+		<div id="center" onmouseover="clearInterval(moving);" onmouseout="restart()">
+		</div>
+		<div id="right" onclick="clearInterval(moving); moving = setInterval('moveRight()',intervalTime)">
+		&gt;
+		</div>
+	</div>
+</body>
+</html>

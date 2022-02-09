@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        function scrollTest() {
+            let sX = window.scrollX;
+            let sY = window.scrollY;
+            console.log(sX, sY);
+        }
+        function scrollAutoMove() {
+            // x, y
+            window.scrollBy(0,10);
+        }
+        var x=0, y=0;
+        function backMove() {
+            document.body.style.backgroundPosition = x + "px " + y +"px";
+            x+=5;
+            y+=5;
+        }
+    </script>
+    <style>
+        body{
+            background: url(../html5_css3/html&css/img/1.jpg);
+        }
+        img{
+            width: 1000px;
+        }
+    </style>
+</head>
+<!--body onload="scrollTest(); setInterval('scrollAutoMove()', 300);"-->
+<body onload="setInterval('backMove()', 500)">
+    <script>
+        for(let i=1; i<=5; i++) {
+            if(i<5)
+                document.write('<img src="../html5_css3/html&css/img/'+ i +'.jpg" />');
+            else
+                document.write('<img src="../html5_css3/html&css/img/bluming.jpg" />');
+        }
+    </script>
+</body>
+</html>
