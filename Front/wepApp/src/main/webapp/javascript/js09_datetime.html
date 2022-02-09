@@ -32,33 +32,18 @@
 
         let h = now.getHours();
         let mi = now.getMinutes();
-
-        let week = "";
+        
+        var week= "";
         switch(w){
-            case 0:
-                week = "일";
-                break;
-            case 1:
-                week = "월";
-                break;
-            case 2:
-                week = "화";
-                break;
-            case 3:
-                week = "수";
-                break;
-            case 4:
-                week = "목";
-                break;
-            case 5;
-                week = "금";
-                break;
-            case 6:
-                week = "토";
-                break;
+            case 0: week="일"; break;
+            case 1: week="월"; break;
+            case 2: week="화"; break;
+            case 3: week="수"; break;
+            case 4: week="목"; break;
+            case 5: week="금"; break;
+            case 6: week="토"; break;
         }
-
-        document.write("<br>",y ,"-",m,'-',d,'(',week,')',h,":",mi);
+        document.write("<br/>",y,"-",m,"-",d,"(",week,")",h,":",mi);
     </script>
 </body>
 </html>
