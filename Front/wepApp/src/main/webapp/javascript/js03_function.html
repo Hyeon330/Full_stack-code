@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #result{
+            background-color: pink;
+        }
+    </style>
+    <script>
+        var num = true;
+        document.write(num); // undefined
+        // 함수생성 : 함수는 호출 시에 실행됨
+        function gugudan(dan){
+            let gugu = "";
+            for(let i=2; i<=9; i++){
+                gugu += dan+"+"+i+"="+dan*i+"<br/>";
+            }
+            console.log(gugu);
+            // innerHTML : 선택자의 내부에 태그를 추가한다.
+            // document.getElementById("result").innerHTML = gugu;
+            document.querySelector("#result").innerHTML = gugu;
+        }
+        function test(){
+            // document.write("text함수에서 실행됨...")
+            console.log("hello world!!", 1234);
+        }
+        document.write("홍", "길동");
+    </script>
+</head>
+<body>
+    <input type="button" value="click1" onclick="gugudan(6)">
+    <input type="button" value="click2" id="btn">
+    <div id="result"></div>
+    <script>
+        let btnClick = document.querySelector("#btn");
+        btnClick.onclick = function(){
+            document.getElementById("result").innerHTML = "<h1>구구단 테스트중</h1>";
+        }
+    </script>
+</body>
+</html>
