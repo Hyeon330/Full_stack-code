@@ -9,8 +9,24 @@
             background-size:100% 400px;
         }
     </style>
+    <script>
+        function setPopCookie(){
+        // 체크크박스가 체크상태일 때 쿠키를 저장한다.
+            if(document.getElementById("cookieChk").checked) {// 채크일 때 true, 체크상태아닐때 false
+                //변수 = 값; path=/;expires=날짜
+                let now = new Date(); //오늘날짜
+                now.setDate(now.getDate() + 7);
+                let cookieData = "popup=yes; path=/; expires=" + now +";";
+                document.cookie = cookieData;
+                document.cookie = "notice=ok; path/; expires=" + now +";";
+            }
+
+            self.close();
+        }
+    </script>
 </head>
 <body>
-    
+    <input type="checkbox" name="cookieChk" id="cookieChk">일주일 동안 안보이기
+    <input type="button" value="Close" onclick="setPopCookie()">
 </body>
 </html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // location.href = "http://www.google.com";
+        // location.href = "ex03_calendar.html";
+
+        function pageReload() {
+            location.reload(); // 현재페이지를 다시 실행
+        }
+        setInterval('pageReload()', 1000)
+    </script>
+    <input type="button" value="포스트슬라이드" onclick="location.href='postMove/index_.html'">
+    <div>
+        <script>
+            document.write("protocol->" + location.protocol); // http, ftp;
+            document.write("<br>port->" + location.port);
+            document.write("<br>hostname->" + location.hostname);
+            document.write("<br>host->" + location.host);
+        </script>
+    </div>
+</body>
+</html>

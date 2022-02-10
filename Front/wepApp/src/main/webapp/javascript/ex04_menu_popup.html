@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #all{
+            width: 490px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        h1{
+            margin: 40px;
+            font-weight: 500;
+        }
+        #all > img, #menu{
+            border-top: 1px solid black;
+            width: 100%;
+        }
+        #menu{
+            position: relative;
+        }
+        span{
+            width: 90px;
+            padding: 10px 0;
+            display: inline-block;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        span:hover{
+            font-weight: 900;
+        }
+        ul{
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            font-size: 11px;
+        }
+
+        li{
+            padding: 10px 20px;
+        }
+
+        #menu > div:nth-of-type(n){
+            position: absolute;
+            border: 1px solid black;
+            background-color: white;
+        }
+
+        #list2{left: 92px;}
+        #list3{left: 203px;}
+        #list4{right: 90px;}
+        #list5{right: 0px;
+        }
+    </style>
+</head>
+<body onload="let list">
+    <div id="all">
+        <h1>GLRLSDAILY</h1>
+        <div id="menu">
+            <span onmouseenter="list = document.querySelector('#list1'); list.removeAttribute('hidden')" onmouseleave="list.setAttribute('hidden', true)">OUTER</span>
+            <span onmouseenter="list = document.querySelector('#list2'); list.removeAttribute('hidden')" onmouseleave="list.setAttribute('hidden', true)">TOP</span>
+            <span onmouseenter="list = document.querySelector('#list3'); list.removeAttribute('hidden')" onmouseleave="list.setAttribute('hidden', true)">DRESS</span>
+            <span onmouseenter="list = document.querySelector('#list4'); list.removeAttribute('hidden')" onmouseleave="list.setAttribute('hidden', true)">BOTTOM</span>
+            <span onmouseenter="list = document.querySelector('#list5'); list.removeAttribute('hidden')" onmouseleave="list.setAttribute('hidden', true)">SUMMER</span>
+
+            <div id="list1" hidden>
+                <ul>
+                    <li>가디건</li>
+                    <li>자켓 & 점퍼</li>
+                    <li>베스트</li>
+                    <li>코트</li>
+                    <li>세일</li>
+                </ul>
+            </div>
+            <div id="list2" hidden>
+                <ul>
+                    <li>Tee</li>
+                    <li>Cami</li>
+                    <li>Knit</li>
+                    <li>Shirt & Blouse</li>
+                </ul>
+            </div>
+            <div id="list3" hidden>
+                <ul>
+                    <li>all</li>
+                    <li>바캉스룩</li>
+                    <li>Set</li>
+                </ul>
+            </div>
+            <div id="list4" hidden>
+                <ul>
+                    <li>레깅스</li>
+                    <li>힐링투엘브</li>
+                    <li>히든벤딩시리즈</li>
+                    <li>스커트</li>
+                    <li>팬츠</li>
+                </ul>
+            </div>
+            <div id="list5" hidden>
+                <ul>
+                    <li>HOLI스윕웨어</li>
+                    <li>at 22℃</li>
+                    <li>바캉스룩</li>
+                </ul>
+            </div>
+        </div>
+        <img src="../html5_css3/html&css/img/4.jpg" alt="">
+    </div>
+</body>
+</html>
