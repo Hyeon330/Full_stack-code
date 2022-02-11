@@ -1,28 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
     <style>
-        #post {
+        body{
+            margin: 0;
+        }
+        #postMain{
             width: 1000px;
             height: 164px;
-            margin: 50px auto;
+            margin: 0 auto;
         }
-
-        #post > button {
+        
+        #postMain > button{
             width: 30px;
             height: 164px;
-            border-radius: 0;
-            border: 1px solid #999;
         }
 
         #left{
-            border-right: 0px !important;
+            border-right: 0px;
         }
 
-        #right {
-            border-left: 0px !important;
+        #right{
+            border-left: 0px;
         }
 
         #imgView{
@@ -35,36 +36,54 @@
             width: 2320px;
             position: relative;
         }
-        #post > button, #post > div {
+
+        #postMain > button, #postMain > div{
             float: left;
         }
     </style>
     <script>
-        let left = 0;
-        function moveImg() {
-            left += -5;
-            document.querySelector("#imgList").style.left = left +"px";
+        function setImage(){
+            let imgTag="";
+            for(let i=1; i<=20; i++){
+                if(i<10)
+                    imgTag += "<a href='#'><img src='img/m0"+i+".png'/><a/>";
+                else
+                    imgTag += "<a href='#'><img src='img/m"+i+".png'/><a/>";
+            }
+
+            document.querySelector("#imgList").innerHTML = imgTag;
+
+            document.getElementById("imgView").onmouseover = function(){
+                clearInterval(timer);
+            }
+
+            document.getElementById("imgView").onmouseout = function(){
+                timer = setInterval('movePoster()', 50);
+            }
+        }
+
+        let left=0, step = 0, timer;
+        function movePoster() {
+            if(left<-1380){
+                step = 5;
+            }
+            if(left>=0){
+                step = -5;
+            }
+            left += step;
+            document.querySelector("#imgList").style.left = left+"px";
         }
     </script>
 </head>
-<body onload="setInterval('moveImg()', 300)">
-    <div id="post">
-        <button id="left">◁</button>
+<body onload="setImage(); timer = setInterval('movePoster()', 50);">
+    <!-- postMain -->
+    <div id="postMain">
+        <button id="left" onclick="step=5">◁</button>
+        <!-- 포스트 들어갈곳 -->
         <div id="imgView">
-            <div id="imgList">
-                <script>
-                    for(let i=1; i<=20; i++){
-                        if(i<10){
-                            document.write('<img src="img/m0'+i+'.png" />')
-                        } else {
-                            document.write('<img src="img/m'+i+'.png" />')
-                        }
-                    }
-                </script>
-            </div>
+            <div id="imgList"></div>
         </div>
-        <button id="right">▷</button>
+        <button id="right" onclick="step=-5">▷</button>
     </div>
-    
 </body>
 </html>
