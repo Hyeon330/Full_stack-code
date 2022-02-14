@@ -32,6 +32,41 @@
             };
             // 구글맵 객체 생성
             map = new google.maps.Map(document.getElementById("gmap"), option);
+
+            // 마커 표시
+            var marker = new google.maps.Marker({
+                position: myCenter, // 마커를 표시할 위치
+                map: map, // 마커로 표시된 지도
+                icon: "gmap_pin.png",
+                title: "서울시청"
+            });
+            marker.setMap(map);
+
+            // 마커 클릭시 대화상자 띄우기
+            // 대화상자에 표시할 내용
+            const infoMsg = "위도 : " + latitude + "<br>경도 : " + longitude + "<br>" + 
+                            "<a href='https://www.google.com'><img src='../../html5_css3/html&css/img/2.jpg'></a>";
+
+            // 대화상자 객체 만들기
+            var info = new google.maps.InfoWindow({content:infoMsg});
+
+            // 이벤트 등록
+            google.maps.event.addListener(/*이벤트 처리할 마커*/marker, /*이벤트 종류*/'click', /*대화상자열기*/() => {
+                // 지도객체
+                info.open(map, marker);
+            });
+
+            // 반경표시
+            var myCity = new google.maps.Circle({
+                center: myCenter,
+                radius: 500, // 반지름(m)
+                strokeColor: '#f00', // 경계선의 색상
+                strokeOpacity: 0.5, // 경계선의 투명도(0~1)
+                strokeWidth: 3, // 선의 두께(px)
+                fillColor: '#0f0', // 배경 색
+                fillOpacity: 0.3 //배경색의 투명도(0~1)
+            });
+            myCity.setMap(map);
         }
     </script>
 </body>
