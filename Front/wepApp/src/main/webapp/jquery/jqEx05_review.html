@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(function() {
+            $("#review").on("keypress", function(){
+                // let txtCnt = 100 - $("#review").val().length;
+                // $("#cnt").text(txtCnt);
+                $("span").text(100 - $(this).val().length);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div>
+        남은 문자 수 : <span id="cnt">100</span><br>
+        <textarea name="review" id="review" cols="20" rows="5"></textarea>
+    </div>
+</body>
+</html>

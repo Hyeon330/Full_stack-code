@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<style>
+    img{
+        width: 100px;
+        height: 150px;
+    }
+</style>
+<script>
+    $(function(){
+        // 이미지에서 클릭이벤트 발생시 처리할 부분
+        let n = 1;
+        $("img").first().on('click',function(){
+            $("body").append("<img src='../html5_css3/html&css/img/"+ n++ +".jpg'>");
+            if(n>=4){
+                n=1;
+            }
+        });
+
+        // 첫번째이미지를 자동 이벤트 발생시키기
+        setInterval(function(){
+            // trigger() : 이벤트를 발생시키는 함수
+            $("img:first").trigger('click')
+        }, 1000);
+    });
+</script>
+<body>
+    <img src="../html5_css3/html&css/img/1.jpg">
+</body>
+</html>
