@@ -14,8 +14,34 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="../jquery-ui.min.js"></script>
     <script src="js/jquery.accordionImageMenu.js"></script>
+    <script>
+        $(function(){
+            $("#acco").AccordionImageMenu({
+                position: 'horizontal' // 'horizontal', 'vertical'
+                ,openItem:3 // 기본선택목록, index위치의 목록을 크게 봄
+                ,openDim:500 // 확장된 목록의 크기
+                ,closeDim:150 // 닫힌 목록의 크기
+                // width, height
+                // ,width:1000
+                ,height:600
+                ,duration:1000 // 전환속도
+                ,effect:"easeOutBounce"
+                ,border:2
+                ,color:'olive'
+            });
+        });
+    </script>
 </head>
 <body>
-    
+    <ul id="acco">
+        <li><a href="https://google.com"><img src="../../html5_css3/html&css/img/1.jpg" title="구글"></a></li>
+        <li><a href="https://naver.com"><img src="../../html5_css3/html&css/img/2.jpg" title="네이버"></a></li>
+        <li><a href="https://daum.net"><img src="../../html5_css3/html&css/img/3.jpg" title="다음"></a></li>
+        <li><a href="https://nate.com"><img src="../../html5_css3/html&css/img/4.jpg" title="네이트"></a></li>
+        <li><a href="../jqEx06_listCheck.html"><img src="../../html5_css3/html&css/img/1.jpg" title="목록....."></a></li>
+        <li><a href="https://google.com"><img src="../../html5_css3/html&css/img/2.jpg" title="구글"></a></li>
+        <li><a href="https://google.com"><img src="../../html5_css3/html&css/img/3.jpg" title="구글"></a></li>
+        <li><a href="https://google.com"><img src="../../html5_css3/html&css/img/4.jpg" title="구글"></a></li>
+    </ul>
 </body>
 </html>

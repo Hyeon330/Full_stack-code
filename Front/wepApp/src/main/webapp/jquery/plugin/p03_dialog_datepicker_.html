@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <!--
+        1. jquery-ui.css
+        2. jquery
+        3. jquery-ui.js
+    -->
+    <link rel="stylesheet" href="../jquery-ui.min.css" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="../jquery-ui.min.js"></script>
+    <script>
+        $(function(){
+            // 다이얼 열기
+            // 다이얼로그 셋팅
+            $('#dialog').dialog({
+                autoOpen:true,// 실행시 자동열림 설정(true, false)
+                buttons:{
+                    submit: function(){
+                        let name = $("#event-name").val();
+                        let date = $("#event-date").val();
+
+                        $("#result").append("<p>" + date + ":"+name+"</p>");
+
+                        // 폼의 값을 초기화
+                        $("#event-name").val('');
+                        $("#event-date").val('');
+                    },
+                    reset:function(){
+                        $("#event-name").val('');
+                        $("#event-date").val('');
+                    },
+                    close:function(){
+                        $("#event-name").val('');
+                        $("#event-date").val('');
+                        $("#dialog").dialog('close');
+                    }
+                } //buttons
+
+                , model:false
+            });
+
+        });
+        
+    </script>
+</head>
+<body>
+    <div id="dialogOpen">일정 등록</div>
+    <hr>
+    <div id="result">일정이 표시되는 곳</div>
+
+    <!-- 다이얼로그 창 -->
+    <div id="dialog" title="JQuery UI Dialog">
+        <h2>일정을 등록하세요</h2>
+        <label for="event-name">일정 이름:</label><input type="text" id="event-name"><br>
+        <label for="event-date">날짜 선택:</label><br><input type="date" id="event-date">
+    </div>
+</body>
+</html>
