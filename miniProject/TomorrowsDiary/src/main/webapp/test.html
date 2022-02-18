@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href='fullcalendar/main.css' rel='stylesheet' />
+    <script src='fullcalendar/main.js'></script>
+    <script>
+        let event = {
+            title: '가족여행',
+            start: '2022-02-02',
+            end: '2022-02-07'
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar'); // 태그
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                headerToolbar: {
+                    start: 'today',
+                    center: 'title',
+                    end: 'prevYear,prev,next,nextYear'
+                },
+                buttonText: {
+                    today: 'Today'
+                },
+                titleFormat: {
+                    year: 'numeric',
+                    month: 'short'
+                },
+                dateClick: function(info) {
+                    alert('Date ' + info.dateStr);
+                },
+                events: [
+                    event
+                ]
+                // selectable: true,
+                // dateClick: function() {
+                //     console.log(calendar);
+                // },
+                // initialDate: '2018-06-01'
+            });
+            // calendar.next();    // dayGridMonth일 경우 다음달
+            // calendar.prev();
+            
+            calendar.render();
+        });
+    </script>
+    <style>
+        #calendar{
+            width: 600px;
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div id="calendar"></div>
+</body>
+</html>

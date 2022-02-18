@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+    <meta name="viewport" content="width=device-width, initial-sale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+            integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
+            crossorigin="anonymous"></script>
+    <script>
+    	$(function(){
+    		//search 가 keyup 이벤트 발생하면 table 에서 검색어에 있는 줄만 보여주고, 나머지는 숨기기
+    		$("#search").keyup(function(){
+    			//          $("#search")
+    			var value = $(this).val().toLowerCase();//toLowerCase() : 소문자로 변환
+    			
+    			//아이디 searchList내의 값을 filter
+    			$("#searchList>tr").filter(function(){
+    				//value가 tr에 있는지 확인
+    				var idx = $(this).text().toLowerCase().indexOf(value);//indexOf() : 없으면 -1, 있으면 index번호 반환
+    				$(this).toggle(idx>-1);//.toggle() : 괄호 안이 true면 그냥 보여줌/ false면 숨김
+    			});
+    		});
+    	});
+    </script>
+    <style>
+
+    </style>
+</head>
+<body>
+<div class="container">
+	<h1>Filter</h1>
+	<input type="text" id="search" placeholder="Search..." class="form-control"/>
+	<hr/>
+	<table class="table table-striped">
+		<thead>
+		<tr>
+			<th>번호</th>
+			<th>이름</th>
+			<th>연락처</th>
+			<th>이메일</th>
+		</tr>
+		</thead>
+		<tbody id="searchList">
+		<tr>
+			<th>1</th>
+			<th>고길동</th>
+			<th>010-1234-5678</th>
+			<th>gogogildong@naver.com</th>
+		</tr>
+		<tr>
+			<th>2</th>
+			<th>헤이세종</th>
+			<th>010-2345-5678</th>
+			<th>hangeuljoa@naver.com</th>
+		</tr>
+		<tr>
+			<th>3</th>
+			<th>야나</th>
+			<th>010-3456-5788</th>
+			<th>yanaishungry@naver.com</th>
+		</tr>
+		<tr>
+			<th>4</th>
+			<th>여행자</th>
+			<th>010-0000-8282</th>
+			<th>wannagotrevel@naver.com</th>
+		</tr>
+		<tr>
+			<th>5</th>
+			<th>볼리비아대통령</th>
+			<th>010-7979-0000</th>
+			<th>yanawelcome@naver.com</th>
+		</tr>
+		<tr>
+			<th>6</th>
+			<th>Nammi</th>
+			<th>010-7892-5678</th>
+			<th>plzcometousyana@naver.com</th>
+		</tr>
+		<tr>
+			<th>7</th>
+			<th>미쿡형</th>
+			<th>010-7942-5343</th>
+			<th>imamerican@naver.com</th>
+		</tr>
+		<tr>
+			<th>8</th>
+			<th>고현아</th>
+			<th>010-3643-7260</th>
+			<th>kha979797@naver.com</th>
+		</tr>
+		<tr>
+			<th>9</th>
+			<th>꼭이렇게</th>
+			<th>010-4646-4444</th>
+			<th>why@naver.com</th>
+		</tr>
+		<tr>
+			<th>10</th>
+			<th>길었어야했나</th>
+			<th>010-46465-2131</th>
+			<th>somanylist@naver.com</th>
+		</tr>
+		</tbody>	
+	</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>이미지슬라이드컨트롤러</title>
+    <meta name="viewport" content="width=device-width, initial-sale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+            integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
+            crossorigin="anonymous"></script>
+    <style>
+		.carousel-inner img{width:100%;height:350px;}
+		/*.carousel-control-prev{width:20px;}*/
+    </style>
+</head>
+<body>
+<div class="container">
+	<div id="slideImg" class="carousel slide" data-ride="carousel" data-interval="3000"><!-- carousel 전체 start -->
+		<!-- icon 영역 : controller -->
+		<ul class="carousel-indicators">
+			<li data-target="#slideImg" data-slide-to="0" class="active"><li><!-- 디폴트로 선택된 셀=active -->
+			<li data-target="#slideImg" data-slide-to="1"><li>
+			<li data-target="#slideImg" data-slide-to="2"><li>
+			<li data-target="#slideImg" data-slide-to="3"><li>
+		</ul>
+		<!-- content 영역 -->
+		<div class="carousel-inner">
+			<div class="carousel-item active"><!-- 0 --><!-- 디폴트로 선택된 셀=active -->
+				<img src="../html5_css3/html&css/img/2.jpg"/>
+				<!-- 이미지 위에 표시될 문자 -->
+				<div class="carousel-caption">
+					<h2>로스엔젤리스</h2>
+					<p>Los engeles Los engeles Los engeles Los engeles Los engeles</p>
+				</div>
+			</div>
+			<div class="carousel-item"><!-- 1 -->
+				<img src="../html5_css3/html&css/img/1.jpg"/>
+				<!-- 이미지 위에 표시될 문자 -->
+				<div class="carousel-caption">
+					<h2>시카고</h2>
+					<p>Chicago Chicago Chicago Chicago Chicago Chicago Chicago Chicago </p>
+				</div>
+			</div>
+			<div class="carousel-item"><!-- 2 -->
+				<img src="../html5_css3/html&css/img/3.jpg"/>
+				<!-- 이미지 위에 표시될 문자 -->
+				<div class="carousel-caption">
+					<h2>뉴욕</h2>
+					<p>New-york New-york New-york New-york New-york New-york New-york </p>
+				</div>
+			</div>
+			<div class="carousel-item"><!-- 3 -->
+				<img src="../html5_css3/html&css/img/5.png"/>
+				<!-- 이미지 위에 표시될 문자 -->
+				<div class="carousel-caption">
+					<h2>서울</h2>
+					<p>Seoul Seoul Seoul Seoul Seoul Seoul Seoul Seoul Seoul Seoul Seoul </p>
+				</div>
+			</div>
+		</div>
+		<!-- 좌우 버튼 -->		
+		<a href="#slideImg" class="carousel-control-prev" data-slide="prev"><span class="carousel-control-prev-icon"></span></a>
+		<a href="#slideImg" class="carousel-control-next" data-slide="next"><span class="carousel-control-next-icon"></span></a>
+	</div><!-- carousel 전체 end -->
+</div>
+</body>
+</html>
