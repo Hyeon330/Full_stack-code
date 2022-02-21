@@ -12,18 +12,21 @@
     <script src='fullcalendar/main.js'></script>
 </head>
 <style>
-	body{
+	body, div{
 		margin: 0;
 		padding: 0;
-		background-color: #F0F2F5;
 	}
+    body {
+        background-color: #F0F2F5;
+    }
 	header{
+        position: absolute;
 		background-color: #FFF;
 		height: 54px;
-		box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+		box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
 		z-index: 1;
 	}
-	.icons{
+	#icons{
 		width: 560px;
 		height: 54px;
 		line-height: 54px;
@@ -32,6 +35,39 @@
 	i{
 		font-size: 30px;
 	}
+    #sidebar{
+        position: absolute;
+        left: 0px;
+        height: 100%;
+        width: 200px;
+        border-right: 2px solid gray;
+        overflow-y: auto;
+        background-color: #bbb;
+    }
+    #sidebar::-webkit-scrollbar{
+        width: 10px;
+
+    }
+    #sidebar::-webkit-scrollbar-thumb{
+        background-color: #2f3542;
+        border-radius: 100px;
+    }
+    #sidebar::-webkit-scrollbar-track{
+        background-color: gray;
+        border-radius: 100px;
+    }
+    #listbox{
+        position: relative;
+        top: 55px;
+        background-color: blue;
+        padding: 5px 0px;
+    }
+    .list{
+        height: 100px;
+        width: auto;
+        margin: 10px;
+        background-color: yellow;
+    }
 </style>
 <script>
 	document.addEventListener('DOMContentLoaded', function() {
@@ -71,7 +107,7 @@
 </script>
 <body>
 	<header class="container-fluid">
-		<div class="icons">
+		<div id="icons">
 			<div>
 				<i class="bi bi-house-fill" title="Home"></i>
 				<i class="bi bi-person-lines-fill" title="Friends"></i>
@@ -81,7 +117,16 @@
 		</div>
 	</header>
 	<div class="container-fluid">
-        <div class="sidebar"></div>
+        <div id="sidebar">
+            <div id="listbox">
+                <div class="list"></div>
+                <div class="list"></div>
+                <div class="list"></div>
+                <div class="list"></div>
+                <div class="list"></div>
+                <div class="list"></div>
+            </div>
+        </div>
         <div class="calendar"></div>
     </div>
 </body>
