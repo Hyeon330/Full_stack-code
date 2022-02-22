@@ -12,83 +12,55 @@
     <script src='fullcalendar/main.js'></script>
 </head>
 <style>
-	body, div, p{
+	body{
 		margin: 0;
 		padding: 0;
+		background-color: #F0F2F5;
 	}
-    body {
-        background-color: #F0F2F5;
-        overflow: hidden;
-    }
 	header{
-        /* position: absolute; */
-        position: relative;
 		background-color: #FFF;
 		height: 54px;
-		box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+		box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
 		z-index: 1;
 	}
-	#icons{
+	.icons{
 		width: 560px;
 		height: 54px;
 		line-height: 54px;
 		margin: 0 auto;
 	}
-	i{
+	i {
 		font-size: 30px;
 	}
-    #sidebar{
-        position: absolute;
-        left: 0px;
-        height: 100%;
-        width: 210px;
-        border-right: 2px solid #ccc;
-        overflow: hidden;
-    }
-    #sideContent{
-        height: 100%;
-        width: 100%;
-        position: relative;
-        overflow: hidden;
-        /* top: 54px; */
-    }
-    #sideTitle{
-        line-height: 50px;
-        padding: 0 10px;
-        border-bottom: 2px solid #aaa;
-    }
-    #sideTitle > span{
-        font-size: 22px;
-        font-weight: bold;
-    }
-    #sideTitle > i{
-        font-size: 20px;
-        float: right;
-    }
-    #sideMonth {
-        border-bottom: 2px solid #aaa;
-        text-align: center;
-        font-weight: bold;
-    }
-    #sideMonth > a {
-        margin: 0 15px;
-    }
-    #sideMain {
-        height: 100%;
-        width: 100%;
-        overflow: auto;
-    }
-    #listbox {
-        width: 200px;
-    }
-    .list {
-        height: 90px;
-        width: 180px;
-        margin: 10px auto;
-        border-radius: 10px;
-        border: 1px solid #bbb;
-        box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.5);
-    }
+	.bd-sidebar {
+		position: sticky;
+		top: 4rem;
+		z-index: 1000;
+		height: calc(100vh - 4rem);
+		background: #F0F2F5;
+		border-right: 1px solid rgba(0,0,0,.5);
+		overflow-y: auto;
+		min-width: 160px;
+		max-width: 200px;
+	}
+	.bd-sidebar .nav {
+		display: block;
+	}
+	.bd-sidebar .nav>li>a {
+		display: block;
+		padding: .25rem 1.5rem;
+		font-size: 90%;
+	}
+	main{
+		margin: 0 auto;
+	}
+	#calendar {
+		background-color: white;
+		padding: 20px;
+		border: 1px solid gray;
+		border-radius: 20px;
+		box-shadow: 0px 0px 10px;
+	}
 </style>
 <script>
 	document.addEventListener('DOMContentLoaded', function() {
@@ -128,7 +100,7 @@
 </script>
 <body>
 	<header class="container-fluid">
-		<div id="icons">
+		<div class="icons">
 			<div>
 				<i class="bi bi-house-fill" title="Home"></i>
 				<i class="bi bi-person-lines-fill" title="Friends"></i>
@@ -138,25 +110,18 @@
 		</div>
 	</header>
 	<div class="container-fluid">
-        <div id="sidebar">
-            <div id="sideContent">
-                <div id="sideTitle">
-                    <span>일정 목록</span>
-                    <i class="bi bi-calendar-plus"></i>
-                </div>
-                <p id="sideMonth"><a href="#">◁</a> 2월 <a href="#">▷</a></p>
-                <div id="sideMain">
-                    <div id="listbox">
-                        <div class="list"></div>
-                        <div class="list"></div>
-                        <div class="list"></div>
-                        <div class="list"></div>
-                        <div class="list"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="calendar"></div>
-        </div>
-    </div>
+		<div class="row flex-nowrap">
+			<div class="col-3 bd-sidebar">
+				<div>< 2 ></div>
+				<!-- <ul class="nav">
+					<li><a>Side 1</a></li>
+					<li><a>Side 1</a></li>
+				</ul> -->
+			</div>
+			<main class="col-9 py-md-3 pl-md-5 bd-content" role="main">
+				<div id="calendar"></div>
+			</main>
+		</div>
+	</div>
 </body>
 </html>

@@ -1,0 +1,85 @@
+body,
+div,
+p {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #f0f2f5;
+}
+body::-webkit-scrollbar {
+  width: 0;
+}
+header {
+  background-color: #fff;
+  height: 54px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+#icons {
+  display: flex;
+  justify-content: space-evenly;
+  width: 530px;
+  height: 54px;
+  line-height: 54px;
+  margin: 0 auto;
+}
+#icons > i {
+  font-size: 30px;
+}
+#main > div {
+  float: left;
+}
+#sidebar {
+  left: 0px;
+  height: 100%;
+  width: 210px;
+  border-right: 2px solid #ccc;
+  overflow: hidden;
+}
+#sideTitle {
+  line-height: 50px;
+  padding: 0 10px;
+  border-bottom: 2px solid #aaa;
+}
+#sideTitle > span {
+  font-size: 22px;
+  font-weight: bold;
+}
+#sideTitle > i {
+  font-size: 20px;
+  float: right;
+}
+#sideMonth {
+  border-bottom: 2px solid #aaa;
+  text-align: center;
+  font-weight: bold;
+}
+#sideMonth > a {
+  margin: 0 15px;
+}
+#sideMain {
+  width: 100%;
+  overflow-x: hidden;
+}
+#sideMain::-webkit-scrollbar {
+  width: 10px;
+}
+#sideMain::-webkit-scrollbar-thumb {
+  background-color: #aaa;
+  border-radius: 100px;
+}
+#sideMain::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0);
+}
+#listbox {
+  width: 200px;
+}
+.list {
+  height: 90px;
+  width: 180px;
+  margin: 10px auto;
+  border-radius: 10px;
+  border: 1px solid #bbb;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.5);
+}
