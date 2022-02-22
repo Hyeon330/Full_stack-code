@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href='fullcalendar/main.css' rel='stylesheet' />
     <script src='fullcalendar/main.js'></script>
     <script>
@@ -16,6 +17,7 @@
             var calendarEl = document.getElementById('calendar'); // 태그
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
+                aspectRatio: 2,
                 headerToolbar: {
                     start: 'today',
                     center: 'title',
@@ -47,13 +49,28 @@
         });
     </script>
     <style>
+        #a {
+            height: 54px;
+            background-color: yellow;
+        }
+        #c {
+            height: 100%;
+            width: 200px;
+            background-color: blue;
+        }
         #calendar{
-            width: 600px;
-            height: 500px;
+            width: 800px;
         }
     </style>
 </head>
 <body>
-    <div id="calendar"></div>
+    <div id="a"></div>
+    <div id="b">
+        <div id="c"></div>
+        <div id="d">
+            <div id="calendar"></div>
+        </div>
+    </div>
+    
 </body>
 </html>
