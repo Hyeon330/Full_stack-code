@@ -14,11 +14,11 @@
         <div id="accordion">
             <div class="card">
                 <div class="card-header" data-target="#v1" data-toggle="collapse">기본으로 보이는 내용 : Bootstrap</div>
-                <div id="v1" class="collapse"  data-parent="#accordion">토글로 보이는 내용 : Bootstrap 4 allows you to group a series of buttons together (on a single line) in a button group</div>
+                <div id="v1" class="collapse" data-parent="#accordion">토글로 보이는 내용 : Bootstrap 4 allows you to group a series of buttons together (on a single line) in a button group</div>
             </div>
             <div class="card">
                 <div class="card-header" data-target="#v2" data-toggle="collapse">AAAA</div>
-                <div id="v2" class="collapse"  data-parent="#accordion">AAAA : Bootstrap 4 allows you to group a series of buttons together (on a single line) in a button group</div>
+                <div id="v2" class="collapse" data-parent="#accordion">AAAA : Bootstrap 4 allows you to group a series of buttons together (on a single line) in a button group</div>
             </div>
             <div class="card">
                 <div class="card-header" data-target="#v3" data-toggle="collapse">아이유~~</div>
@@ -27,15 +27,15 @@
         </div>
 
         <h1>Collapse예</h1>
-        <input type="button" value="클릭하세요" class="btn btn-primary" data-target="#view1" data-toggle="collapse">
-        <div id="view1" class="collapse show">
-            <img src="../html5_css3/html&css/img/3.jpg">
-        </div>
+        <div id="tt">
+            <input type="button" value="클릭하세요" class="btn btn-primary" data-target="#view1" data-toggle="collapse">
+            <div id="view1" class="collapse show" data-parent="#tt"><img src="../html5_css3/html&css/img/3.jpg"></div>
 
-        <hr>
-        <input type="button" value="클릭하세요" class="btn btn-primary" data-target="#view2" data-toggle="collapse">
-        <div id="view2" class="collapse show">
-            To close the alert message, add a .alert-dismissible class to the alert container. Then add class="close" and data-dismiss="alert" to a link or a button element (when you click on this the alert box will disappear).
+            <hr>
+            <input type="button" value="클릭하세요" class="btn btn-primary" data-target="#view2" data-toggle="collapse">
+            <div id="view2" class="collapse" data-parent="#tt">
+                To close the alert message, add a .alert-dismissible class to the alert container. Then add class="close" and data-dismiss="alert" to a link or a button element (when you click on this the alert box will disappear).
+            </div>
         </div>
     </div>
 </body>

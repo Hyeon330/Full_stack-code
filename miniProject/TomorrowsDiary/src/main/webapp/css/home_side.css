@@ -44,11 +44,25 @@
 #listbox {
   width: 200px;
 }
-.list {
-  height: 90px;
+.dayList {
+  font-weight: bold;
   width: 180px;
   margin: 10px auto;
-  border-radius: 10px;
+  border-radius: 5px;
   border: 1px solid #bbb;
   box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.5);
+  background-color: white;
+  cursor: pointer;
+}
+.card-header {
+  padding: 0 15px;
+}
+.eventList {
+  margin: 0;
+  padding: 0;
+}
+.eventList > li {
+  padding: 0 15px;
+  list-style-type: none;
+  border-bottom: 1px solid #888;
 }

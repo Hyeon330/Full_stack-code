@@ -5,9 +5,6 @@
 	<title>Document</title>
 	<meta name="viewport" content="width=device-width, initial-sale=1"/>
 
-    <!-- reset.css -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
-
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -17,8 +14,6 @@
 	<link href='fullcalendar/main.css' rel='stylesheet' />
     <script src='fullcalendar/main.js'></script>
 
-    <link rel="stylesheet" href="css/home.css">
-    <!-- <script src="js/main.js"></script> -->
     <script>
         const resizeMain = () => {
             let headerHeight = Number($('#header').css('height').substring(0, $('#header').css('height').length-2));
@@ -37,34 +32,99 @@
             $('#contents').css('width', calwidth);
 
             calendar.render();
+        };
+
+        let event = [
+            {
+                title: '가족여행',
+                start: '2022-02-02',
+                end: '2022-02-07',
+                color: '#ddd',
+                textColor: 'white',
+                place: 'hhhh',
+                text: 'hehehehehehehe'
+            },
+            {
+                title: '하하하',
+                start: '2022-02-04',
+                end: '2022-02-11'
+            },
+            {
+                title: '후후후',
+                start: '2022-02-14',
+                end: '2022-02-20'
+            },
+            {
+                title: '으얅얅앍앍앍',
+                start: '2022-02-15',
+                end: '2022-02-22',
+                color: 'green',
+                textColor: 'white',
+                place: 'hhhh',
+                text: 'hehehehehehehe'
+            }
+        ];
+
+        const setSideMain = () => {
+            let eventOfday = [];
+            for(let i = 1; i<=31; i++){
+                eventOfday[i] = [];
+                for(let j = 0; j < event.length; j++){
+                    let start = Number(event[j].start.substring(8));
+                    let end = Number(event[j].end.substring(8)-1)
+                    if(i>=start && i<=end){
+                        eventOfday[i].push(event[j].title);
+                    }
+                }
+            }
+
+            let eventListHTML = "";
+            for(let i = 1; i<=31; i++){
+                if(eventOfday[i].length!=0){
+                    eventListHTML +=
+                    "<div class='dayList'>" +
+                    "<div class=\"card-header\" data-target=\"#list"+i+"\" data-toggle=\"collapse\">"+i+"일</div>"+
+                    "<div id=\"list"+i+"\" class=\"collapse\" data-parent=\"#listbox\">" +
+                    "<ul class=\"eventList\">";
+                    
+                    for(let j = 0; j < eventOfday[i].length; j++){
+                        eventListHTML +=
+                        "<li>"+eventOfday[i][j]+"</li>";
+                    }
+                    eventListHTML +="</ul></div></div>";
+                }
+            }
+            document.querySelector('#listbox').innerHTML = eventListHTML;
         }
 
-        let event = {
-            title: '가족여행',
-            start: '2022-02-02',
-            end: '2022-02-07'
+        const hello = () => {
+            alert("hello");
         }
-        
+
+        const changeMonth = () => {
+            $("#sideMonth>span").text(calendar.getDate().getFullYear()+"년 " + (calendar.getDate().getMonth() + 1) + "월");
+            setSideMain();
+            calendar.render();
+        };
+        const nextMonth = () => {
+            calendar.next();
+            changeMonth();
+        };
+        const prevMonth = () => {
+            calendar.prev();
+            changeMonth();
+        };
+
         document.addEventListener('DOMContentLoaded', function() {
+            changeMonth();
+            $(".fc-toolbar-chunk button").click(changeMonth);
+
             resizeMain();
             $(window).resize(resizeMain);
         });
+
     </script>
-    <style>
-        #usercode {
-            height: 30px;
-        }
-        #contents {
-            margin: 0 auto;
-        }
-        #calendar{
-            height: inherit;
-            padding: 20px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
-        }
-    </style>
+    <link rel="stylesheet" href="css/home.css">
 </head>
 <body>
 	<div id="header">
@@ -81,61 +141,23 @@
                 <span>일정 목록</span>
                 <i class="bi bi-calendar-plus"></i>
             </div>
-            <p id="sideMonth"><a href="#">◁</a> 2월 <a href="#">▷</a></p>
+
+            <div id="sideMonth">
+                <a href="#" onclick="prevMonth()">◁</a>
+                <span></span> 
+                <a href="#" onclick="nextMonth()">▷</a>
+            </div>
+
             <div id="sideMain">
                 <div id="listbox">
-                    <div class="list"></div>
-                    <div class="list"></div>
-                    <div class="list"></div>
-                    <div class="list"></div>
-                    <div class="list"></div>
-                    <div class="list"></div>
-                    <div class="list"></div>
-                    <div class="list"></div>
-                    <div class="list"></div>
-                    <div class="list"></div>
-                    <div class="list"></div>
-                    <div class="list"></div>
                 </div>
             </div>
         </div>
         <div id="contentsBack">
             <div id=contents>
-                <div id="usercode"></div>
+                <div id='usercode'>Usercode: 이현수#0000</div>
                 <div id='calendar'></div>
-                <script>
-                    var calendarEl = document.getElementById('calendar'); // 태그
-                    var calendar = new FullCalendar.Calendar(calendarEl, {
-                        initialView: 'dayGridMonth',
-                        aspectRatio: 1.8,
-                        windowResizeDelay: 1,
-                        headerToolbar: {
-                            start: 'today',
-                            center: 'title',
-                            end: 'prevYear,prev,next,nextYear'
-                        },
-                        buttonText: {
-                            today: 'Today'
-                        },
-                        titleFormat: {
-                            year: 'numeric',
-                            month: 'short'
-                        },
-                        dateClick: function(info) {
-                            alert('Date ' + info.dateStr);
-                        },
-                        events: [
-                            event
-                        ]
-                        // selectable: true,
-                        // dateClick: function() {
-                        //     console.log(calendar);
-                        // },
-                        // initialDate: '2018-06-01'
-                    });
-                    // calendar.next();    // dayGridMonth일 경우 다음달
-                    // calendar.prev();
-                </script>
+                <script src="js/myCalendar.js"></script>
             </div>
         </div>
     </div>
