@@ -1,3 +1,6 @@
+let event = [];
+setEvent();
+
 var calendarEl = document.getElementById('calendar'); // 태그
 var calendar = new FullCalendar.Calendar(calendarEl, {
     initialView: 'dayGridMonth',
