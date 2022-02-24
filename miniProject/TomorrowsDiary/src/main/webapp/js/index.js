@@ -19,6 +19,8 @@ const resizeMain = () => {
 
 // db에서 현재 달의 이벤트 리스트를 Ajax로 받아오는 함수
 const setEvent = () => {
+    // Ajax...
+    console.log("event load!");
     event = [
         {
             title: '가족여행',
@@ -49,7 +51,6 @@ const setEvent = () => {
             text: 'hehehehehehehe'
         }
     ];
-    console.log("event load!");
 }
 
 const setSideMain = () => {
@@ -100,20 +101,3 @@ const prevMonth = () => {
 // 위에 코드들은 선로딩
 
 // calendar set
-
-// 예내만 젤 후순위 로딩
-document.addEventListener('DOMContentLoaded', function() {
-    // load
-    changeMonth();
-    resizeMain();
-
-    // event
-    $(".fc-toolbar-chunk button").click(changeMonth);
-    $(window).resize(resizeMain);
-
-    let username = document.querySelector('#userinfo');
-    let infoMenu = document.querySelector('#info_menu');
-    username.addEventListener('click', function() {
-        infoMenu.toggleAttribute('hidden');
-    });
-})

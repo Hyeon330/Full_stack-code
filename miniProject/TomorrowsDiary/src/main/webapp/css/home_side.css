@@ -14,7 +14,8 @@
   font-size: 22px;
   font-weight: bold;
 }
-#sideTitle > i {
+#sideTitle > div {
+  cursor: pointer;
   line-height: 52px;
   font-size: 18px;
   float: right;
