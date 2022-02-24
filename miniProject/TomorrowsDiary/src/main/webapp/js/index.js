@@ -1,7 +1,8 @@
+// 브라우저 크기 변경에 따른 캘린더 크기 설정 함수
 const resizeMain = () => {
     let headerHeight = Number($('#header').css('height').substring(0, $('#header').css('height').length-2));
     let sideTitleHeight = Number($('#sideTitle').css('height').substring(0, $('#sideTitle').css('height').length-2));
-    let sideMonthHeight = Number($('#sideMonth').css('height').substring(0, $('#sideMonth').css('height').length-2))
+    let sideMonthHeight = Number($('#sideMonth').css('height').substring(0, $('#sideMonth').css('height').length-2));
     $('#sidebar').css('height', window.innerHeight-Number($('#header').css('height').substring(0, $('#header').css('height').length-2)));
     $('#sideMain').css('height', window.innerHeight-headerHeight-sideTitleHeight-sideMonthHeight);
 
@@ -16,43 +17,7 @@ const resizeMain = () => {
 
     calendar.render();
 };
-
-// db에서 현재 달의 이벤트 리스트를 Ajax로 받아오는 함수
-const setEvent = () => {
-    // Ajax...
-    console.log("event load!");
-    event = [
-        {
-            title: '가족여행',
-            start: '2022-02-02',
-            end: '2022-02-07',
-            color: '#ddd',
-            textColor: 'black',
-            place: 'hhhh',
-            text: 'hehehehehehehe'
-        },
-        {
-            title: '하하하',
-            start: '2022-02-04',
-            end: '2022-02-11'
-        },
-        {
-            title: '후후후',
-            start: '2022-02-14',
-            end: '2022-02-20'
-        },
-        {
-            title: '으얅얅앍앍앍',
-            start: '2022-02-15',
-            end: '2022-02-22',
-            color: 'green',
-            textColor: 'white',
-            place: 'hhhh',
-            text: 'hehehehehehehe'
-        }
-    ];
-}
-
+// sidebar main 리스트 등록 함수
 const setSideMain = () => {
     setEvent();
     let eventOfday = [];
@@ -98,6 +63,76 @@ const prevMonth = () => {
     calendar.prev();
     changeMonth();
 };
-// 위에 코드들은 선로딩
 
-// calendar set
+// set myCalendar
+
+document.addEventListener('DOMContentLoaded', function() {
+    // pageload
+    changeMonth();
+    resizeMain();
+
+    // event
+    // sidebar main change
+    $(".fc-toolbar-chunk button").click(changeMonth);
+    // reactive page
+    $(window).resize(resizeMain);
+
+    // 내 정보, 로그아웃 메뉴 표시/숨김
+    let userinfo = document.querySelector('#userinfo');
+    let info = document.querySelector('#info');
+    let infoMenu = document.querySelector('#info_menu');
+    userinfo.addEventListener('click', function() {
+        infoMenu.toggleAttribute('hidden');
+    });
+    info.addEventListener('mouseleave', function() {
+        infoMenu.setAttribute('hidden',true);
+    });
+
+    // 다이얼로그 오픈
+    $('#dialogOpen').click(function() {
+        $('#dialog').dialog('open');
+    });
+
+    // 다이얼로그값 전체 리셋 함수
+    const dialogReset = () => {
+        $("#event-title").val('');
+        $("#start-date").val('');
+        $("#end-date").val('');
+        $('#repet').each(function() {
+            $(this).find('option:first').attr('selected',true);
+        });
+        $('#public').prop('checked', false);
+        $('#event-color').val('#3788D8');
+        $("#place").val('');
+        $("#memo").val('');
+    };
+
+    // 다이얼로그 세팅
+    $('#dialog').dialog({
+        autoOpen: false, // 실행시 자동열림
+        buttons: {
+            등록: function(){
+                // ajax 처리
+                dialogReset();
+                $("#dialog").dialog('close');
+            },
+            초기화: dialogReset,
+            취소: function(){
+                dialogReset();
+                $("#dialog").dialog('close');
+            }
+        },
+        modal: true
+    });
+
+    // DatePicker 세팅
+    $('#start-date, #end-date').datepicker({
+        dateFormat: 'yy-mm-dd',
+        monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+        monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+        dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+        dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+        showMonthAfterYear: true,
+        yearSuffix: '년'
+    });
+});

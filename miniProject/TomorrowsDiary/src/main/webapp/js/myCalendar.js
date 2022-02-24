@@ -1,3 +1,39 @@
+// db에서 현재 달의 이벤트 리스트를 Ajax로 받아오는 함수
+const setEvent = () => {
+    // Ajax...
+    console.log("event load!");
+    event = [
+        {
+            title: '가족여행',
+            start: '2022-02-02',
+            end: '2022-02-07',
+            color: '#ddd',
+            textColor: 'black',
+            place: 'hhhh',
+            text: 'hehehehehehehe'
+        },
+        {
+            title: '하하하',
+            start: '2022-02-04',
+            end: '2022-02-11'
+        },
+        {
+            title: '후후후',
+            start: '2022-02-14',
+            end: '2022-02-20'
+        },
+        {
+            title: '으얅얅앍앍앍',
+            start: '2022-02-15',
+            end: '2022-02-22',
+            color: 'green',
+            textColor: 'white',
+            place: 'hhhh',
+            text: 'hehehehehehehe'
+        }
+    ];
+}
+
 let event = [];
 setEvent();
 
@@ -28,5 +64,3 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
     // },
     // initialDate: '2018-06-01'
 });
-// calendar.next();    // dayGridMonth일 경우 다음달
-// calendar.prev();

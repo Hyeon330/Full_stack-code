@@ -22,8 +22,8 @@
     <script src='fullcalendar/main.js'></script>
 
     <!-- 내가 만든 css, js -->
-    <link rel="stylesheet" href="css/index/index.css">
-    <script src="js/index.js"></script>
+    <link rel="stylesheet" href="css/friends/friends.css">
+    <script src="js/friends.js"></script>
 </head>
 <body>
 	<div id="header">
@@ -34,8 +34,7 @@
             <a href="#"><i class="bi bi-megaphone-fill" title="Announcement"></i></a>
 		</div>
         <div id="info">
-            <a id="login-btn" href="login.html" type="button" class="btn btn-info">로그인</a>
-            <div hidden>
+            <div>
                 <div id="userinfo">
                     <img src="img/user.png">
                     <i class="bi bi-caret-down"></i>
@@ -52,16 +51,9 @@
 	<div id="main">
         <div id="sidebar">
             <div id="sideTitle">
-                <span>일정 목록</span>
-                <div id="dialogOpen"><i class="bi bi-calendar-plus"></i></div>
+                <span>친구 목록</span>
+                <div id="dialogOpen"><i class="bi bi-person-plus-fill"></i></div>
             </div>
-
-            <div id="sideMonth">
-                <a href="#" onclick="prevMonth()">◁</a>
-                <span></span> 
-                <a href="#" onclick="nextMonth()">▷</a>
-            </div>
-
             <div id="sideMain">
                 <div id="listbox">
                 </div>
@@ -69,34 +61,11 @@
         </div>
         <div id="contentsBack">
             <div id=contents>
-                <div id='usercode'>Usercode: 이현수#0000</div>
+                <div id='usercode'>Friendscode: 친구#1111</div>
                 <div id='calendar'></div>
                 <script src="js/myCalendar.js"></script>
             </div>
         </div>
-    </div>
-    <!-- 다이얼로그 창 -->
-    <div id="dialog" title="일정 등록">
-        <form id="date-form" action="">
-            <ul>
-                <li><input type="text" id="event-title" name="event-title"  placeholder="제목"></li>
-                <li><input type="text" id="start-date" name="start-date" placeholder="시작날짜(년-월-일)"></li>
-                <li><input type="text" id="end-date" name="end-date" placeholder="종료날짜(년-월-일)"></li>
-                <li>
-                    <select name="repet" id="repet">
-                        <option value="N">반복안함</option>
-                        <option value="D">매일반복</option>
-                        <option value="W">매주반복</option>
-                        <option value="M">매달반복</option>
-                        <option value="Y">매년반복</option>
-                    </select>
-                </li>
-                <li><label for="public">Public</label><input type="checkbox" id="public" name="public"></li>
-                <li><label for="event-color">이벤트 색상</label><input type="color" id="event-color" name="event-color" value="#3788D8"></li>
-                <li><input type="text" id="place" name="place" placeholder="장소"></li>
-                <li><input type="text" id="memo" name="memo" placeholder="메모"></li>
-            </ul>
-        </form>
     </div>
 </body>
 </html>
