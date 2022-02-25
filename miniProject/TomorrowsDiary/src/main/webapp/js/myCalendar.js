@@ -1,6 +1,6 @@
 // db에서 현재 달의 이벤트 리스트를 Ajax로 받아오는 함수
 const setEvent = () => {
-    // Ajax...
+    // back-end event load...
     console.log("event load!");
     event = [
         {

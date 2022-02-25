@@ -110,6 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // 다이얼로그 세팅
     $('#dialog').dialog({
         autoOpen: false, // 실행시 자동열림
+        modal: true,
         buttons: {
             등록: function(){
                 // ajax 처리
@@ -121,8 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 dialogReset();
                 $("#dialog").dialog('close');
             }
-        },
-        modal: true
+        }
     });
 
     // DatePicker 세팅

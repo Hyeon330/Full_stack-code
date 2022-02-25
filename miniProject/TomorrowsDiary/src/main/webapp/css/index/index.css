@@ -1,29 +1,7 @@
+@import url("../base.css");
 @import url("../header.css");
-@import url("index_side.css");
 @import url("../mainContents.css");
-@import url("https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap");
-body,
-div,
-p,
-ul,
-li {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-ul {
-  background-color: white;
-}
-body {
-  overflow-y: auto;
-  background-color: #f0f2f5;
-}
-body > * {
-  font-family: "Hi Melody", cursive;
-}
-#main > div {
-  float: left;
-}
+@import url("index_side.css");
 #icons > a:nth-child(1) {
   color: #888;
 }
