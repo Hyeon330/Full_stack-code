@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-// 부트스트랩 : index.js에 import를 하면 다른 페이지에서 사용가능하다.
 import 'bootstrap/dist/css/bootstrap.css';
 
 ReactDOM.render(

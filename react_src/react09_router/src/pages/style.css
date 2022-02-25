@@ -1,0 +1,26 @@
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+/* a:link,
+a:visited {
+  text-decoration: none;
+  color: #fff;
+}
+a:hover {
+  color: yellow !important;
+} */
+.Menu-layout {
+  list-style-type: none;
+  background-color: brown;
+  overflow: auto;
+  font-size: 2em;
+}
+.Menu-layout > li {
+  float: left;
+  width: 25%;
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+}
