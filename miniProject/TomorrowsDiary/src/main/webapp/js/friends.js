@@ -14,6 +14,7 @@ const resizeMain = () => {
     $('#contents').css('height', window.innerHeight-headerHeight-60);
     $('#contents').css('width', calwidth);
 
+
     calendar.render();
 };
 
@@ -36,6 +37,13 @@ document.addEventListener('DOMContentLoaded', function() {
         infoMenu.toggleAttribute('hidden');
     });
     info.addEventListener('mouseleave', function() {
-        infoMenu.setAttribute('hidden',true);
+        infoMenu.setAttribute('hidden', true);
+    });
+
+    // 친구 추가
+    $('#friends-back').css('height', window.innerHeight);
+    $('#friends-back').hide();
+    $('#friend-add, #f-close').on('click', function(){
+        $('#friends-back').toggle();
     });
 });

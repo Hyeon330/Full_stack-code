@@ -57,9 +57,9 @@
             </div>
 
             <div id="sideMonth">
-                <a href="#" onclick="prevMonth()">◁</a>
+                <i class="bi bi-caret-left" onclick="prevMonth()"></i>
                 <span></span> 
-                <a href="#" onclick="nextMonth()">▷</a>
+                <i class="bi bi-caret-right" onclick="nextMonth()"></i>
             </div>
 
             <div id="sideMain">
@@ -77,26 +77,24 @@
     </div>
     <!-- 다이얼로그 창 -->
     <div id="dialog" title="일정 등록">
-        <form id="date-form" action="">
-            <ul>
-                <li><input type="text" id="event-title" name="event-title"  placeholder="제목"></li>
-                <li><input type="text" id="start-date" name="start-date" placeholder="시작날짜(년-월-일)"></li>
-                <li><input type="text" id="end-date" name="end-date" placeholder="종료날짜(년-월-일)"></li>
-                <li>
-                    <select name="repet" id="repet">
-                        <option value="N">반복안함</option>
-                        <option value="D">매일반복</option>
-                        <option value="W">매주반복</option>
-                        <option value="M">매달반복</option>
-                        <option value="Y">매년반복</option>
-                    </select>
-                </li>
-                <li><label for="public">Public</label><input type="checkbox" id="public" name="public"></li>
-                <li><label for="event-color">이벤트 색상</label><input type="color" id="event-color" name="event-color" value="#3788D8"></li>
-                <li><input type="text" id="place" name="place" placeholder="장소"></li>
-                <li><input type="text" id="memo" name="memo" placeholder="메모"></li>
-            </ul>
-        </form>
+        <ul>
+            <li><input type="text" id="event-title" name="event-title"  placeholder="제목"></li>
+            <li><input type="text" id="start-date" name="start-date" placeholder="시작날짜(년-월-일)"></li>
+            <li><input type="text" id="end-date" name="end-date" placeholder="종료날짜(년-월-일)"></li>
+            <li>
+                <select name="repet" id="repet">
+                    <option value="N">반복안함</option>
+                    <option value="D">매일반복</option>
+                    <option value="W">매주반복</option>
+                    <option value="M">매달반복</option>
+                    <option value="Y">매년반복</option>
+                </select>
+            </li>
+            <li><label for="public">Public</label><input type="checkbox" id="public" name="public"></li>
+            <li><label for="event-color">이벤트 색상</label><input type="color" id="event-color" name="event-color" value="#3788D8"></li>
+            <li><input type="text" id="place" name="place" placeholder="장소"></li>
+            <li><input type="text" id="memo" name="memo" placeholder="메모"></li>
+        </ul>
     </div>
 </body>
 </html>

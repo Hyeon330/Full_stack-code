@@ -5,3 +5,58 @@
 #icons > a:nth-child(1) {
   color: #888;
 }
+.ui-dialog {
+  width: 400px !important;
+  border-radius: 10px;
+  background-color: #eee;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.ui-dialog-titlebar {
+  background-color: #fff;
+  border-radius: 5px;
+}
+.ui-dialog ul {
+  width: 220px;
+  margin: 0 auto;
+  background-color: #eee;
+}
+.ui-dialog ul > li {
+  font-size: 14px;
+  margin-top: 10px;
+}
+.ui-dialog ul > li > input:nth-child(1) {
+  width: 220px;
+  border-radius: 5px;
+  border: 1px solid #bbb;
+}
+.ui-dialog ul > li > select {
+  border: 1px solid #bbb;
+  border-radius: 5px;
+}
+.ui-dialog ul > li > input:nth-child(2)[type="checkbox"] {
+  position: relative;
+  top: 2px;
+  margin: 0 3px;
+}
+.ui-dialog ul > li > input:nth-child(2)[type="color"] {
+  margin: 0 3px;
+  height: 26px;
+  width: 25px;
+}
+#dialog {
+  padding: 5px 30px;
+}
+.ui-dialog-titlebar-close {
+  display: none;
+}
+.ui-dialog-buttonset > button {
+  font-size: 14px;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+}
+.ui-dialog-buttonset > button:hover {
+  background-color: #ddd;
+}
+.ui-dialog-buttonpane {
+  border-radius: 5px;
+}
