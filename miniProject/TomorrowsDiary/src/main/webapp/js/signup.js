@@ -32,13 +32,13 @@ document.addEventListener('DOMContentLoaded', function() {
     let signupCheckPw = false;
     $('#userid').on('input', function() {
         signupCheckId = false;
-        $('#id-verify').html('<span style="color: gray;">영문+숫자 사용(6~20자리)</span>');
+        $('#id-verify').html('<span style="color: gray;">첫 글자 영문, 숫자 사용(6~20자리)</span>');
     });
     $('#userid-ck').click(function() {
         let userid = $('#userid').val();
-        let reg = /^[a-zA-Z]{1}[a-zA-Z0-9]{5,19}$/;
+        let reg = /^[a-zA-Z]{1}\w{5,19}$/;
         let ckMsg = "";
-        if(userid.length===0){
+        if(userid.length===0){d
             ckMsg = '<span style="color: red;">아이디를 입력해주세요.</span>';
         }else if(!reg.test(userid)){
             ckMsg = '<span style="color: red;">아이디 형식이 잘못되었습니다.</span>';
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
     userpwCk.on('input', pwCk);
 
     let emailCk = false;
-    let regEmail = /^\w{8,}[@][a-zA-Z]{2,8}[.][a-zA-Z]{2,4}([.][a-zA-Z]{2,4})?$/;
+    let regEmail = /^\w{6,}[@][a-zA-Z]{2,8}[.][a-zA-Z]{2,4}([.][a-zA-Z]{2,4})?$/;
     $('#email').on('input', function(){
         emailCk = false;
         if(regEmail.test($('#email').val())){
@@ -81,9 +81,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     $('#signup').click(function(){
-        if($('#username').val().length<2 || $('#tel1').val().length<2 || $('#tel2').val().length<3 || $('#tel3').val().length<4 || !emailCk){
+        if($('#username').val().length<2 || $('#tel1').val().length<2 || $('#tel2').val().length<3 || $('#tel3').val().length<4 || $('#email').val().length===0){
             alert("양식에 맞게 값을 전부 채워주세요.");
-        }else if(!(signupCheckId && signupCheckPw)) {
+        } else if(!emailCk){
+            alert("이메일이 형식에 맞지 않습니다. 다시 확인해 주세요.");
+            $('#email').focus();
+        } else if(!(signupCheckId && signupCheckPw)) {
             alert("아이디와 비밀번호를 확인 해주세요.");
         } else {
             console.log("hh");
