@@ -12,7 +12,7 @@ ul {
   background-color: white;
 }
 body {
-  overflow: hidden;
+  overflow: auto;
   background-color: #f0f2f5;
 }
 body > * {

@@ -12,7 +12,6 @@ form {
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   background-color: white;
-  text-align: center;
 }
 form > div {
   width: 260px;
@@ -27,31 +26,46 @@ form > div > h1 {
   line-height: 100px;
   text-align: center;
 }
-form > div > input {
+form > div input {
   width: inherit;
   height: 35px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
-form > div > input:focus {
+form > div input:focus {
   outline: 2px solid #1a73e8;
 }
-form > div > div:first-of-type {
-  text-align: left;
+#userid {
+  width: 184px;
+}
+#id-verify {
+  height: 13px;
+  line-height: 13px;
   font-size: 13px;
-  color: red;
+  margin-bottom: 20px;
 }
-form > div > btn {
-  width: 200px;
+#pw-verify {
+  height: 13px;
+  line-height: 13px;
+  font-size: 13px;
+  margin-bottom: 20px;
 }
-form > div:last-of-type {
-  color: #ccc;
+#tel1 {
+  width: 50px;
 }
-div > a:link,
-div > a:visited {
-  color: #888;
+#tel2 {
+  width: 60px;
 }
-div > a:hover {
-  text-decoration: none;
-  font-weight: bold;
+#tel3 {
+  width: 60px;
+}
+form > div > div:last-child {
+  text-align: center;
+}
+form > div > div:last-child > btn {
+  margin: 5px 0;
+}
+form > div > div:last-child > btn:first-child,
+form > div > div:last-child > btn:last-child {
+  border: 1px solid #aaa;
 }
