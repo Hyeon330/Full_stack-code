@@ -13,7 +13,8 @@ const resizeMain = () => {
     let calwidth = window.innerWidth-sidebarWidth-250;
     $('#contents').css('height', window.innerHeight-headerHeight-60);
     $('#contents').css('width', calwidth);
-
+    
+    $('#friends-back').css('height', window.innerHeight);
 
     calendar.render();
 };
@@ -41,7 +42,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // 친구 추가
-    $('#friends-back').css('height', window.innerHeight);
     $('#friends-back').hide();
     $('#friend-add, #f-close').on('click', function(){
         $('#friends-back').toggle();

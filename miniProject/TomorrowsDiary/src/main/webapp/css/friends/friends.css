@@ -17,4 +17,23 @@
 }
 #friends-popup {
   margin: 0 auto;
+  background-color: white;
+  text-align: right;
+  border-radius: 10px;
+}
+#f-menu > button {
+  width: 50%;
+  border: 1px solid #aaa;
+}
+#f-menu > button:first-child {
+  border-radius: 10px 0 0 0;
+}
+#f-menu > button:last-child {
+  border-radius: 0 10px 0 0;
+}
+#f-menu > button:hover {
+  background-color: #ccc;
+}
+#f-main {
+  margin: 20px 40px;
 }
