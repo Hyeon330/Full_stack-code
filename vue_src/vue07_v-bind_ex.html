@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        div{
+            width: 300px;
+            height: 360px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .one{
+            background-color: brown;
+            color: white;
+            border: 1px solid gray;
+            border-radius: 5%;
+        }
+        .two{
+            background-color: #00f;
+            color: white;
+            border: 1px solid gray;
+            border-radius: 15%;
+        }
+        .three{
+            background-color: lightgreen;
+            color: white;
+            border: 1px solid gray;
+            border-radius: 35%;
+        }
+        .four{
+            background-color: darkblue;
+            color: white;
+            border: 1px solid gray;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" :class="className" @click="countryChange">
+        <h2>제목 : {{title}}</h2>
+        <img v-bind:src="img" :width="imgW" :height="imgH">
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                title: "아이유1",
+                img: "img/1.jpg",
+                imgW: "100%",
+                imgH: "260px",
+
+                className: 'one'
+            },
+            methods: {
+                countryChange(){
+                    if(this.className=='one'){
+                        this.title = '아이유2';// title
+                        this.className = 'two';// className
+                        this.img = 'img/2.jpg';// img
+                    } else if(this.className=='two'){
+                        this.title = '아이유3';
+                        this.className = 'three';
+                        this.img = 'img/3.jpg';
+                    } else if(this.className=='three'){
+                        this.title = '아이유4';
+                        this.className = 'four';
+                        this.img = 'img/5.png';
+                    } else {
+                        this.title = '아이유1';
+                        this.className = 'one';
+                        this.img = 'img/1.jpg';
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

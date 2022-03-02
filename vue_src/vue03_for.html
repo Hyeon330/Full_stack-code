@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--
+            배열을 이용한 반복문 처리
+            v-for
+        -->
+        <h1>배열반복</h1>
+        <ol>
+            <!--    value, index -->
+            <li v-for="(v, i) in arr">{{v}} => {{i}}</li>
+            <li v-for="(v) in arr">{{v}}</li>
+        </ol>
+        <hr>
+        <h1>json데이터 반복</h1>
+        <ul>
+            <!--        value, key, index -->
+            <li v-for="(v,     k,   i) in countrys">{{k}} : {{v}}[{{i}}]</li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="IU in IUs" v-if="IU.no<3">
+                <h2>번호 : {{IU.no}}</h2>
+                <h2>이름 : {{IU.name}}</h2>
+                <h2>직업 : {{IU.jobs}}</h2>
+                <img v-bind:src="IU.img" width="200"/>
+            </li>
+        </ul>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                // 배열형 데이터
+                arr: [10,20,20,"파인애플","홍길동"],
+                countrys: {
+                    city1: "서울",
+                    city2: "암스테르담",
+                    city3: "워싱턴",
+                    city4: "룩셈부르크"
+                },
+                IUs: [
+                    {no:1, name:'아이유1', jobs:'가수', img:'img/1.jpg'},
+                    {no:2, name:'아이유2', jobs:'배우', img:'img/5.png'},
+                    {no:3, name:'아이유3', jobs:'국힙원탑', img:'img/2.jpg'},
+                    {no:4, name:'아이유4', jobs:'아이유 개좋아~', img:'img/3.jpg'}
+                ]
+            }
+        });
+    </script>
+</body>
+</html>

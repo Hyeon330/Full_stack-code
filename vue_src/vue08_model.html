@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <p>
+        v-model: -> html 폼에 입력한 데이터를 뷰의 데이터 객체에 바로동기화 시킨다.<br>
+                    input, textarea, select태그에서 사용가능
+    </p>
+    <div id="app">
+        <h1>값을 입력하면 바로 적용됨</h1>
+        <input type="text" id="userid" v-model:name="userid"><br>
+        <p>
+            입력한 아이디 : {{userid}}
+        </p>
+        <hr>
+        <!-- checkbox : 여러개의 데이터를 선택할 수 있다 -->
+        <input type="checkbox" value="마라톤" v-model:name="hobby">마라톤
+        <input type="checkbox" value="달리기" v-model:name="hobby">달리기
+        <input type="checkbox" value="걷기" v-model:name="hobby">걷기
+        <input type="checkbox" value="허들" v-model:name="hobby">허들
+        <input type="checkbox" value="100M" v-model:name="hobby">100M
+        <p>선택한 취미 : {{hobby}}</p>
+        <hr>
+        <!-- radio -->
+        <input type="radio" v-model:name="fruit" value="사과">사과
+        <input type="radio" v-model:name="fruit" value="바나나">바나나
+        <input type="radio" v-model:name="fruit" value="파인애플">파인애플
+        <input type="radio" v-model:name="fruit" value="복숭아">복숭아
+        <p>선택한 과일 : {{fruit}}</p>
+        <hr>
+        <!-- select -->
+        <select v-model="country" multiple size="6">
+            <option value="" disabled>select</option>
+            <option value="대한민국">대한민국</option>
+            <option value="캐나다">캐나다</option>
+            <option value="오스트리아">오스트리아</option>
+            <option value="스페인">스페인</option>
+            <option value="뉴질랜드">뉴질랜드</option>
+        </select>
+        <p>선택한 나라 : {{country}}</p>
+        <hr>
+        <textarea v-model:name="content" cols="30" rows="10"></textarea>
+        <p>
+            내 소개: {{content}}
+        </p>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                userid: '',
+                hobby: [],
+                fruit: '사과',
+                country: [], // 초기값이 '' 일경우 내용이 없는 목록이 보임
+                content: ''
+            }
+        });
+    </script>
+</body>
+</html>
