@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        /*
+            이벤트 종류
+            onclick : 마우스 클릭시
+            
+            onmouseover : 마우스 오버시(자식의 엘리멘트에서도 이벤트 다시 발생)
+            onmouseenter : 마우스 오버시(자식의 엘리멘트에서 이벤트 발생하지 않음)
+
+            onmouseout : 마우스 아웃시(자식의 엘리멘트에 들어가는 것도 아웃으로 판정)
+            onmouseleave : 마우스 아웃시(자식의 엘리멘트에 들어가는 것은 아웃이 아님)
+
+            onmousedown : 마우스를 누른상태
+            onmouseup : 마우스를 누르고 놓으면
+            onmousemove : 마우스를 움직이면
+
+            onfocus : 엘리멘트(input 등 입력하는 태그)에 커서가 들어오면
+            onblur : 엘리멘트(input 등 입력하는 태그)에 커서가 나가면
+
+            onsubmit : form에서 submit이 발생되면(<input type="submit">, <button>, <input type="image"> 등 발생 시)
+            onreset : form에서 reset이 발생하면(<input type="reset">)
+
+            onkeydown : 키를 누른 상태일때
+            onkeyprss : 키를 누른 상태
+            onkeyup : 키를 누른 후 놓으면
+
+            onchange : value의 값이 바뀌면 발생
+
+            onresize : 컨테이너의 크기가 변하면
+
+            onload : 로딩이 완료되면
+
+        */
+    </script>
+    <style>
+        #d1{
+            height: 200px;
+            padding: 30px;
+            background-color: pink;
+        }
+
+        #d2{
+            height: 100px;
+            padding: 20px;
+            background-color: yellowgreen;
+        }
+
+        #h1{
+            background-color: lightblue;
+        }
+    </style>
+    <script>
+        let cnt=0;
+        function eventTest() {
+            document.getElementById("h1").innerHTML = "마우스 오버("+ cnt++ +")";
+        }
+
+        function changeBack() {
+            document.getElementById("id").style.background = "orange"
+        }
+
+        function test(i) {
+            i.style.background = "gray";
+        }
+
+        function resetTest() {
+            document.getElementById("r").value = "리셋이벤트가 발생함";
+        }
+
+        // 숫자만 입력가능하다록 설정하기
+        function telNumberCheck(){
+            // event내장객체에 현재 누른 키의 키값을 가지고 있따.
+            // event.keyCode : 누른 키의 키값을 가진다.
+            // event.returnValue : true, false
+            // 48~57(ASCII)
+            console.log(event.keyCode);
+            if(event.keyCode>=48 && event.keyCode<=57 || event.keyCode == 8){
+                event.returnValue = true;
+            } else { // 숫자와 키를 누른 경우
+                event.returnValue = false;
+            }
+        }
+    </script>
+</head>
+<body onresize="console.log('resize...')" >
+    <form onreset="resetTest()">
+        아이디 : <input type="text" name="id" id="id" onfocus="changeBack()"
+        onblur="this.style.background='blue'" onchange="console.log('changeEvent발생')"><br>
+        이름 : <input type="text" name="name" id="name" onblur="test(this)"><br>
+        연락처 : <input type="text" name="tel" id="tel" onkeydown="telNumberCheck()"><br>
+        <select onchange="console.log('select')">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+        <input type="reset" id="r" value="다시쓰기">
+    </form>
+    <!--div id="d1" onmouseover="console.log('마우스 오버 발생')" onmouseout="console.log('마우스 아웃 발생')"-->
+    <div id="d1" onmouseenter="eventTest()" onmouseleave="console.log('moseleave 이벤트 발생')">
+        <div id="d2">
+            <h1 id="h1">마우스 오버</h1>
+        </div>
+    </div>
+    <img src="../html5_css3/html&css/img/4.jpg" onmouseenter="this.src='../html5_css3/html&css/img/3.jpg'" onmouseleave="this.src='../html5_css3/html&css/img/4.jpg'">
+</body>
+</html>

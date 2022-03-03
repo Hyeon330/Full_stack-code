@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        div{
+            width: 300px;
+            height: 300px;
+            border: 1px solid gray; 
+        }
+        /* visibility : hidden(숨김), visible(보여주기) -> 화면에서 숨겨져도 공간을 차지하고 있음*/
+        div:first-child{
+            background-color: yellowgreen;
+            visibility: hidden;
+        }
+        /* display : block(보여주기), none(숨김) -> 화면에서 사라지면 공간도 같이 반납 */
+        div:nth-child(2){
+            background-color: paleturquoise;
+            display: none;
+        }
+        div:last-child{
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+</html>

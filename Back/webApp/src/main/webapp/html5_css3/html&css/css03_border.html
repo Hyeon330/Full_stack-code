@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	img{width: 200px; height: 300px}
+	
+	/*
+		그룹화 예제
+		border-style : 선의 모양(solid:실선, dotted:점선, dashed:줄선, double:이중선, none, groove:홈, inset:볼록)
+		border-width : 선의 두께(px)
+		border-color : 선의 색상(rgb)
+	*/
+	#i1{
+		border-style : solid; /* border-top-style, border-right-style, border-bottom-style, border-left-style */
+		border-width : 5px; /* border-top-width, border-right-width, .... */
+		border-color : red; /* border-top-color, border-right-color, .... */
+	}
+	#i2{
+		border-bottom: 3px double blue;
+	}
+	#i3{
+		border: dashed 5px orange;
+	}
+	#i4{
+		border: 5px solid;
+		border-color: red;
+		border-radius: 0px 20px 40px 60px;
+	}
+</style>
+</head>
+<body>
+<img src="../img/1.jpg" alt="" id="i1"/>
+<img src="../img/2.jpg" alt="" id="i2"/>
+<img src="../img/3.jpg" alt="" id="i3"/>
+<img src="../img/4.jpg" alt="" id="i4"/>
+</body>
+</html>

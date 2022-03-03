@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>입력양식만들기</h1>
+<!-- 
+	클라이언트측 정보 서버에서 가져갈 수 있도록 환경을 설정
+ -->
+<a href="board.jsp?username=홍길동&num=250&userid=hong">서버로 정보 보내기</a>
+<hr>
+<!-- form
+	action : input submit이 발생하면 실행될 파일명 
+ -->
+<!-- input 
+	placeholder : 예시
+	maxlength : 글자입력 최대 길이
+	size : input칸 크기
+	readonly : 읽기전용
+	disabled : 비활성화
+	value : 리퀘스트 기본 값
+ -->
+<form method="get" action="aaaa.jsp">
+	<input type="text" name="userid" placeholder="아이디 입력"
+				maxlength="20" size="20"/> <br>
+	<input type="text" name="username" placeholder="이름"> <br>
+	<input type="password" name="userpw" placeholder="password"> <br>
+	<input type="file" name="filename"> <br>
+	체크박스 : <input type="checkbox" name="hobby" value="농구">농구
+	<input type="checkbox" name="hobby" value="축구">축구
+	<input type="checkbox" name="hobby" value="배구">배구 <br>
+	라디오 버튼 : <input type="radio" name="email" value="yes">동의
+	<input type="radio" name="email" value="no">비동의<br>
+	여러줄 문자 입력 : <br><textarea name="momo" rows="5" cols="50"></textarea><br>
+	리스트박스 : 
+	<select name="javava" size="3" multiple>
+		<option>자바</option>
+		<option selected>자바바</option>
+		<option>자바바바</option>
+		<option>자바바바바</option>
+	</select> <br>
+	
+	<select name="lang">
+		<optgroup label="프론트엔드">
+			<option>자바스크립트</option>
+			<option>html</option>
+			<option>css</option>
+		</optgroup>
+		<optgroup label="백엔드">
+			<option>jsp</option>
+			<option>node.js</option>
+			<option>sql</option>
+		</optgroup>
+	</select> <br>
+	
+	
+	date : <input type="date" name="date"><br>
+	datetime-local : <input type="datetime-local" name="date2"><br>
+	month : <input type="month" name="month"><br>
+	week : <input type="week" name="week"><br>
+	
+	color : <input type="color" name="color"><br>
+	number : <input type="number" name="num" min="10" max="20" step="2" value="12"><br>
+	range : <input type="range" name="ran" min="0" max="10" step="1" value="2"> <br>
+	<input type="submit" value="전송"><br>
+	<input type="reset" value="초기화"> <br>
+	
+	<input type="hidden" name="data" value="gildong">
+</form>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-sale=1">
+    <style>
+        body, ul, li, img{
+            margin: 0px;
+            padding: 0px;
+            list-style-type: none;
+        }
+        img{
+            width: 50%;
+            height: 200px;
+        }
+        body{
+            background-color: #ddd;
+        }
+        li{
+            background-color: #fff;
+            border: 1px solid gray;
+            margin-top: 5px;
+        }
+        /* 반응형 스타일 적용하기 */
+        /* 해상도: 320px~620px */
+        /* @media: all, screen, print, tv, projection..... */
+        @media all and (min-width:320px) and (max-width:600px){
+            li{
+                background-color: yellowgreen;
+            }
+            img{
+                width: 100%;
+            }
+        }
+        /* 해상도: 601px~900px */
+        @media all and (min-width:601px) and (max-width:900px){
+            li{
+                background: black;
+                color: red;
+            }
+            img{
+                width: 30%;
+            }
+        }
+        /* 해상도: 901px~ */
+        @media all and (min-width:901px) {
+            li{
+                background-color: paleturquoise;
+                color: green;
+                font-weight: 700;
+            }
+            img{
+                width: 20%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>현대자동차는 3일(목) 적재 능력을 강화한 ‘캐스퍼 밴’ 모델을 출시했다. 캐스퍼 밴은 캐스퍼의 아이코닉한 디자인과 안전∙편의사양을 그대로 계승하면서 기존 2열 시트 공간을 비워내 940 ℓ의 적재 용량을 구현한 것이 특징이다.</li>
+        <li>지난해 9월 첫 선을 보인 캐스퍼는 아이코닉한 디자인과 다채로운 칼라를 앞세워 경형 시장에 새로운 붐을 일으켰다. 특히 운전석을 포함한 전 좌석 풀 폴딩 기능을 적용함으로써 실내 공간 활용성을 확장한 점이 고객들에게 큰 호응을 이끌어냈다.</li>
+        <li>이어 경량화 공법인 핫스탬핑을 주요 부위에 집중적으로 적용함으로써 충돌 시 차체 변형을 최소화하고 고강성 경량 차체 구현으로 비틀림 강성과 평균 인장 강도를 높여 안전성을 확보했다.</li>
+        <li>캐스퍼 밴은 가솔린 1.0 엔진을 탑재해 최고 출력 76PS(마력), 최대 토크 9.7kgf·m, 복합연료소비효율 14.3km/ℓ를 달성했다.</li>
+    </ul>
+    <img src="../img/bluming.jpg"><img src="../img/2.jpg">
+</body>
+</html>

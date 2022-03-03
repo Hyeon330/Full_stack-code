@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQunftVGqOxIGZdvFaKkxMMaL5uvi9Fuk&callback=initMap&region=kr"></script>
+    <style>
+        #gmap{
+            width: 100%;
+            height: 700px;
+            border: 1px solid gray;
+        }
+        #mapSearch{
+            position: absolute;
+            z-index: 1;
+            left: 300px;
+            top: 50px;
+        }
+    </style>
+    <script>
+        function goecodeAddress(){
+            let address = document.getElementById('address');
+            if(address.value==''){
+                alert("검색할 지명 또는 빌딩명을 입력하세요.");
+                address.value="";
+                address.focus();
+                return false;
+            }
+            setMapPostition(address.value, "http://www.eclipse.org","1.jpg");
+        }
+    </script>
+</head>
+<body>
+    <div id="mapSearch">
+        <input type="text" id="address">
+        <input type="button" value="Search" id="geoSearch" onclick="goecodeAddress()">
+    </div>
+    <!-- 지명 또는 건물을 입력하기위한 폼 -->
+    <div id="gmap"></div>
+    <script>
+        let latitude;
+        let longitude;
+
+        let addr
+        let homePage;
+        let popImg;
+
+        function mapReset(){
+            latitude = 37.5729503;
+            longitude = 126.9793578;
+
+            addr = ['서울 선유도','서울 뚝섬','서울 시청','서울 잠실종합운동장'];
+            homePage = ['https://www.nate.com','https://www.naver.com','https://www.seoul.go.kr','https://stadium.seoul.go.kr/reserve/jamsil'];
+            popImg = ['1.jpg','2.jpg','3.jpg','4.jpg'];
+        }
+        let map;
+        let geoCoder;
+        function initMap() {
+            mapReset();
+
+            let mapProperties = {
+                center: new google.maps.LatLng(latitude, longitude),
+                zoom: 12,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            map = new google.maps.Map(document.getElementById("gmap"), mapProperties);
+
+            // GeoCoder : 지명과 건물명 등의 명칭을 이용하여 좌표 검색
+            geoCoder = new google.maps.Geocoder();
+
+            for(let i=0; i<addr.length; i++) {
+                setMapPostition(/*지명*/addr[i], /*홈페이지주소*/homePage[i], /*해당이미지*/popImg[i]);
+            }
+        }// initMap
+        function setMapPostition(addr2, home2, pop2) {
+            geoCoder.geocode(
+                {'address': addr2}, // 마커를 표시할 주소
+                (/*주소를 이용한 정보*/results, /*처리결과 "OK" 주소가 존재한다.*/status) => {
+                    if(status=='OK'){ // 주소가 존재할때
+                        console.log(results);
+                        // 지도의 가운데 위치를 새로 세팅
+                        map.setCenter(results[0].geometry.location);
+
+                        // 마커 표시
+                        let marker = new google.maps.Marker({
+                            position: results[0].geometry.location, // 마커 표시 위치
+                            map: map,
+                            icon: 'gmap_pin.png',
+                            title: results[0].formatted_address // 주소
+                        });
+
+                        // 위도, 경도, 주소, 이미지, 이미지링크걸기
+                        let la = results[0]['geometry']['location']['lat'](); // 위도
+                        let lo = results[0]['geometry']['location']['lng'](); // 경도
+
+                        let popMsg = "위도 : " + la +
+                                    "<br>경도 : " + lo +
+                                    "<br>주소 : " + results[0].formatted_address +
+                                    "<br><a href='" + home2 + "'><img src='../../html5_css3/html&css/img/" + pop2 + "' width='70' height='70'></a>";
+                        
+                        let info = new google.maps.InfoWindow({content:popMsg});
+
+                        // 이벤트에 의하여 대화상자 보여지도록 설정
+                        google.maps.event.addListener(marker, 'click', () => {
+                            info.open(map, marker);
+                        });
+                    } else { // 주소가 없을 때
+                        console.log("존재하지 않는 주소 입니다.")
+                    }
+                }
+            ); // geoCoder.geocode
+        }
+    </script>
+</body>
+</html>

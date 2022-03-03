@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //배열 생성하기 : 배열의 크기가 유동적이고, 배열의 데이터형이 고정적이지 않다.
+        let arr = new Array();
+        arr[2] = 100;
+        arr[5] = "홍길동";
+
+        for (let i = 0; i < arr.length; i++) {
+            document.write("arr[", i, "]=", arr[i], '<br>');
+        }
+
+        // 배열 생성시 초기값을 가질때
+        let arr2 = new Array(45, 95, 36, 2, 69, 75, 'hello');
+        let arr3 = [3232, 'apple', 1234, 'kakao'];
+
+        document.write(arr2, "<br>");
+        document.write(arr3, "<br>");
+
+        // 배열에 데이터 (마지막)추가
+        arr2.push("world");
+        document.write(arr2, "<br>");
+
+        // 배열의 문자 join하기 45/95/36/...
+        let joinData = arr2.join("/");
+        document.write(joinData);
+
+        // 배열의 데이터 (마지막)제거
+        arr.pop();
+        document.write(arr2, "<br>");
+
+        // 배열의 데이터가 왼쪽 또는 오른쪽으로 이동
+        // shift() : left <- right로 이동
+        // unshift(value) : 값이 첫 번째 자리에 추가되면서 left -> right로 이동
+        arr3.shift();
+        document.write(arr3, "<br>");
+        arr3.unshift("value");
+        document.write(arr3, "<br>");
+
+        // JSON방식으로 데이터 처리하기
+        let jsonData = {
+            username:"홍길동",
+            tel:"010-4444-5555",
+            addr:"충북 청주시 흥덕구",
+            email:{
+                firstmail:"hong@gmail.com",
+                secondmail:"hong@naver.com",
+            },
+            msg:function(){
+                console.log(jsonData.username, jsonData.tel, jsonData.addr, jsonData.email.firstmail);
+            }
+        };
+
+        document.write("이름=", jsonData.username);
+        document.write("<br>이메일=", jsonData.email);
+        console.log(jsonData.email);
+    </script>
+</body>
+</html>

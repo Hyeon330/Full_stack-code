@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+	$(function() {
+		// 상태선택자
+		
+		// 속성값이 text인 객체를 선택하기
+		$(":text").css("width","300px").css("height","40px");
+		
+		// checked속성에 대한 선택자 - checked속성이 설정되어 있을 때 해제한다.
+		$(":checked").attr("checked", false);
+		$(":selected").attr("selected", false);
+		
+		//-------------------------
+		// 컨텐츠 선택자
+		// contains() : 특정문자를 포함한 경우 선택한다.
+		$("p:contains('랜드로버')").css("background-color", "gray")
+		
+		// has() : 특정태그를 포함한 경우 선택한다.
+		$("p:has('b')").css('border','2px solid red');
+		
+		// not() : 특정선택자를 제외한 나머지를 선택한다.
+		$("p:not(:first)").css("color", "blue");
+		
+		// closest() : 조상선택자
+		$("i").closest("body").css("border","3px dotted green");
+		
+		// filter
+		$("p").filter('.c1').css("color","#fff").css("background","#000");
+		
+		//contents() : 특정선택자의 하위가 다른 태그가 포함된 경우 선택자
+		$("p").contents().css("color", "red");
+	})
+</script>
+</head>
+<body>
+	<div>
+		<p>가나다라마바사아자차카타파하<b>가나다라마바사아자차카타파하</b>가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하</p>
+		<p class="c1">긴 문장 긴 문장 긴 문장 긴 문장 긴 문장 긴 문장 긴 문장 긴 문장 긴 문장 긴 문장 긴 문장 긴 문장 긴 문장 긴 문장 긴 문장 긴 문장 긴 문장 긴 문장긴 문장 긴 문장 긴 문장 긴 문장 긴 문장 긴 문장 긴 문장 긴 문장 긴 문장 긴 문장 </p>
+		<p class="c1">재규어 랜드로버 코리아(대표 로빈 콜건)는 <i>랜드로버</i>의 74년 헤리티지를 계승하는 아이코닉한 오프로더 올 뉴 디펜더 110 P400 X 모델의 사전 계약을 실시한다고 밝혔다. 재규어 랜드로버 코리아는 경쟁력 강화를 위한 4P(Product· Price· Powertrain· PIVI Pro) 전략에 따라 지난해 출시한 인제니움 I4 가솔린 모델 디펜더 110 P300 X-Dynamic SE에 이어 고성능 인제니움 I6 가솔린 모델인 P400 X를 선보이며 가솔린 파워트레인 라인업을 강화한다. 올 뉴 디펜더 110 P400 X는 궁극의 오프로드 성능을 자랑하는 SVX의 DNA를 받아 다이내믹하고 강인한 오프로더의 이미지가 더해지면서 고성능 모델만의 차별화된 매력을 자랑한다.</p>
+	</div>
+	<div>
+		<form action="#">
+			<label>이름</label>
+			<input type="text" name="username" id="username"><br>
+			<label>연락처</label>
+			<input type="text" name="tel" id="tel"><br>
+			<label>사용자 동의 여부</label>
+			<input type="radio" name="accept" value="yes" checked>동의
+			<input type="radio" name="accept" value="no">비동의<br>
+			<label>자주가는 사이트</label>
+			<select name="site" id="site">
+				<option value="not"> == 직접선택 == </option>
+				<option value="daum" selected>daum.net</option>
+				<option value="google">nate.com</option>
+				<option value="naver">naver.com</option>
+			</select>
+		</form>
+	</div>
+</body>
+</html>

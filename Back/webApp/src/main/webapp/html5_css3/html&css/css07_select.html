@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        /*
+        구조선택자
+            2n : 짝수번째 객체, 2n+1 : 홀수번째 객체, 3n : 3의 배수의 번째 객체
+            :nth-chile(n) : 자손의 n번째 태그
+            :first-child : 자손의 첫 번째 태그
+            :last-child : 자손의 마지막 태그
+        */
+        #lst > li:nth-child(3n) {
+            background-color: #ddd;
+        }
+        #lst > li:first-child {
+            color: orange;
+        }
+        #lst > li:last-child {
+            color: blue;
+            font-size: 1.2em;
+        }
+        /*
+        :first-of-type : 처음객체
+        :last-of-type : 마지막객체
+        :nth-of-type(n) : 2n짝수번째, 2n+1홀수번쨰
+        */
+        #lst2 > li:nth-of-type(2n){
+            background-color: yellow;
+        }
+        #lst2 > li:nth-of-type(2n+1){
+            background-color: orange;
+        }
+        #lst2 > li:first-of-type{
+            font-size: 2em;
+        }
+        #lst2 > li:last-of-type{
+            color: purple;
+        }
+
+        /*
+        텍스트 스타일
+            ::first-letter : 문단의 첫번째 문자에 스타일 적용
+            ::first-line : 첫번째 줄에 적용하는 스타일
+            ::selection : 선택한 문자의 스타일
+        */
+        #txt::first-letter{
+            font-size: 2em;
+            background: #ddd;
+            color: rebeccapurple;
+            font-weight: 700;
+        }
+        #txt::first-line{
+            text-decoration: underline;
+        }
+        #txt::selection{
+            color: red;
+            background: #000;
+        }
+        body{
+            margin: 30px;
+        }
+        #lst > li{
+            /* 그림자 설정 */
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            border: 1px solid #bbb;
+
+            /* 박스 또는 글자에 그람지 표시 */
+            /* 오른쪽 아래 투명 색상 */
+            box-shadow: -10px -5px 5px gray;
+            text-shadow: 3px 3px 3px green;
+        }
+        #txt {
+            /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#3f4c6b+0,3f4c6b+100;Blue+Grey+Flat */
+            background: #3f4c6b; /* Old browsers */
+            background: -moz-linear-gradient(top,  #3f4c6b 0%, #3f4c6b 100%); /* FF3.6-15 */
+            background: -webkit-linear-gradient(top,  #3f4c6b 0%,#3f4c6b 100%); /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to bottom,  #3f4c6b 0%,#3f4c6b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3f4c6b', endColorstr='#3f4c6b',GradientType=0 ); /* IE6-9 */
+        }
+    </style>
+</head>
+<!--
+    html 속성
+    oncontextmenu : 마우스 오른쪽키 사용제어
+    onselectstart : 선택시작 불가능(드래그)
+    ondragstart : 드래그 시작 불가능
+-->
+<body oncontextmenu="return false" onselectstart="return false">
+    <ul id="lst">
+        <li>꽃1</li>
+        <li>꽃2</li>
+        <li>꽃3</li>
+        <li>꽃4</li>
+        <li>꽃5</li>
+        <li>꽃6</li>
+        <li>꽃7</li>
+        <li>꽃8</li>
+        <li>꽃9</li>
+    </ul>
+    <ul id="lst2">
+        <li>꽃1</li>
+        <li>꽃2</li>
+        <li>꽃3</li>
+        <li>꽃4</li>
+        <li>꽃5</li>
+        <li>꽃6</li>
+        <li>꽃7</li>
+        <li>꽃8</li>
+        <li>꽃9</li>
+    </ul>
+    <div id="txt">
+    정말 웃겨서 숨을 쉴 수 없습니다. 맙소사, 이와 같은 드립은 어디서 오는 것입니까? 혹여 가보로 내려옵니까? 나의 공중제비를 멈추게 하십시오! 당신과 같은 재미있는 분들 덕분에 정말 웃겨서 숨을 쉴 수 없습니다. 당신과 같은 재미있는 분들 덕분에 인생이 굉장히 재미있습니다. 그러한 드립은 비밀히 보관하지 말고, 재빨리 내용물을 꺼내 주십시오. 세상에 이런드립이 다 있겠습니까? 드립 학원의 연줄이 평균 이상입니까? 완전한 드립 기계가 틀림 없습니다. 두부, 흉부, - 모두 파열시키고 말았습니다. 나의 배꼽을 보상해 내십시오! 이것은 살인 드립입니다! 호흡이 곤란합니다! 제발 목숨을 살려 주십시오!
+    </div>
+</body>
+</html>

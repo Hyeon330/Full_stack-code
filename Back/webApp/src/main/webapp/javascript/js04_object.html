@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        function htmlCtr() {
+            // document.getElementById("i").src = "../html5_css3/html&css/img/1.jpg";
+            // document.getElementById("i").style.border = "3px solid red"
+            // document.getElementById("i").title = "이미지에 마우스 오버중~~";
+
+            var obj = document.getElementById("i");
+            obj.src = "../html5_css3/html&css/img/1.jpg";
+            obj.style.border = "3px solid red"
+            obj.title = "이미지에 마우스 오버중~~";
+            console.log(obj.src);
+        }
+        function imgChange() {
+            document.querySelector("#i").src = "../html5_css3/html&css/img/3.jpg"
+        }
+    </script>
+</head>
+<body>
+    <img src="../html5_css3/html&css/img/3.jpg" id="i" onmouseover="htmlCtr()" onmouseout="imgChange()">
+</body>
+</html>

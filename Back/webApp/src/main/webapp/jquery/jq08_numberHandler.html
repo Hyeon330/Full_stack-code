@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        body{
+            height: 2000px;
+        }
+        div:first-of-type{
+            border: 1px solid red;
+        }
+        div:nth-of-type(2){
+            width: 300px;
+            height: 450px;
+            background-color: lightblue;
+            border: 1px solid gray;
+        }
+        div:last-of-type{
+            position: absolute;
+            background-color: pink;
+            top: 100px;
+            margin: 50px;
+            padding: 20px;
+            right: 100px;
+            border: 2px solid red;
+        }
+    </style>
+    <script>
+        $(()=>{
+            $("div").last().append("<h1>수치함수</h1>")
+            // 폭(width())과 높이(height())를 구하는 함수
+            let w = $("div").eq(1).width();
+            let h = $("div:eq(1)").height();
+            $("div:eq(1)").append("<h3>width="+w+", height="+h+"</h3>")
+
+            // innerWidth(), innerHeight() -> padding을 포함한 폭과 높이;
+            // outerWidth(), outerHeight() -> border, padding을 포함한 폭과 높이;
+
+            let d = $("div:eq(2)");
+            let iW = d.innerWidth();
+            let iH = d.innerHeight();
+            let oW = d.outerWidth();
+            let oH = d.outerHeight();
+
+            $("div:eq(1)").append("<h3>innerWidth="+iW+", innerHeight="+iH+"</h3>");
+            $("div:eq(1)").append("<h3>outerWidth="+oW+", outerHeight="+oH+"</h3>");
+
+            // position() : left와 top좌표를 구한다.
+            let left = d.position().left;
+            let top = d.position().top;
+            $("div:eq(1)").append("<h3>left=" + left + ", top=" + top + "</h3>");
+
+            // offset() : margin, border을 제외하고 left와 top좌표를 구한다.
+            let oleft = d.offset().left;
+            let otop = d.offset().top;
+            $("div:eq(1)").append("<h3>offset.left="+oleft+", offset.top="+otop+"</h3>");
+
+            //7. scroll바의 위치를 이동하거나 위치를 구할 때
+            //$(document).ready(function(){});
+            $(window).scrollTop(200); //내장객체에는 선택자에 따온표 넣지 않음
+            $(window).scrollLeft(200);
+        });
+    </script>
+</head>
+<body>
+    <div>수치 조작 메소드</div>
+    <div>
+        <h1>1234567</h1>
+    </div>
+    <div></div>
+    <img src="../html5_css3/html&css/img/1.jpg">
+    <img src="../html5_css3/html&css/img/2.jpg">
+</body>
+</html>

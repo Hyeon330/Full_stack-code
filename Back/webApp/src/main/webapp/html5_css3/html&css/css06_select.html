@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <style>
+        /*
+        동위선택자: 기준이 되는 선택자와 같은 위치에 있는 태그를 선택
+            + : 선택자의 다음 객체를 선택
+            ~ : 선택자의 다음에 있는 모든 객체
+        */
+        h1+h2{
+            background-color: pink;
+        }
+        h1~h2{
+            color: blue;
+        }
+        /*
+        상태선택자
+            focus : 커서가 컴퍼넌트를 선택하면
+            disabled : 비활성화된 컴퍼넌트에 적용한다.
+            checked : 컴퍼넌트가 checked일 때 적용
+            enabled : 컴퍼넌트가 활성화일 때
+        */
+        #username:focus{
+            color: orange;
+            font-size: 1.5em;
+        }
+        input:disabled{
+            border: 2px solid red;
+        }
+        input:checked{
+            width: 50px;
+            height: 50px;
+        }
+
+    </style>
+</head>
+<body>
+    <form action="#">
+        이름 <input type="text" name="username" id="username" value="Lee Hyeonsu" readonly /><br>
+        아이디 <input type="text" name="userid" id="userid" value="hyeon330" disabled /><br>
+        관심 :
+        <input type="checkbox" name="interest"> 축구
+        <input type="checkbox" name="interest"> 축구
+        <input type="checkbox" name="interest"> 축구
+        <input type="checkbox" name="interest"> 축구 <br>
+        취미 : 
+        <input type="radio" name="hobby"> 영화감상
+        <input type="radio" name="hobby"> 영화감상
+        <input type="radio" name="hobby"> 영화감상
+        <input type="radio" name="hobby"> 영화감상 <br>
+    </form>
+    <h1>동위선택자 텍스트 111111</h1>
+    <h2>동위선택자 텍스트 222222</h2>
+    <h2>동위선택자 텍스트 333333</h2>
+    <h2>동위선택자 텍스트 444444</h2>
+    <h2>동위선택자 텍스트 555555</h2>
+    <h2>동위선택자 텍스트 666666</h2>
+    <h3>~~~~~~~~~~~~~~~~~~~~~~~~</h3>
+    <h1>동위선택자 텍스트 AAAAAA</h1>
+    <h2>동위선택자 텍스트 BBBBBB</h2>
+    <h2>동위선택자 텍스트 CCCCCC</h2>
+    <h2>동위선택자 텍스트 DDDDDD</h2>
+    <h2>동위선택자 텍스트 EEEEEE</h2>
+    <h2>동위선택자 텍스트 FFFFFF</h2>
+    <h3>~~~~~~~~~~~~~~~~~~~~~~~~</h3>
+
+</body>
+</html>

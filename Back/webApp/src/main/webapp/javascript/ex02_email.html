@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        function email(){
+            let mail = document.getElementById("email").value;
+            let atMarkStart = mail.indexOf("@");
+            var atMarkEnd = mail.lastIndexOf("@");
+            var point = mail.indexOf(".");
+            if( mail.search("@")==-1 ||
+                atMarkStart!=atMarkEnd || 
+                point==-1 ||
+                point < atMarkStart||
+                Math.abs((atMarkStart-point)<2)){
+                alert("이메일을 잘 못 입력 하였습니다.");
+                return;
+            }
+            let arr = mail.split("@");
+            document.getElementById("id").value=arr[0];
+            document.getElementById("domain").value=arr[1];
+
+            document.getElementById("email").value = "";
+        }
+    </script>
+    <style>
+        #main{
+            width: 350px;
+            padding: 20px;
+            margin: 50px auto;
+            border: 1px solid #ddd;
+            overflow: auto;
+            text-align: center;
+        }
+
+        #main > div {
+            float: left;
+            width: 50%;
+        }
+
+        #main > div > input {
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        이메일
+        <input type="text" name="email" id="email">
+        <input type="button" value="확인" onclick="email();">
+        <hr>
+        <div>
+            아이디<br>
+            <input type="text" name="id" id="id">
+        </div>
+        <div>
+            도메인<br>
+            <input type="text" name="domain" id="domain">
+        </div>
+    </div>
+</body>
+</html>
