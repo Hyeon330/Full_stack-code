@@ -31,8 +31,8 @@
 </head>
 <body>
 <form method="post" action="<%=request.getContextPath()%>/j02_response_jdbc/empFormOk.jsp">
-	사원번호 : <input type="text" name="empno"><br>
-	사원명 : <input type="text" name="ename"><br>
+	사원번호 : <input type="text" name="empno" value="${param.no}"><br>
+	사원명 : <input type="text" name="ename" value="${param.name}"><br>
 	부서코드 : 
 	<select name="deptno">
 		<%while(rs.next()){ %>

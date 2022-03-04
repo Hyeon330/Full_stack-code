@@ -24,6 +24,7 @@
 <c:forEach var="data" items="${arr}">
 	[${data}],
 </c:forEach>
+
 <h2>컬렉션을 이용한 반복문</h2>
 <%
 	List<String> lst = new ArrayList<String>();
@@ -44,6 +45,7 @@
 	<li>${vv}</li>
 </c:forEach>
 </ul>
+
 <h2>HashMap의 컬렉션으로 반복문 처리</h2>
 <%
 	Map<String, String> map = new HashMap<>();
@@ -63,5 +65,6 @@
 	<li>key : ${vvv.key}, value : ${vvv.value}</li>
 </c:forEach>
 </ul>
+
 </body>
 </html>
