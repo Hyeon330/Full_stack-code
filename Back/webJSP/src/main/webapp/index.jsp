@@ -5,6 +5,7 @@
 <%@ page import="java.io.BufferedReader" %>
 <!-- jsp코드가 있던 곳은 space가 존재하기 때문에 space를 없앨 수 있다. -->
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%! // 선언부(!) : 변수 또는 메소드
 	String username="홍길동";
 	public String gugudan(int dan) {
@@ -46,6 +47,28 @@
 	</li>
 	<li><a href="<%=request.getContextPath()%>/j02_response_jdbc/empForm.jsp">사원등록</a></li>
 </ul>
+<hr>
+<h3>jsp에서 세션변수 값 출력</h3>
+userid : <%=session.getAttribute("userid")%><br>
+username : <%=session.getAttribute("username")%><br>
+grade : <%=session.getAttribute("grade")%><br>
+<hr>
+<h3>jstl에서 세션변수 값 출력</h3>
+userid : ${userid}<br>
+username : ${username}<br>
+grade : ${grade}
+<hr>
+
+<h3>jstl을 이용한 로그인 로그아웃</h3>
+<c:if test="${userid==null || userid==''}">
+	<a href="/webJSP/j04_session/sessionSave.jsp">로그인</a>
+</c:if>
+<c:if test="${userid!=null && userid!=''}">
+	<a href="/webJSP/j04_session/sessionDel.jsp">로그아웃</a>
+</c:if>
+
+<hr>
+
 <%  // 스크립트릿
 	// 변수선언
 	// 계산

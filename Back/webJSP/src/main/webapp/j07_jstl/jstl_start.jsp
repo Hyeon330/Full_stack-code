@@ -15,6 +15,8 @@
 </div>
 <ol>
 	<li><a href="jstl01_set.jsp">setTag</a></li>
+	<li><a href="jstl02_if.jsp?pageNum=5&title=테스트&hotKey=우크라이나">ifTag</a></li>
+	<li><a href="jstl03_forEach.jsp">forEach : 반복문</a></li>
 </ol>
 </body>
 </html>
