@@ -14,4 +14,7 @@ public interface MemberDAO {
 	
 	// 회원정보수정 DB
 	public int memberUpdate(MemberVO vo);
+	
+	// 아이디 중복검사
+	public int idCheck(String userid);
 }

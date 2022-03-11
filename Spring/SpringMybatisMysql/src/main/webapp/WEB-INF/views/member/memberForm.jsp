@@ -15,6 +15,38 @@
 }
 </style>
 <script src="/myapp/js/member.js"></script>
+<script>
+	$(function(){
+		// 아이디 중복검사
+		$("#userid").keyup(function(){
+			let userid = $("#userid").val();
+			if(userid.length!=0 && userid.length>=6){
+				var url = "/myapp/member/memberIdCheck";
+				$.ajax({
+					url: url,
+					data: "userid="+userid,
+					type: "POST",
+					success:function(result){
+						if(result>0){ // 사용불가하다
+							$("#chk").html("중복된 아이디가 있습니다.");
+							$("#idchk").val("N");
+							$("#chk").css("color","red");
+						}else { // 사용가능하다.
+							$("#chk").html("사용가능한 아이디 입니다.");
+							$("#idchk").val("Y");
+							$("#chk").css("color","blue");
+						}
+					}
+				});
+			} else { // 사용불가하다.
+				$("#chk").html("사용 불가능한 아이디 입니다.");
+				$("#idchk").val("N");
+				$("#chk").css("color","red");
+			}
+			
+		});
+	});
+</script>
 
 <div class="container">
 	<h1>회원가입 폼</h1>
@@ -24,6 +56,8 @@
 			<li>
 				<input type="text" name="userid" id="userid" placeholder="아이디입력">
 				<input type="button" value="중복확인">
+				<span id='chk'></span>
+				<input type="text" id="idchk" value="N">
 			</li>
 			<li>비밀번호</li>
 			<li><input type="password" name="userpwd" id="userpwd" placeholder="비밀번호입력"></li>

@@ -87,11 +87,12 @@ public class AjaxController {
 		return txt;
 	}
 	
-	@RequestMapping(value="/ajaxForm", method=RequestMethod.POST)
-	public String ajaxForm(ProductVO vo) {
-		System.out.println(vo.getProName());
-		System.out.println(vo.getPrice());
+	@RequestMapping(value="/ajaxForm", method=RequestMethod.POST, produces="application/text;charset=utf-8")
+	@ResponseBody
+	public String ajaxForm(String proName, int price) {
+		System.out.println(proName);
+		System.out.println(price);
 		
-		return "전송완료";
+		return "전(송)완(료)!!! 근!!!";
 	}
 }

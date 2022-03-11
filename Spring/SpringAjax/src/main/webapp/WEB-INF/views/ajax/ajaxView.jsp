@@ -142,13 +142,30 @@
 				});
 			});
 			
-			$("#pFrm").submit(finction(){
+			/* $("#pFrm").submit(finction(){
 				var url = "/myapp/ajaxForm";
 				// 폼의 데이터를 json으로 변환
 				var params = $("#pFrm").serialize();
 				
 				$.ajax({
 					url: url,
+					type: "POST",
+					data: params,
+					success: function(r){
+						$("#resultView").text(r);
+					}
+				});
+			}); */
+			
+			$("#pFrm").submit(function(){
+				event.preventDefault();
+				var url = "/myapp/ajaxForm";
+				// 폼의 데이터를 json으로 변환
+				var params = $("#pFrm").serialize();
+				
+				$.ajax({
+					url: url,
+					type: "POST",
 					data: params,
 					success: function(r){
 						$("#resultView").text(r);
@@ -166,7 +183,7 @@
 <button id="ajaxMap">ajax(Map)</button>
 <button id="ajaxJson">ajax(Json)</button>
 <hr>
-<form method="post" id="pFrm" action="">
+<form method="post" id="pFrm">
 	상품명 : <input type="text" name="proName"><br>
 	가격 : <input type="text" name="price"><br>
 	<input type="submit" value="등록">

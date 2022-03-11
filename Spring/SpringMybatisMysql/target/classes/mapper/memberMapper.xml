@@ -22,4 +22,9 @@
 		set username=#{username}, tel=#{tel}, email=#{email}
 		where userid=#{userid} and userpwd=#{userpwd}
 	</update>
+	<select id="idCheck" resultType="int">
+		select count(*) cnt 
+		from member 
+		where userid=#{param1};
+	</select>
 </mapper>

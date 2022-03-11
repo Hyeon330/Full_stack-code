@@ -32,4 +32,9 @@ public class MemberServiceImpl implements MemberService {
 	public int memberUpdate(MemberVO vo) {
 		return dao.memberUpdate(vo);
 	}
+
+	@Override
+	public int idCheck(String userid) {
+		return dao.idCheck(userid);
+	}
 }
