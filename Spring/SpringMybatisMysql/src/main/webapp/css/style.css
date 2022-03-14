@@ -6,7 +6,7 @@ body, ul, li{
 	list-style-type: none;
 }
 
-a:link, a:visited, a:hover {
+.mainMenu a:link, .mainMenu a:visited, .mainMenu a:hover {
 	text-decoration: none;
 	color: white;
 }
@@ -14,7 +14,7 @@ a:link, a:visited, a:hover {
 .top {
 	width: 1000px;
 	text-align: right;
-	background-color: rgb(0,0,128);
+	background-color: #ddd;
 	margin: 0 auto;
 }
 
