@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <style>
+/*리스트*/
+.boardList{
+	overflow: auto;
+}
 .boardList > li{
 	float: left;
 	height: 40px;
@@ -10,11 +14,43 @@
 }
 .boardList > li:nth-child(5n+2) {
 	width: 60%;
+	white-space: nowrap; /*줄안바꿈*/
+	overflow: hidden; /*넘친 내용 숨기기*/
+	text-overflow: ellipsis;/*넘친 내용 있으면 ... 표시*/
+}
+
+/*페이징*/
+.paging {
+	margin: 30px 0px;
+	height: 30px;
+	overflow: auto;
+}
+.paging > li{
+	float: left;
+	padding-right: 30px;
+}
+
+/*검색*/
+#searchFrm{
+	padding: 20px 200px;
 }
 </style>
+<script>
+	$(function(){
+		$("#searchFrm").submit(function(){
+			if($("#searchWord").val()==""){
+				alert("검색어를 입력하세요...");
+				return false;
+			}
+		})
+	})
+</script>
 <div class="container">
 	<h1>게시판 목록</h1>
 	<div><a href="<%=request.getContextPath()%>/board/boardWrite">글쓰기</a></div>
+	<div>
+		총 레코드 : ${pVO.totalRecord }, ${pVO.totalPage }/${pVO.pageNum }
+	</div>
 	<ul class="boardList">
 		<li>번호</li>
 		<li>제목</li>
@@ -22,34 +58,62 @@
 		<li>조회수</li>
 		<li>등록일</li>
 		
-		<li>100</li>
-		<li><a href="#">자가용...</a></li>
-		<li>userid</li>
-		<li>0</li>
-		<li>03-14 12:50</li>
-		
-		<li>99</li>
-		<li><a href="#">자가용...</a></li>
-		<li>userid</li>
-		<li>0</li>
-		<li>03-14 12:50</li>
-		
-		<li>98</li>
-		<li><a href="#">자가용...</a></li>
-		<li>userid</li>
-		<li>0</li>
-		<li>03-14 12:50</li>
-		
-		<li>97</li>
-		<li><a href="#">자가용...</a></li>
-		<li>userid</li>
-		<li>0</li>
-		<li>03-14 12:50</li>
-		
-		<li>96</li>
-		<li><a href="#">자가용...</a></li>
-		<li>userid</li>
-		<li>0</li>
-		<li>03-14 12:50</li>
+		<c:forEach var="vo" items="${list}">
+			<li>${vo.no }</li>
+			<li><a href="/myapp/board/boardView?no=${vo.no}">${vo.subject}</a></li>
+			<li>${vo.userid }</li>
+			<li>${vo.hit }</li>
+			<li>${vo.writedate }</li>
+		</c:forEach>
 	</ul>
+	
+	<!-- 페이징 -->
+	<ul class="paging">
+	
+		<!-- 이전 페이지 -->
+		<c:if test="${pVO.pageNum<=pVO.onePageCount}">
+			<li>prev</li>
+		</c:if>
+		<c:if test="${pVO.pageNum>pVO.onePageCount}">
+			<li><a href="/myapp/board/boardList?pageNum=${pVO.pageNum-pVO.onePageCount}<c:if test='${pVO.searchWord!=null}'>&searchKey=${pVO.searchKey}&searchWord=${pVO.searchWord}</c:if>">prev</a></li>
+		</c:if>
+		<!-- 페이지 번호 -->
+		<c:forEach var="p" begin="${pVO.startPage}" end="${pVO.startPage+pVO.onePageCount-1}">
+			<!-- 총 페이지 수 보다 출력할 페이지 번호가 작을 때 -->
+			<c:if test="${p<=pVO.totalPage }">
+				<c:if test="${p==pVO.pageNum}">
+					<li>${p}</li>
+				</c:if>
+				<c:if test="${p!=pVO.pageNum}">
+					<li><a href="/myapp/board/boardList?pageNum=${p}<c:if test='${pVO.searchWord!=null}'>&searchKey=${pVO.searchKey}&searchWord=${pVO.searchWord}</c:if>">${p}</a></li>
+				</c:if>
+			</c:if>
+		</c:forEach>
+		<!-- totalPage%startPage<5 -->
+		<!-- 다음 페이지 -->
+		<c:if test="${pVO.totalPage-pVO.startPage<pVO.onePageCount }">
+			<li>next</li>
+		</c:if>
+		<c:if test="${pVO.totalPage-pVO.startPage>=pVO.onePageCount }">
+			<c:if test="${pVO.pageNum+pVO.onePageCount>pVO.totalPage}">
+				<li><a href="/myapp/board/boardList?pageNum=${pVO.totalPage}<c:if test='${pVO.searchWord!=null}'>&searchKey=${pVO.searchKey}&searchWord=${pVO.searchWord}</c:if>">next</a></li>
+			</c:if>
+			<c:if test="${pVO.pageNum+pVO.onePageCount<=pVO.totalPage}">
+				<li><a href="/myapp/board/boardList?pageNum=${pVO.pageNum+pVO.onePageCount}<c:if test='${pVO.searchWord!=null}'>&searchKey=${pVO.searchKey}&searchWord=${pVO.searchWord}</c:if>">next</a></li>
+			</c:if>
+			
+		</c:if>
+	</ul>
+	<!-- 검색 -->
+	<div>
+		<form method="get" action="/myapp/board/boardList" id="searchFrm">
+			<select name="searchKey">
+				<option value="subject">제목</option>
+				<option value="content">글내용</option>
+				<option value="userid">글쓴이</option>
+			</select>
+			<input type="text" name="searchWord" id="searchWord">
+			<input type="submit" value="검색">
+		</form>
+	</div>
 </div>

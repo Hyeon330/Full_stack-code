@@ -13,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.campus.myapp.service.MemberService;
 import com.campus.myapp.vo.MemberVO;
-import com.mysql.cj.Session;
 
 // 회원가입, 회원정보수정, 로그인, 로그아웃
 @Controller
