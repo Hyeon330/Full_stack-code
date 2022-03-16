@@ -1,10 +1,14 @@
 package com.campus.myapp.controller;
 
+import java.nio.charset.Charset;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -103,5 +107,62 @@ public class BoardController {
 		mav.setViewName("board/boardEdit");
 		
 		return mav;
+	}
+	
+	// 글 수정
+	@PostMapping("boardEditOk")
+	public ResponseEntity<String> boardEditOk(BoardVO vo, HttpSession session) {
+		ResponseEntity<String> entity = null;
+		HttpHeaders headers = new HttpHeaders();
+		
+		headers.setContentType(new MediaType("text", "html", Charset.forName("utf-8")));
+		vo.setUserid((String)session.getAttribute("logId"));
+		try {
+			int result = service.boardUpdate(vo);
+			if(result>0) {//수정성공
+				entity = new ResponseEntity<String>(getEditSuccessMessage(vo.getNo()), headers, HttpStatus.OK);
+			} else {
+				entity = new ResponseEntity<String>(getEditFailMessage(), headers, HttpStatus.BAD_REQUEST);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<String>(getEditFailMessage(), headers, HttpStatus.BAD_REQUEST);
+		}
+		return entity;
+	}
+	
+	// 글 삭제
+	@GetMapping("boardDel")
+	public ModelAndView boardDel(int no, HttpSession session) {
+		String userid = (String)session.getAttribute("logId");
+		ModelAndView mav = new ModelAndView();
+		int result = service.boardDelete(no, userid);
+		
+		if(result>0) {
+			mav.setViewName("redirect:boardList"); // list로 이동하는 컨트롤러를 호출
+		} else {
+			mav.addObject("no", no);
+			mav.setViewName("redirect:boardView");
+		}
+		
+		return mav;
+	}
+	
+	// 글 수정 메시지
+	public String getEditFailMessage() {
+		String msg = "<script>";
+		msg += "alert('글 수정 실패하였습니다.\\n수정폼으로 이동합니다.');";
+		msg += "history.back();";
+		msg += "</script>";
+		
+		return msg;
+	}
+	public String getEditSuccessMessage(int no) {
+		String msg = "<script>";
+		msg += "alert('글을 수정하였습니다.');";
+		msg += "location.href='/myapp/board/boardView?no="+no+"'";
+		msg += "</script>";
+		
+		return msg;
 	}
 }

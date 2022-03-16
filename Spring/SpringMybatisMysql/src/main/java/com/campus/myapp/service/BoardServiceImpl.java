@@ -40,4 +40,13 @@ public class BoardServiceImpl implements BoardService {
 		dao.hitCount(no);
 	}
 
+	@Override
+	public int boardUpdate(BoardVO vo) {
+		return dao.boardUpdate(vo);
+	}
+
+	@Override
+	public int boardDelete(int no, String userid) {
+		return dao.boardDelete(no, userid);
+	}
 }

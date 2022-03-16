@@ -15,4 +15,8 @@ public interface BoardService {
 	public BoardVO boardSelect(int no);
 	
 	public void hitCount(int no);
+	
+	public int boardUpdate(BoardVO vo);
+	
+	public int boardDelete(int no, String userid);
 }

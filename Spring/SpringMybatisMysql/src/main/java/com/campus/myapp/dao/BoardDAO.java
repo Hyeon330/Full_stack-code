@@ -17,4 +17,8 @@ public interface BoardDAO {
 	public BoardVO boardSelect(int no);
 	// 조회수 증가
 	public void hitCount(int no);
+	// 글 수정
+	public int boardUpdate(BoardVO vo);
+	// 글 삭제
+	public int boardDelete(int no, String userid);
 }
