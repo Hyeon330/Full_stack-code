@@ -7,7 +7,6 @@
 		padding: 10px 5px;
 	}
 </style>
-<script src="https://cdn.ckeditor.com/4.17.2/standard/ckeditor.js"></script>
 <script>
 	$(function(){
 		CKEDITOR.replace("content");

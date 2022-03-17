@@ -10,6 +10,14 @@ public class DataVO {
 	private String filename1;
 	private String filename2;
 	
+	// 삭제할 파일명 담을 변수
+	private String delFile[];
+	
+	@Override
+	public String toString() {
+		return userid+", "+subject+", "+content+", "+filename1+", "+filename2;
+	}
+	
 	public int getNo() {
 		return no;
 	}
@@ -52,4 +60,13 @@ public class DataVO {
 	public void setFilename2(String filename2) {
 		this.filename2 = filename2;
 	}
+
+	public String[] getDelFile() {
+		return delFile;
+	}
+
+	public void setDelFile(String[] delFile) {
+		this.delFile = delFile;
+	}
+	
 }

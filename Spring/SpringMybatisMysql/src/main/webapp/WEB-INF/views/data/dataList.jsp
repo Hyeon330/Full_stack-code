@@ -22,7 +22,7 @@
 </style>
 <div class="container">
 	<h1>자료실 목록</h1>
-	<a href="#">글쓰기</a>
+	<a href="${url}/data/write">글쓰기</a>
 	<ul id="dataList">
 		<li>번호</li>
 		<li>제목</li>
@@ -30,10 +30,19 @@
 		<li>첨부파일</li>
 		<li>날짜</li>
 		
-		<li>100</li>
-		<li>제목123</li>
-		<li>goguma</li>
-		<li>##</li>
-		<li>03-04 15:21</li>
+		<c:forEach var="vo" items="${list}">
+			<li>${vo.no }</li>
+			<li><a href="${url}/data/view?no=${vo.no}">${vo.subject }</a></li>
+			<li>${vo.userid}</li>
+			<li>
+				<!-- 첫번쨰 첨부파일 -->
+				<a href="${url}/upload/${vo.filename1}" download><img src="${url}/img/disk.png" title="${vo.filename1}"></a>
+				<!-- 두번째 첨부파일 -->
+				<c:if test="${vo.filename2!=null && vo.filename2!=''}">
+					<a href="${url}/upload/${vo.filename2}" download><img src="${url}/img/disk.png" title="${vo.filename2}"></a>
+				</c:if>
+			</li>
+			<li>${vo.writedate}</li>
+		</c:forEach>
 	</ul>
 </div>
