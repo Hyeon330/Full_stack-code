@@ -1,0 +1,62 @@
+#sidebar {
+  left: 0px;
+  height: 100%;
+  width: 210px;
+  border-right: 2px solid #ccc;
+  overflow: hidden;
+}
+#sideTitle {
+  padding: 0 10px;
+  border-bottom: 2px solid #aaa;
+}
+#sideTitle > span {
+  line-height: 50px;
+  font-size: 22px;
+  font-weight: bold;
+}
+#sideTitle > div {
+  cursor: pointer;
+  line-height: 52px;
+  font-size: 18px;
+  float: right;
+}
+#sideMain {
+  width: 100%;
+  overflow-x: hidden;
+}
+#sideMain::-webkit-scrollbar {
+  width: 10px;
+}
+#sideMain::-webkit-scrollbar-thumb {
+  background-color: #aaa;
+  border-radius: 100px;
+}
+#sideMain::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0);
+}
+#listbox {
+  width: 200px;
+}
+.list {
+  width: 180px;
+  padding: 4px;
+  margin: 10px 0 10px 14px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+.list:hover {
+  background-color: #eee;
+}
+.list.click {
+  background-color: #eee;
+}
+.list > li {
+  font-size: 18px;
+  height: 22px;
+  line-height: 22px;
+}
+.list > li:first-child {
+  font-size: 22px;
+  font-weight: bold;
+}

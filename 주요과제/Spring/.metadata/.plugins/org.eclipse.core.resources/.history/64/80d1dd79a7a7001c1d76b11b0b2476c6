@@ -1,0 +1,21 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+body, div, p, ul, li {
+	margin: 0;
+	padding: 0;
+}
+ul, li{
+	list-style-type: none;
+}
+ul {
+	background: #fff;
+}
+body {
+	background-color: #f0f2f5;
+}
+body > * {
+	font-family: 'Do Hyeon', sans-serif;
+}
+#main > div{
+	float: left;
+}

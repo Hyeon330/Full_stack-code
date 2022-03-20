@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="css/signup.css">
+    <script src="js/signup.js"></script>
+</head>
+<body>
+    <div id="page">
+        <form id="signin-form" method="post" action="abc.html">
+            <div>
+                <h1>회원가입</h1>
+                <div>
+                    <input type="text" id="userid" name="userid" placeholder="아이디">
+                    <btn id="userid-ck" type="button" class="btn-sm btn-secondary">중복확인</btn>
+                </div>
+                <div id="id-verify"><span style="color: gray;">첫 글자 영문, 숫자 사용(6~20자리)</span></div>
+                <input type="password" id="userpw" name="userpw" placeholder="비밀번호">
+                <input type="password" id="userpw-ck" name="userpw-ck" placeholder="비밀번호 확인">
+                <div id="pw-verify"><span style="color: gray;">영문+숫자+특수문자 사용(8~20자리)</span></div>
+                <input type="text" id="username" name="username" placeholder="이름/닉네임(2~12글자)" maxlength="12" required>
+                <div id="telNum">tel : <input type="text" id="tel1" name="tel1" maxlength="3" required> - <input type="text" id="tel2" name="tel2" maxlength="4" required> - <input type="text" id="tel3" name="tel3" maxlength="4" required></div>
+                <input type="text" id="email" name="email" placeholder="이메일" required>
+                <div>
+                    <btn id="toHome" type="button" class="btn-sm">홈</btn>
+                    <btn id="signup" type="submit" class="btn-sm btn-secondary">가입</btn>
+                    <btn id="reset" type="reset" class="btn-sm">초기화</btn>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
