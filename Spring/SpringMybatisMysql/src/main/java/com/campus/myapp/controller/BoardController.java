@@ -1,6 +1,7 @@
 package com.campus.myapp.controller;
 
 import java.nio.charset.Charset;
+import java.util.Arrays;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -147,6 +148,23 @@ public class BoardController {
 		
 		return mav;
 	}
+	
+	// 레코드 삭제
+	@PostMapping("recordDel")
+	public ResponseEntity<String> recordDel(BoardVO vo, HttpServletRequest req){
+		HttpSession session = req.getSession();
+		vo.setUserid((String)session.getAttribute("logId"));
+		ResponseEntity<String> entity = null;
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "text/html;charset=utf-8");
+		
+		String msg = "<script>alert('제거 성공한 레코드 수 : "+service.recordDelete(vo)+" 개');";
+		msg += "location.href='"+req.getContextPath()+"/board/boardList';</script>";
+		entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
+		
+		return entity;
+	}
+	
 	
 	// 글 수정 메시지
 	public String getEditFailMessage() {

@@ -19,4 +19,6 @@ public interface BoardService {
 	public int boardUpdate(BoardVO vo);
 	
 	public int boardDelete(int no, String userid);
+	
+	public int recordDelete(BoardVO vo);
 }

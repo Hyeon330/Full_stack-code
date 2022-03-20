@@ -11,4 +11,6 @@ public interface DataDAO {
 
 	public DataVO getFileName(int no); // 파일명만 선택
 	public int dataUpdate(DataVO vo);
+	
+	public int dataDelete(int no, String userid); // 레코드 삭제
 }

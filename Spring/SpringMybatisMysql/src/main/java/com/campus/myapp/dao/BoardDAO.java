@@ -20,4 +20,6 @@ public interface BoardDAO {
 	public int boardUpdate(BoardVO vo);
 	// 글 삭제
 	public int boardDelete(int no, String userid);
+	// 레코드 선택 삭제
+	public int recordDelete(BoardVO vo);
 }

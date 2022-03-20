@@ -48,4 +48,14 @@
   		where no=${param1}
   		and userid=#{param2}
   	</delete>
+  	
+  	<delete id="recordDelete">
+  		delete from board
+  		<where>
+  			<foreach item="item" collection="check" open="no in (" separator="," close=")">
+  				${item}
+  			</foreach>
+  			and userid=#{userid}
+  		</where>
+  	</delete>
   </mapper>

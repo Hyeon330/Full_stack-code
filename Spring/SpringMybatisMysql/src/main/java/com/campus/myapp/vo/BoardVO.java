@@ -9,6 +9,8 @@ public class BoardVO {
 	private String writedate;
 	private String ip;
 	
+	private int[] check;
+	
 	public int getNo() {
 		return no;
 	}
@@ -51,4 +53,11 @@ public class BoardVO {
 	public void setIp(String ip) {
 		this.ip = ip;
 	}
+	public int[] getCheck() {
+		return check;
+	}
+	public void setCheck(int[] check) {
+		this.check = check;
+	}
+	
 }

@@ -1,6 +1,7 @@
 package com.campus.myapp.controller;
 
 import java.io.File;
+import java.net.http.HttpRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -253,6 +254,41 @@ public class DataController {
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.BAD_REQUEST);
 		}
 		
+		return entity;
+	}
+	
+	// 자료실 삭제
+	@GetMapping("dataDel")
+	public ResponseEntity<String> dataDel(int no, HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		String userid = (String) session.getAttribute("logId");
+		String path = session.getServletContext().getRealPath("/upload");
+		
+		ResponseEntity<String> entity = null;
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "Text/html; charset=utf-8");
+		
+		try {
+			// 1. 삭제할 레코드의 파일 명 얻어오기
+			DataVO dbFileVO = service.getFileName(no);
+			
+			// 2. 레코드 삭제
+			service.dataDelete(no, userid);
+			
+			// 3. 파일 삭제
+			fileDelete(path, dbFileVO.getFilename1());
+			if(dbFileVO.getFilename2() != null) fileDelete(path, dbFileVO.getFilename2());
+			
+			String msg = "<script>alert('글이 삭제되었습니다.');location.href='"+req.getContextPath()+"/data/dataList';</script>";
+			
+			entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+			String msg = "<script>alert('글 삭제 실패');history.back();</script>";
+			
+			entity = new ResponseEntity<String>(msg, headers, HttpStatus.BAD_REQUEST);
+		}
 		return entity;
 	}
 	

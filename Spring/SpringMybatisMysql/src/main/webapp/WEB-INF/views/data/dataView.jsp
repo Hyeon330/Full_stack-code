@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <script>
 	function dataDelCheck(){
-		
+		if(confirm("삭제하시겠습니까?")){
+			location.href="${url}/data/dataDel?no=${dataVO.no}";
+		}
 	}
 </script>
 <div class="container">

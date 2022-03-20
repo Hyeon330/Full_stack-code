@@ -27,4 +27,8 @@
   		set subject=#{subject}, content=#{content}, filename1=#{filename1}, filename2=#{filename2}
   		where no=${no} and userid=#{userid}
   	</update>
+  	<delete id="dataDelete">
+  		delete from databoard
+  		where no=${param1} and userid=#{param2}
+  	</delete>
   </mapper>
