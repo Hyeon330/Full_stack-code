@@ -1,0 +1,18 @@
+@charset "UTF-8";
+/* mainContents.css */
+#usercode {
+  position: relative;
+  margin: 5px 0;
+  font-size: 14px;
+  font-weight: bold;
+}
+#contents {
+  margin: 0 auto;
+}
+#calendar {
+  height: inherit;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
+}

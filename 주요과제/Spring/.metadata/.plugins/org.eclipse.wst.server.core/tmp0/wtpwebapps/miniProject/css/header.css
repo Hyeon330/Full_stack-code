@@ -20,10 +20,41 @@
 }
 #icons a:hover{
 	color: #888;
-	text-decoration: none;
 }
 #info {
 	position: absolute;
 	top: 8px;
 	right: 30px;
+}
+#info > div {
+	width: 80px;
+	margin: 5px 0;
+	text-align: right;
+}
+#info i {
+	font-size: 25px;
+	cursor: pointer;
+}
+#info_menu {
+	position: relative;
+	right: -10px;
+	text-align: center;
+	font-size: 14px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+}
+#info li {
+  padding: 5px 10px;
+  color: gray;
+}
+#info li:first-child {
+  border-radius: 5px 5px 0 0;
+}
+#info li:last-child {
+  border-radius: 0 0 5px 5px;
+}
+#info li:hover {
+  background-color: #eee;
+  font-weight: bold;
+  color: black;
 }

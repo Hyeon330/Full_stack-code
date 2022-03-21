@@ -1,157 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<style>
-#sidebar{
-	height: 100%;
-	width: 210px;
-	border-right: 2px solid #ccc;
-	overflow: hidden;
-}
-#sideTitle{
-	padding: 0 15px;
-	border-bottom: 2px solid #aaa;
-	height: 50px;
-	line-height: 50px;
-}
-#sideTitle > span:first-child {
-	font-size: 22px;
-	font-weight: bold;
-}
-#sideTitle > span:last-child {
-	cursor: pointer;
-	font-size: 20px;
-	position: relative;
-	float: right;
-	top: 12px;
-}
-#sideMonth{
-	border-bottom: 2px solid #aaa;
-	text-align: center;
-}
-#sideMonth > i {
-	margin: 0 10px;
-	cursor: pointer;
-}
-#sideMain {
-	width: 100%;
-	overflow-x: hidden;
-}
-#sideMain::-webkit-scrollbar {
-  width: 10px;
-}
-#sideMain::-webkit-scrollbar-thumb {
-  background-color: #aaa;
-  border-radius: 100px;
-}
-#sideMain::-webkit-scrollbar-track {
-  background-color: rgba(0, 0, 0, 0);
-}
-#listbox{
-	width: 200px;
-}
-
-.dayList {
-  width: 180px;
-  margin: 10px auto;
-  border-radius: 5px;
-  border: 1px solid #bbb;
-  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.5);
-  background-color: white;
-  cursor: pointer;
-}
-.dayList > .card-header {
-  padding: 0 15px;
-}
-.eventList {
-  margin: 0;
-  padding: 0;
-  border-radius: 0 0 5px 5px;
-}
-.eventList > li {
-  padding: 0 15px;
-  border-bottom: 1px solid #888;
-  background-color: #3788d8;
-  color: white;
-}
-.eventList > li:last-child {
-  border-radius: 0 0 5px 5px;
-}
-
-/* mainContents.css */
-#usercode {
-  position: relative;
-  line-height: 35px;
-  height: 35px;
-  font-size: 14px;
-  font-weight: bold;
-}
-#contents {
-  margin: 0 auto;
-}
-#calendar {
-  height: inherit;
-  padding: 20px;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
-}
-
-/* dialog */
-.ui-dialog {
-  width: 400px !important;
-  border-radius: 10px;
-  background-color: #eee;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-.ui-dialog-titlebar {
-  background-color: #fff;
-  border-radius: 5px;
-}
-.ui-dialog ul {
-  width: 220px;
-  margin: 0 auto;
-  background-color: #eee;
-}
-.ui-dialog ul > li {
-  font-size: 14px;
-  margin-top: 10px;
-}
-.ui-dialog ul > li > input:nth-child(1) {
-  width: 220px;
-  border-radius: 5px;
-  border: 1px solid #bbb;
-}
-.ui-dialog ul > li > select {
-  border: 1px solid #bbb;
-  border-radius: 5px;
-}
-.ui-dialog ul > li > input:nth-child(2)[type="checkbox"] {
-  position: relative;
-  top: 2px;
-  margin: 0 3px;
-}
-.ui-dialog ul > li > input:nth-child(2)[type="color"] {
-  margin: 0 3px;
-  height: 26px;
-  width: 25px;
-}
-#dialog {
-  padding: 5px 30px;
-}
-.ui-dialog-titlebar-close {
-  display: none;
-}
-.ui-dialog-buttonset > button {
-  font-size: 14px;
-  border: 1px solid #bbb;
-  border-radius: 5px;
-}
-.ui-dialog-buttonset > button:hover {
-  background-color: #ddd;
-}
-.ui-dialog-buttonpane {
-  border-radius: 5px;
-}
-</style>
+<link rel="stylesheet" href="${url}/css/home/home.css" type="text/css">
 <script type="text/javascript">
 const resizeMain = () => {
 	let headerHeight = Number($('#header').css('height').substring(0, $('#header').css('height').length-2));
@@ -168,8 +16,6 @@ const resizeMain = () => {
     let calwidth = window.innerWidth-sidebarWidth-250;
     $('#contents').css('height', window.innerHeight-headerHeight-60);
     $('#contents').css('width', calwidth);
-
-    calendar.render();
 }
 //sidebar main 리스트 등록 함수
 const setSideMain = () => {
@@ -207,6 +53,7 @@ const setSideMain = () => {
 const changeMonth = () => {
     $("#sideMonth>span").text(calendar.getDate().getFullYear()+"년 " + (calendar.getDate().getMonth() + 1) + "월");
     setSideMain();
+    calendar.render();
 };
 const nextMonth = () => {
     calendar.next();
@@ -221,8 +68,8 @@ const prevMonth = () => {
 
 $(function(){
 	// pageload
-	changeMonth();
 	resizeMain();
+	changeMonth();
 	
 	// event
     // sidebar main change

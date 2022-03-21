@@ -24,28 +24,37 @@
     <link rel="stylesheet" href="${url}/css/base.css" type="text/css">
     <link rel="stylesheet" href="${url}/css/header.css" type="text/css">
     
+    <script type="text/javascript">
+    	$(function() {
+    		// 내 정보, 로그아웃 메뉴 표시/숨김
+    		let userIcon = $('#info i');
+    		let infoMenu = document.querySelector('#info_menu');
+    		userIcon.click(function() {
+    			infoMenu.toggleAttribute('hidden');
+    		});
+    		infoMenu.addEventListener('mouseleave', function() {
+    		    infoMenu.setAttribute('hidden',true);
+    		});
+    	});
+    </script>
 </head>
 <body>
 <div id="header">
 	<div id="icons">
-	    <a href="index.html" class="disableLink"><i class="bi bi-house-fill" title="Home"></i></a>
-	    <a href="friends.html"><i class="bi bi-person-lines-fill" title="Friends"></i></a>
+	    <a href="${url}/" class="disableLink"><i class="bi bi-house-fill" title="Home"></i></a>
+	    <a href="friends"><i class="bi bi-person-lines-fill" title="Friends"></i></a>
 	    <a href="#"><i class="bi bi-people-fill" title="Group"></i></a>
 	    <a href="#"><i class="bi bi-megaphone-fill" title="Announcement"></i></a>
 	</div>
     <div id="info">
-        <a id="login-btn" href="${url}/login" type="button" class="btn btn-info">로그인</a>
+        <a id="login-btn" href="${url}/login" type="button" class="btn btn-info" hidden>로그인</a>
         <div>
-            <div id="userinfo">
-                <i class="bi bi-person-circle"></i>
-            </div>
+        	<i class="bi bi-person-circle"></i>
         </div>
-        <div id="info_menu">
-            <ul>
-                <a href="#"><li>내 정보</li></a>
-                <a href="#"><li>로그아웃</li></a>
-            </ul>
-        </div>
+        <ul id="info_menu" hidden>
+            <a href="#"><li>내 정보</li></a>
+            <a href="#"><li>로그아웃</li></a>
+        </ul>
     </div>
 </div>
 <div id="main">
