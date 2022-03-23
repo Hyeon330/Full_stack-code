@@ -1,0 +1,76 @@
+@charset "UTF-8";
+#header {
+	display: none;
+}
+#contentsBack {
+	display: none;
+}
+#signupPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+#signin-form {
+  font-family: "Lato", sans-serif;
+  width: 450px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  background-color: white;
+}
+#signin-form > div {
+  width: 260px;
+  margin: 0 auto;
+}
+#signin-form > div > * {
+  margin-bottom: 10px;
+}
+#signin-form > div > h1 {
+  height: 90px;
+  width: inherit;
+  line-height: 100px;
+  text-align: center;
+}
+#signin-form > div input {
+  height: 35px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+#signin-form > div input:focus {
+  outline: 2px solid #1a73e8;
+}
+#userid {
+  width: 184px;
+}
+#id-verify {
+  height: 13px;
+  line-height: 13px;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+#pw-verify {
+  height: 13px;
+  line-height: 13px;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+#tel1 {
+  width: 50px;
+}
+#tel2 {
+  width: 60px;
+}
+#tel3 {
+  width: 60px;
+}
+#signin-form > div > div:last-child {
+  text-align: center;
+}
+#signin-form > div > div:last-child > btn {
+  margin: 5px 0;
+}
+#signin-form > div > div:last-child > btn:first-child,
+#signin-form > div > div:last-child > btn:last-child {
+  border: 1px solid #aaa;
+}

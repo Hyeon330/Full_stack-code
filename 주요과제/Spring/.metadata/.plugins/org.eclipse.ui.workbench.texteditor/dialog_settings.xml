@@ -13,6 +13,7 @@
 		<item key="wholeword" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="page"/>
 			<item value="user"/>
 		</list>
 		<list key="replacehistory">

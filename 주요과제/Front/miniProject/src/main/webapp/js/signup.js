@@ -1,6 +1,6 @@
 const setPageHeight = () => {
     let bodyHeight = window.innerHeight;
-    document.querySelector('#page').style.height = bodyHeight+'px';
+    document.querySelector('#signupPage').style.height = bodyHeight+'px';
 }
 document.addEventListener('DOMContentLoaded', function() {
     setPageHeight();

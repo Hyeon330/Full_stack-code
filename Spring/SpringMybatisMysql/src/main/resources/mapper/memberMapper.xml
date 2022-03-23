@@ -25,6 +25,6 @@
 	<select id="idCheck" resultType="int">
 		select count(*) cnt 
 		from member 
-		where userid=#{param1};
+		where userid=#{param1}
 	</select>
 </mapper>

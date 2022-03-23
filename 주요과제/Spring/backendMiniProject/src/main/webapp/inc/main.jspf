@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div id="contentsBack">
 	<div id=contents>
-		<div id='usercode'>Usercode: 이현수#0000</div>
+		<div id='usercode'>UserID: ${userId}</div>
 		<div id='calendar'></div>
 		<script src="${url}/js/myCalendar.js"></script>
 	</div>
