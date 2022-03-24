@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.campus.myapp.dao.ScheduleDAO">
+	<insert id="insertSchedule">
+		insert into schedule (userid, title, start, end, repeats, color, place, text, public)
+		values (#{userid} ,#{title}, #{start}, #{end}, #{repeats}, #{color}, #{place}, #{text}, #{pub})
+	</insert>
+	<select id="selectSchedule" resultType="com.campus.myapp.vo.ScheduleVO">
+		select title, start, end, repeats, color, place, text
+		from schedule
+		where userid=#{param1} and ((start like CONCAT(#{param2},'%') or end like CONCAT(#{param2},'%')) or not repeats like 'N%')
+	</select>
+</mapper>

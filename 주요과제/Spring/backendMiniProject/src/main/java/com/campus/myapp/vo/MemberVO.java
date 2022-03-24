@@ -13,6 +13,14 @@ public class MemberVO {
 	private String email;
 	private String signupdate;
 	
+	@Override
+	public String toString() {
+		return "MemberVO [getUserid()=" + getUserid() + ", getUserpwd()=" + getUserpwd() + ", getUsername()="
+				+ getUsername() + ", getTel()=" + getTel() + ", getTel1()=" + getTel1() + ", getTel2()=" + getTel2()
+				+ ", getTel3()=" + getTel3() + ", getEmail()=" + getEmail() + ", getSignupdate()=" + getSignupdate()
+				+ "]";
+	}
+	
 	public String getUserid() {
 		return userid;
 	}
@@ -71,10 +79,5 @@ public class MemberVO {
 	}
 	public void setSignupdate(String signupdate) {
 		this.signupdate = signupdate;
-	}
-	
-	@Override
-	public String toString() {
-		return getUserid()+"||"+getUsername()+"||"+getTel()+"||"+getEmail()+"||"+getSignupdate();
 	}
 }

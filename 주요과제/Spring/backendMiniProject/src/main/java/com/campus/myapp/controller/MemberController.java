@@ -1,7 +1,6 @@
 package com.campus.myapp.controller;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +17,6 @@ public class MemberController {
 	@Inject
 	MemberService service;
 	ModelAndView mav;
-	MemberVO vo;
 	
 	@PostMapping("signupOk")
 	public ModelAndView signupOk(MemberVO vo) {
@@ -35,9 +33,9 @@ public class MemberController {
 	}
 	
 	@PostMapping("loginOk")
-	public ModelAndView loginOk(String userid, String userpwd, HttpSession session, HttpServletRequest req) {
+	public ModelAndView loginOk(String userid, String userpwd, HttpSession session) {
 		mav = new ModelAndView();
-		vo = service.loginSelect(userid, userpwd);
+		MemberVO vo = service.loginSelect(userid, userpwd);
 		session.setAttribute("userId", vo.getUserid());
 		session.setAttribute("userName", vo.getUsername());
 		session.setAttribute("logStatus", "Y");
@@ -48,9 +46,7 @@ public class MemberController {
 	
 	@PostMapping("loginCheck")
 	public int loginCheck(String userid, String userpwd) {
-		vo = service.loginSelect(userid, userpwd);
-		System.out.println(userid+"||"+userpwd);
-		System.out.println(vo);
+		MemberVO vo = service.loginSelect(userid, userpwd);
 		if(vo!=null) {
 			return 1;
 		}

@@ -1,8 +1,0 @@
-@charset "UTF-8";
-@import url("sidebar.css");
-@import url("eventList.css");
-@import url("dialog.css");
-@import url("../mainContents.css");
-#icons > a:nth-child(1) {
-  color: #888;
-}

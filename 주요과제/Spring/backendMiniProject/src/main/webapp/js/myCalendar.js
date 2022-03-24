@@ -1,8 +1,24 @@
 // db에서 현재 달의 이벤트 리스트를 Ajax로 받아오는 함수
+let events = [];
+let contextPath = $('#url').val()+"/";
+
 const setEvent = () => {
     // back-end event load...
     console.log("event load!");
-    event = [
+    $.ajax({
+		url: contextPath+"schedule/eventLoad",
+		data: "year="+calendar.getDate().getFullYear()+"&month="+(calendar.getDate().getMonth()+1),
+		success: function(result){
+			console.log(result);
+		}
+	});
+    
+    events = [
+		{
+			title: 'test',
+			start: '2022-04-31',
+			end: '2022-04-52'
+		},
         {
             title: '가족여행',
             start: '2022-02-02',
@@ -16,6 +32,11 @@ const setEvent = () => {
             title: '하하하',
             start: '2022-02-04',
             end: '2022-02-11'
+        },
+        {
+            title: '쿠쿠쿠',
+            start: '2022-03-04',
+            end: '2022-03-04'
         },
         {
             title: '후후후',
@@ -32,10 +53,9 @@ const setEvent = () => {
             text: 'hehehehehehehe'
         }
     ];
+    calendar.removeAllEvents();
+    events.forEach(e => calendar.addEvent(e));
 }
-
-let event = [];
-setEvent();
 
 var calendarEl = document.getElementById('calendar'); // 태그
 var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -54,7 +74,7 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
         year: 'numeric',
         month: 'short'
     },
-    events: event,
+    events: events,
     // dateClick: function(info) {
     //     alert('Date ' + info.dateStr);
     // },

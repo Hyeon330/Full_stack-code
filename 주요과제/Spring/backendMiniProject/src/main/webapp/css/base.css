@@ -13,10 +13,15 @@ ul {
 body {
 	background-color: #f0f2f5;
 	font-family: 'Do Hyeon', sans-serif;
+	overflow: hidden;
 }
 a:hover{
 	text-decoration: none;
 }
+/* #main {
+	position: relative;
+	top: -15px;
+} */
 #main > div{
 	float: left;
 }

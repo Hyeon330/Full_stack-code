@@ -12,11 +12,11 @@
 	height: 50px;
 	line-height: 50px;
 }
-#sideTitle > span:first-child {
+#sideTitleName {
 	font-size: 22px;
 	font-weight: bold;
 }
-#sideTitle > span:last-child {
+#dialogOpen {
 	cursor: pointer;
 	font-size: 20px;
 	float: right;

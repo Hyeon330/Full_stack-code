@@ -79,6 +79,7 @@
 						// result의 List객체는 java의 ArrayList객체이기 때문에 재가공 해줘야 한다.
 						// $(result)로 처리하면 순서대로 접근할 수 있음
 						var $result = $(result);
+						console.log($result);
 						
 						var tag = '<ol class="pList"><li>상품코드</li><li>상품명</li><li>가격</li><li>수량</li>';
 						$result.each(function(idx, o){

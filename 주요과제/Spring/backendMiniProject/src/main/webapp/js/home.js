@@ -20,11 +20,11 @@ const setSideMain = () => {
     let eventOfday = [];
     for(let i = 1; i<=31; i++){
         eventOfday[i] = [];
-        for(let j = 0; j < event.length; j++){
-            let start = Number(event[j].start.substring(8));
-            let end = Number(event[j].end.substring(8)-1)
+        for(let j = 0; j < events.length; j++){
+            let start = Number(events[j].start.substring(8));
+            let end = Number(events[j].end.substring(8)-1)
             if(i>=start && i<=end){
-                eventOfday[i].push(event[j]);
+                eventOfday[i].push(events[j]);
             }
         }
     }
@@ -71,7 +71,7 @@ $(function(){
 	// event
     // sidebar main change
     $(".fc-toolbar-chunk button").click(function(){
-		changeMonth()
+		changeMonth();
 		/*let servicekey = "ta%2FXbxeYm72epaJuJuLg2HgwFVJBJcs%2F6YaIsJ8LPj4l%2Bmk9dxy1mHxKwIxwEaMLWDQ9k5I18FIY0uEBypuqsw%3D%3D";
 		$.ajax({
 			url: "http://apis.data.go.kr/B090041/openapi/service/SpcdeInfoService/getRestDeInfo",
@@ -92,27 +92,50 @@ $(function(){
 
     // 다이얼로그값 전체 리셋 함수
     const dialogReset = () => {
-        $("#event-title").val('');
-        $("#start-date").val('');
-        $("#end-date").val('');
-        $('#repet').each(function() {
-            $(this).find('option:first').attr('selected',true);
+        $("#title").val('');
+        $("#start").val('');
+        $("#end").val('');
+        $('#repeatCycle').each(function() {
+            $(this).find('option:first-of-type').prop('selected',true);
         });
-        $('#public').prop('checked', false);
-        $('#event-color').val('#3788D8');
+        $('#repeatCycle + span').prop('hidden', true);
+        $('#pub').prop('checked', false);
+        $('#event-87CEEB').prop('checked', true);
         $("#place").val('');
-        $("#memo").val('');
+        $("#text").val('');
     };
-
+    
+    let startDate = null;
+	let endDate = null;
     // 다이얼로그 세팅
     $('#dialog').dialog({
         autoOpen: false, // 실행시 자동열림
         modal: true,
         buttons: {
             등록: function(){
-                // ajax 처리
-                dialogReset();
-                $("#dialog").dialog('close');
+				var regex = RegExp(/^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/);
+				startDate = new Date($("#start").val());
+				endDate = new Date($("#end").val());
+                if($("#title").val()==''){
+					alert("제목을 입력해주세요.");
+					$("#title").focus();
+				} else if($("#start").val()==''){
+					alert("시작날짜를 입력해주세요.");
+					$("#start").focus();
+				} else if($("#end").val()==''){
+					alert("종료날짜를 입력해주세요.");
+					$("#end").focus();
+				} else if(!regex.test($("#start").val()) || !regex.test($("#end").val())){
+					alert("날짜를 올바른 형식으로 입력해주세요.");
+				} else if(startDate > endDate){
+					alert("종료날짜는 시작날짜보다 커야합니다.");
+				} else if($('#repeatCycle').val()!='N' && $('#repeatNum').val()<=0){
+					alert("반복단위는 0보다 커야합니다.");
+					$('#repeatNum').focus();
+				} else {
+					$('#scheduleFrom').submit();
+				}
+                
             },
             초기화: dialogReset,
             취소: function(){
@@ -123,7 +146,7 @@ $(function(){
     });
 
     // DatePicker 세팅
-    $('#start-date, #end-date').datepicker({
+    $('#start, #end').datepicker({
         dateFormat: 'yy-mm-dd',
         monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
         monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
@@ -132,4 +155,34 @@ $(function(){
         showMonthAfterYear: true,
         yearSuffix: '년'
     });
+    
+	$('#start').change(function(){
+		startDate = new Date($("#start").val());
+		endDate = new Date($("#end").val());
+		if(startDate>endDate || $("#end").val()==''){
+			$("#end").val($("#start").val());	
+		}
+	});
+	$('#end').change(function(){
+		startDate = new Date($("#start").val());
+		endDate = new Date($("#end").val());
+		if(startDate>endDate){
+			$("#start").val($("#end").val());	
+		}
+	});
+    
+    $('#repeatCycle').change(function() {
+		if($('#repeatCycle').val()=='N'){
+			$('#repeatCycle + span').html('');
+		} else {
+			$('#repeatCycle + span').html('반복단위 : <input type="text" name="repeatNum" id="repeatNum">');
+		}
+	});
+	
+	$('#repeatNum').on('input',function(){
+		this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+		if($('#repeatNum').val().length > 3){
+			this.value = this.value.substr(0, 3);
+		}
+	});
 });

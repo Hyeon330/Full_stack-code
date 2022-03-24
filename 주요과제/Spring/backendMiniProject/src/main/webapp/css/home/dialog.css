@@ -1,48 +1,86 @@
 @charset "UTF-8";
 /* dialog */
+.ui-dialog-titlebar-close {
+  display: none;
+}
 .ui-dialog {
-  width: 400px !important;
-  border-radius: 10px;
-  background-color: #eee;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	width: 400px !important;
+	border-radius: 10px;
+	background-color: #eee;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 .ui-dialog-titlebar {
-  background-color: #fff;
-  border-radius: 5px;
+	background-color: #fff;
+	border-radius: 5px;
 }
 .ui-dialog ul {
   width: 220px;
   margin: 0 auto;
   background-color: #eee;
 }
-.ui-dialog ul > li {
+.ui-dialog ul li {
   font-size: 14px;
   margin-top: 10px;
 }
-.ui-dialog ul > li > input:nth-child(1) {
-  width: 220px;
-  border-radius: 5px;
-  border: 1px solid #bbb;
+.ui-dialog ul > li input[type=text] {
+	padding-left: 5px;
+	width: 220px;
+	border-radius: 5px;
+	border: 1px solid #bbb;
 }
 .ui-dialog ul > li > select {
   border: 1px solid #bbb;
-  border-radius: 5px;
+  border-radius: 3px;
+}
+#repeatNum{
+	width: 33px;
+}
+#event-color {
+	margin-top: 0;
+	padding-top: 0;
+}
+.ui-dialog ul > li > input[type=radio] + label {
+	position: relative;
+	top: 10px;
+	height: 20px;
+	width: 20px;
+	border-radius: 100%;
+	margin-right: 3px;
+}
+label[for=event-87CEEB]{
+	background-color: #87CEEB;
+}
+label[for=event-F00]{
+	background-color: #f00;
+}
+label[for=event-0F0]{
+	background-color: #0f0;
+}
+label[for=event-00F]{
+	background-color: #00f;
+}
+label[for=event-FFA500]{
+	background-color: #FFA500;
+}
+label[for=event-808080]{
+	background-color: #808080;
+}
+label[for=event-800080]{
+	background-color: #800080;
+}
+label[for=event-4B0082]{
+	background-color: #4B0082;
+}
+label[for=event-008000]{
+	background-color: #008000;
+}
+label[for=event-778899]{
+	background-color: #778899;
 }
 .ui-dialog ul > li > input:nth-child(2)[type="checkbox"] {
   position: relative;
   top: 2px;
   margin: 0 3px;
-}
-.ui-dialog ul > li > input:nth-child(2)[type="color"] {
-  margin: 0 3px;
-  height: 26px;
-  width: 25px;
-}
-#dialog {
-  padding: 5px 30px;
-}
-.ui-dialog-titlebar-close {
-  display: none;
 }
 .ui-dialog-buttonset > button {
   font-size: 14px;
