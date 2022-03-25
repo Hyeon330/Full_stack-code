@@ -29,7 +29,7 @@
 <div id="header">
 	<div id="icons">
 	    <a href="${url}/" class="disableLink"><i class="bi bi-house-fill" title="Home"></i></a>
-	    <a href="friends"><i class="bi bi-person-lines-fill" title="Friends"></i></a>
+	    <a href="#"><i class="bi bi-person-lines-fill" title="Friends"></i></a>
 	    <a href="#"><i class="bi bi-people-fill" title="Group"></i></a>
 	    <a href="#"><i class="bi bi-megaphone-fill" title="Announcement"></i></a>
 	</div>

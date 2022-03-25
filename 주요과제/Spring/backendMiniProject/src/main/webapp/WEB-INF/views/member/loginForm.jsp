@@ -9,7 +9,7 @@
             <input type="password" id="userpwd" name="userpwd" placeholder="비밀번호">
             <div id="verify"></div>
             <btn type="submit" id="login" class="btn btn-primary">로그인</div>
-            <div><a href="#">비밀번호 찾기</a> | <a href="${url}/signup">회원가입</a> | <a href="${url}/">홈</a></div>
+            <div><a href="#">비밀번호 변경</a> | <a href="${url}/signup">회원가입</a> | <a href="${url}/">홈</a></div>
         </div>
     </form>
 </div>

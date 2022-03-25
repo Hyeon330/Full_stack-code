@@ -19,6 +19,5 @@
 		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
 		<property name="mapperLocations" value="classpath:/mapper/*Mapper.xml"></property>
 	</bean>
-	
 	<mybatis-spring:scan base-package="com.campus.myapp.dao"/>
 </beans>

@@ -68,7 +68,6 @@ INDEX VERSION 1.131+D:\study\Multi Campus\Full_stack code\주요과제\Spring\.metad
 1706234127.index
 2117240910.index
 2971464646.index
-1366281344.index
 2949769231.index
 2348002359.index
 2935812992.index

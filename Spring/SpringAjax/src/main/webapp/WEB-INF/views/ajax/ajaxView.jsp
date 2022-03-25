@@ -57,6 +57,8 @@
 					url: url,
 					data: params,
 					success: function(result){
+						console.log(typeof result);
+						console.log(typeof JSON.stringify(result));
 						let tag = "<ul>";
 						tag += "<li>상품번호 : "+ result.proNo+"</li>";
 						tag += "<li>상품명 : "+ result.proName+"</li>";

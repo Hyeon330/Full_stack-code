@@ -98,7 +98,7 @@ $(function(){
         $('#repeatCycle').each(function() {
             $(this).find('option:first-of-type').prop('selected',true);
         });
-        $('#repeatCycle + span').prop('hidden', true);
+        $('#repeatCycle + span').html('<input type="hidden" name="repeatNum">');
         $('#pub').prop('checked', false);
         $('#event-87CEEB').prop('checked', true);
         $("#place").val('');
@@ -134,8 +134,18 @@ $(function(){
 					$('#repeatNum').focus();
 				} else {
 					$('#scheduleFrom').submit();
+					
+					/*$.ajax({
+						url: contextPath+"schedule/reg",
+						data: $('#scheduleFrom').serialize()+"&year="+calendar.getDate().getFullYear()+"&month="+(calendar.getDate().getMonth()+1),
+						type: 'POST',
+						success: function(result) {
+							result.forEach(e => {
+								
+							});
+						}
+					});*/
 				}
-                
             },
             초기화: dialogReset,
             취소: function(){
@@ -173,7 +183,7 @@ $(function(){
     
     $('#repeatCycle').change(function() {
 		if($('#repeatCycle').val()=='N'){
-			$('#repeatCycle + span').html('');
+			$('#repeatCycle + span').html('<input type="hidden" name="repeatNum">');
 		} else {
 			$('#repeatCycle + span').html('반복단위 : <input type="text" name="repeatNum" id="repeatNum">');
 		}

@@ -4,16 +4,17 @@ let contextPath = $('#url').val()+"/";
 
 const setEvent = () => {
     // back-end event load...
-    console.log("event load!");
     $.ajax({
 		url: contextPath+"schedule/eventLoad",
 		data: "year="+calendar.getDate().getFullYear()+"&month="+(calendar.getDate().getMonth()+1),
+		async: false,
 		success: function(result){
-			console.log(result);
+			calendar.removeAllEvents();
+    		result.forEach(e => calendar.addEvent(e));
+    		events = result;
 		}
 	});
-    
-    events = [
+    /*events = [
 		{
 			title: 'test',
 			start: '2022-04-31',
@@ -52,9 +53,7 @@ const setEvent = () => {
             place: 'hhhh',
             text: 'hehehehehehehe'
         }
-    ];
-    calendar.removeAllEvents();
-    events.forEach(e => calendar.addEvent(e));
+    ];*/
 }
 
 var calendarEl = document.getElementById('calendar'); // 태그
