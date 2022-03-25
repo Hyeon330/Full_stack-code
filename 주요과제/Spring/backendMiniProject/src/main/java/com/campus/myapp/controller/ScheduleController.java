@@ -2,6 +2,7 @@ package com.campus.myapp.controller;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -109,26 +110,26 @@ public class ScheduleController {
 		Calendar cal = Calendar.getInstance();
 		cal.set(year, month-1, 01);
 		for (ScheduleVO vo : dbList) {
+			String[] startDateArr = vo.getStart().split("-");
+			String[] endDateArr = vo.getEnd().split("-");
+			int startYear = Integer.parseInt(startDateArr[0]);
+			int endYear = Integer.parseInt(endDateArr[0]);
+			
+			int startMonth = Integer.parseInt(startDateArr[1]);
+			int endMonth = Integer.parseInt(endDateArr[1]);
+			
+			int startDay = Integer.parseInt(startDateArr[2]);
+			int endDay = Integer.parseInt(endDateArr[2]) + 1;
+			
+			int repeatNum = Integer.parseInt(vo.getRepeatNum());
 			if(!vo.getRepeatCycle().equals("N")) {
-				String[] startDateArr = vo.getStart().split("-");
-				String[] endDateArr = vo.getEnd().split("-");
-				int startYear = Integer.parseInt(startDateArr[0]);
-				int endYear = Integer.parseInt(endDateArr[0]);
-				
-				int startMonth = Integer.parseInt(startDateArr[1]);
-				int endMonth = Integer.parseInt(endDateArr[1]);
-				
-				int startDay = Integer.parseInt(startDateArr[2]);
-				int endDay = Integer.parseInt(endDateArr[2]);
-				
-				int repeatNum = Integer.parseInt(vo.getRepeatNum());
 				if(year>=startYear && month>=startMonth) {
 					switch (vo.getRepeatCycle()) {
 					case "D":
 						if(year==startYear && month==startMonth) {
 							do {
 								String start = String.format("%d-%02d-%02d", year, month, startDay);
-								String end = String.format("%d-%02d-%02d", year, month, endDay+1);
+								String end = String.format("%d-%02d-%02d", year, month, endDay);
 								
 								ScheduleVO resultVO = new ScheduleVO(vo.getTitle(), start, end, vo.getColor(), vo.getPlace(), vo.getText());
 								resultVO.setRepeats(vo.getRepeats());
@@ -141,15 +142,19 @@ public class ScheduleController {
 							Calendar prevCal = Calendar.getInstance();
 							prevCal.set(year, month-2, 1);
 							int prevMonthLastDay = prevCal.getActualMaximum(Calendar.DATE);
+							System.out.println(prevMonthLastDay);
+							
 							Period period = Period.between(LocalDate.of(startYear, startMonth, startDay), LocalDate.of(year, month-1, prevMonthLastDay));
 							int startToPrevMonthLastDay = period.getDays();
+//							System.out.println(ChronoUnit.DAYS.between(LocalDate.of(startYear, startMonth, startDay), LocalDate.of(year, month-1, prevMonthLastDay)));
+							System.out.println();
+							
 							int gap = endDay - startDay;
 							startDay = repeatNum - startToPrevMonthLastDay % repeatNum;
-							System.out.println(startDay);
 							endDay = startDay + gap;
 							do {
 								String start = String.format("%d-%02d-%02d", year, month, startDay);
-								String end = String.format("%d-%02d-%02d", year, month, endDay+1);
+								String end = String.format("%d-%02d-%02d", year, month, endDay);
 								
 								ScheduleVO resultVO = new ScheduleVO(vo.getTitle(), start, end, vo.getColor(), vo.getPlace(), vo.getText());
 								resultVO.setRepeats(vo.getRepeats());
@@ -166,8 +171,6 @@ public class ScheduleController {
 					}
 				}
 			} else {
-				String[] endArr = vo.getEnd().split("-");
-				int endDay = Integer.parseInt(endArr[2]) + 1;
 				vo.setEnd(String.format("%d-%02d-%02d", year, month, endDay));
 				list.add(vo);
 			}
