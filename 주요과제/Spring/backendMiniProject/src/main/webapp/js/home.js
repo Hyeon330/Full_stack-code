@@ -18,18 +18,25 @@ const resizeMain = () => {
 const setSideMain = () => {
     setEvent();
     let eventOfday = [];
-    for(let i = 1; i<=31; i++){
+    let lastDate = new Date(calendar.getDate().getFullYear(), calendar.getDate().getMonth()+1, 0);
+    for(let i = 1; i<=lastDate.getDate(); i++){
         eventOfday[i] = [];
         for(let j = 0; j < events.length; j++){
-            let start = Number(events[j].start.substring(8));
-            let end = Number(events[j].end.substring(8)-1)
-            if(i>=start && i<=end){
-                eventOfday[i].push(events[j]);
-            }
+			let startMonth = Number(events[j].start.substring(5,7));
+			let endMonth = Number(events[j].end.substring(5,7));
+            let startDay = Number(events[j].start.substring(8));
+            let endDay = Number(events[j].end.substring(8)-1);
+            if(i>=startDay){
+				if(i<=endDay || startMonth != endMonth){
+					eventOfday[i].push(events[j]);
+				}
+            } else if(i<=endDay && startMonth!=endMonth && calendar.getDate().getMonth()+1 == endMonth){
+				eventOfday[i].push(events[j]);
+			}
         }
     }
     let eventListHTML = "";
-    for(let i = 1; i<=31; i++){
+    for(let i = 1; i<=lastDate.getDate(); i++){
         if(eventOfday[i].length!=0){
             eventListHTML +=
             "<div class='dayList'>" +

@@ -28,7 +28,6 @@
     <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
     <fullyQualifiedTypeName name="java.time.MonthDay"/>
     <fullyQualifiedTypeName name="java.time.Period"/>
-    <fullyQualifiedTypeName name="java.time.LocalDate"/>
     <fullyQualifiedTypeName name="javax.swing.event.SwingPropertyChangeSupport"/>
     <fullyQualifiedTypeName name="com.mysql.cj.x.protobuf.MysqlxDatatypes.Array"/>
     <fullyQualifiedTypeName name="java.lang.String"/>
@@ -39,5 +38,6 @@
     <fullyQualifiedTypeName name="com.campus.myapp.vo.ScheduleVO"/>
     <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="java.util.Calendar"/>
+    <fullyQualifiedTypeName name="java.time.LocalDate"/>
     <fullyQualifiedTypeName name="java.time.temporal.ChronoUnit"/>
 </qualifiedTypeNameHistroy>

@@ -74,6 +74,7 @@ public class MemberController {
 		session.invalidate();
 		
 		ModelAndView mav = new ModelAndView();
+		
 		mav.setViewName("redirect:/");
 		
 		return mav;
