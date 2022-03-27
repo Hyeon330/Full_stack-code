@@ -1,7 +1,2 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<typeInfoHistroy>
-    <typeInfo handle="=backendMiniProject/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.campus.myapp.service{MemberService.java[MemberService" modifiers="513" timestamp="1648010863512"/>
-    <typeInfo handle="=backendMiniProject/C:\/Users\/dldls\/.m2\/repository\/javax\/servlet\/servlet-api\/2.5\/servlet-api-2.5.jar=/maven.pomderived=/true=/=/org.eclipse.jst.component.dependency=/\/WEB-INF\/lib=/=/maven.pomderived=/true=/=/org.eclipse.jst.component.nondependency=/=/=/maven.groupId=/javax.servlet=/=/maven.artifactId=/servlet-api=/=/maven.version=/2.5=/=/maven.scope=/provided=/&lt;javax.servlet(Filter.class[Filter" modifiers="1537" timestamp="1646617031994"/>
-    <typeInfo handle="=backendMiniProject/C:\/Program Files\/tools\/jdk-14.0.2\/lib\/jrt-fs.jar`java.desktop=/module=/true=/=/maven.pomderived=/true=/=/javadoc_location=/https:\/\/docs.oracle.com\/en\/java\/javase\/14\/docs\/api\/=/&lt;javax.imageio.spi(ServiceRegistry$Filter.class[Filter" modifiers="1545" timestamp="1643851795761"/>
-    <typeInfo handle="=backendMiniProject/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.campus.myapp.service{ScheduleService.java[ScheduleService" modifiers="513" timestamp="1648096891992"/>
-</typeInfoHistroy>
+<typeInfoHistroy/>
