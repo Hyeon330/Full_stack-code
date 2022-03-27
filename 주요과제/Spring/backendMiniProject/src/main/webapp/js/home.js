@@ -105,7 +105,7 @@ $(function(){
         $('#repeatCycle').each(function() {
             $(this).find('option:first-of-type').prop('selected',true);
         });
-        $('#repeatCycle + span').html('<input type="hidden" name="repeatNum">');
+        $('#repeatCycle + ul').html('<li><input type="hidden" name="repeatNum"></li>');
         $('#pub').prop('checked', false);
         $('#event-87CEEB').prop('checked', true);
         $("#place").val('');
@@ -137,7 +137,7 @@ $(function(){
 				} else if(startDate > endDate){
 					alert("종료날짜는 시작날짜보다 커야합니다.");
 				} else if($('#repeatCycle').val()!='N' && $('#repeatNum').val()<=0){
-					alert("반복단위는 0보다 커야합니다.");
+					alert("반복주기는 0보다 커야합니다.");
 					$('#repeatNum').focus();
 				} else {
 					$('#scheduleFrom').submit();
@@ -189,17 +189,24 @@ $(function(){
 	});
     
     $('#repeatCycle').change(function() {
+		let msg = '';
 		if($('#repeatCycle').val()=='N'){
-			$('#repeatCycle + span').html('<input type="hidden" name="repeatNum">');
-		} else {
-			$('#repeatCycle + span').html('반복단위 : <input type="text" name="repeatNum" id="repeatNum">');
+			msg = '';
+		} else if($('#repeatCycle').val()=='D' || $('#repeatCycle').val()=='W') {
+			msg = '<li>반복주기 : <input type="text" name="repeatNum" id="repeatNum" class="repeat-box"></li>';
+			msg += '<li>반복횟수 : <input type="text" name="repeatNumTimes" id="repeatNumTimes" class="repeat-box">(무한반복:0)</li>';
+		} else if($('#repeatCycle').val()=='M' || $('#repeatCycle').val()=='Y') {
+			msg += '<li>반복횟수 : <input type="text" name="repeatNumTimes" id="repeatNumTimes" class="repeat-box">(무한반복:0)</li>';
 		}
-	});
-	
-	$('#repeatNum').on('input',function(){
-		this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
-		if($('#repeatNum').val().length > 3){
-			this.value = this.value.substr(0, 3);
-		}
+		$('#repeatCycle + ul').html(msg);
+		$('#repeatNumTimes').val(0);
+		
+		$('.repeat-box').on('input', function() { 
+			this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+			console.log($('#repeatNum').val());
+			if($('#repeatNum').val()!=null && $('#repeatNum').val().length > 3){
+				$('#repeatNum').val($('#repeatNum').val().substring(0, 3));
+			}
+		});
 	});
 });

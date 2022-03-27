@@ -12,6 +12,7 @@ const setEvent = () => {
 			calendar.removeAllEvents();
     		result.forEach(e => calendar.addEvent(e));
     		events = result;
+    		console.log(events);
 		}
 	});
     /*events = [

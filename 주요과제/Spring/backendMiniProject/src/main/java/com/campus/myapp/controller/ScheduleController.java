@@ -121,25 +121,29 @@ public class ScheduleController {
 			int startDay = Integer.parseInt(startDateArr[2]);
 			int endDay = Integer.parseInt(endDateArr[2]) + 1;
 			
-			if(!vo.getRepeatCycle().equals("N")) {
-				if(year>=startYear && month>=startMonth) {
-					int repeatNum = Integer.parseInt(vo.getRepeatNum());
-					switch (vo.getRepeatCycle()) {
-					case "D":	// 일 반복
-						repeat(year, month, startYear, startMonth, startDay, endDay, repeatNum, vo, list, cal);
-						break;
-					case "W":	// 주 반복
-						repeatNum *= 7;
-						repeat(year, month, startYear, startMonth, startDay, endDay, repeatNum, vo, list, cal);
-						break;
-
-					default:
-						break;
-					}
+			if(year>=startYear && month>=startMonth) {
+				switch (vo.getRepeatCycle()) {
+				case "N":	// 반복 없음
+					vo.setEnd(String.format("%d-%02d-%02d", endYear, endMonth, endDay));
+					list.add(vo);
+					break;
+					
+				case "D":	// 일 반복
+					repeat(year, month, startYear, startMonth, startDay, endDay, 1, vo, list, cal);
+					break;
+					
+				case "W":	// 주 반복
+					repeat(year, month, startYear, startMonth, startDay, endDay, 7, vo, list, cal);
+					break;
+					
+				case "M":	// 월 반복
+					
+					break;
+					
+				case "Y":	// 년 반복
+					
+					break;
 				}
-			} else {
-				vo.setEnd(String.format("%d-%02d-%02d", endYear, endMonth, endDay));
-				list.add(vo);
 			}
 		}
 		
@@ -157,10 +161,12 @@ public class ScheduleController {
 			
 			startDay += repeatNum;
 			endDay += repeatNum;
-		} while(startDay<=cal.getActualMaximum(Calendar.DATE));
+			vo.setRepeatNumTimes(vo.getRepeatNumTimes()-1);
+		} while(startDay<=cal.getActualMaximum(Calendar.DATE) && vo.getRepeatNumTimes()!=0);
 	}
 	
-	void repeat(int year, int month, int startYear, int startMonth, int startDay, int endDay, int repeatNum, ScheduleVO vo, List<ScheduleVO> list, Calendar cal) {
+	void repeat(int year, int month, int startYear, int startMonth, int startDay, int endDay, int cycleNum, ScheduleVO vo, List<ScheduleVO> list, Calendar cal) {
+		int repeatNum = vo.getRepeatNum() * cycleNum;
 		if(year==startYear && month==startMonth) {	// 반복된 일정이면서 시작일이 현재 보고있는 달 일때
 			scheduleSet(year, month, startDay, endDay, repeatNum, vo, list, cal);
 		} else {	// 반복된 일정이 현재보고있는 달과 다를 경우

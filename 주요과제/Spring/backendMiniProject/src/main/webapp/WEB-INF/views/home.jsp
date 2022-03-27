@@ -33,13 +33,13 @@
 	                <option value="M">매달반복</option>
 	                <option value="Y">매년반복</option>
 	            </select>
-	            <span></span>
+	            <ul></ul>
 	        </li>
 	        <li id="event-color">
 	        	<input type="radio" name="color" id="event-87CEEB" value="87CEEB" checked> <label for="event-87CEEB"></label>
-	        	<input type="radio" name="color" id="event-F00" value="F00"> <label for="event-F00"></label>
-	        	<input type="radio" name="color" id="event-0F0" value="0F0"> <label for="event-0F0"></label>
-	        	<input type="radio" name="color" id="event-00F" value="00F"> <label for="event-00F"></label>
+	        	<input type="radio" name="color" id="event-FF0000" value="FF0000"> <label for="event-FF0000"></label>
+	        	<input type="radio" name="color" id="event-00FF00" value="00FF00"> <label for="event-00FF00"></label>
+	        	<input type="radio" name="color" id="event-0000FF" value="0000FF"> <label for="event-0000FF"></label>
 	        	<input type="radio" name="color" id="event-FFA500" value="FFA500"> <label for="event-FFA500"></label>
 	        	<input type="radio" name="color" id="event-808080" value="808080"> <label for="event-808080"></label>
 	        	<input type="radio" name="color" id="event-800080" value="800080"> <label for="event-800080"></label>

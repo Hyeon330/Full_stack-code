@@ -9,7 +9,8 @@ public class ScheduleVO {
 	
 	private String repeats;
 	private String repeatCycle;
-	private String repeatNum;
+	private int repeatNum;
+	private int repeatNumTimes;
 	
 	private String color;
 	private String place;
@@ -66,16 +67,20 @@ public class ScheduleVO {
 	}
 	public String getRepeats() {
 		if(getRepeatCycle().equals("N")) {
-			repeats = getRepeatCycle()+"/0";
-		} else {
-			repeats = getRepeatCycle()+"/"+getRepeatNum();
+			repeats = getRepeatCycle()+"/0/0";
+		} else if(getRepeatCycle().equals("D") || getRepeatCycle().equals("W")) {
+			repeats = getRepeatCycle()+"/"+getRepeatNumTimes()+"/"+getRepeatNum();
+		}
+		else if(getRepeatCycle().equals("M") || getRepeatCycle().equals("Y")) {
+			repeats = getRepeatCycle()+"/"+getRepeatNumTimes()+"/0";
 		}
 		return repeats;
 	}
 	public void setRepeats(String repeats) {
 		String repeatSp[] = repeats.split("/");
 		setRepeatCycle(repeatSp[0]);
-		setRepeatNum(repeatSp[1]);
+		setRepeatNumTimes(Integer.parseInt(repeatSp[1]));
+		setRepeatNum(Integer.parseInt(repeatSp[2]));
 		this.repeats = repeats;
 	}
 	public String getRepeatCycle() {
@@ -84,11 +89,17 @@ public class ScheduleVO {
 	public void setRepeatCycle(String repeatCycle) {
 		this.repeatCycle = repeatCycle;
 	}
-	public String getRepeatNum() {
+	public int getRepeatNum() {
 		return repeatNum;
 	}
-	public void setRepeatNum(String repeatNum) {
+	public void setRepeatNum(int repeatNum) {
 		this.repeatNum = repeatNum;
+	}
+	public int getRepeatNumTimes() {
+		return repeatNumTimes;
+	}
+	public void setRepeatNumTimes(int repeatNumTimes) {
+		this.repeatNumTimes = repeatNumTimes;
 	}
 	public String getColor() {
 		return color;

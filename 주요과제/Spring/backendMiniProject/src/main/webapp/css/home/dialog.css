@@ -32,8 +32,8 @@
   border: 1px solid #bbb;
   border-radius: 3px;
 }
-#repeatNum{
-	width: 33px;
+.repeat-box{
+	width: 50px !important;
 }
 #event-color {
 	margin-top: 0;
@@ -50,14 +50,14 @@
 label[for=event-87CEEB]{
 	background-color: #87CEEB;
 }
-label[for=event-F00]{
-	background-color: #f00;
+label[for=event-FF0000]{
+	background-color: #FF0000;
 }
-label[for=event-0F0]{
-	background-color: #0f0;
+label[for=event-00FF00]{
+	background-color: #00FF00;
 }
-label[for=event-00F]{
-	background-color: #00f;
+label[for=event-0000FF]{
+	background-color: #0000FF;
 }
 label[for=event-FFA500]{
 	background-color: #FFA500;
