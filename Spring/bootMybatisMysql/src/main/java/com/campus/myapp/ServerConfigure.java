@@ -13,7 +13,10 @@ public class ServerConfigure implements WebMvcConfigurer {
 				"/board/boardWrite",
 				"/board/boardWrietOk",
 				"/board/boardEdit",
-				"/board/boardEditOk"
+				"/board/boardEditOk",
+				"/board/boardView",
+				"/board/boardViewOk",
+				"/board/boardDel"
 			);
 
 	@Override

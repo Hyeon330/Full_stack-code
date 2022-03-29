@@ -18,4 +18,24 @@ public class BoardServiceImpl implements BoardService {
 	public List<BoardVO> allSelect() {
 		return dao.allSelect();
 	}
+
+	@Override
+	public int boardInsert(BoardVO vo) {
+		return dao.boardInsert(vo);
+	}
+
+	@Override
+	public BoardVO boardSelect(int no) {
+		return dao.boardSelect(no);
+	}
+
+	@Override
+	public int boardUpdate(BoardVO vo) {
+		return dao.boardUpdate(vo);
+	}
+
+	@Override
+	public int boardDelete(int no, String userid) {
+		return dao.boardDelete(no, userid);
+	}
 }

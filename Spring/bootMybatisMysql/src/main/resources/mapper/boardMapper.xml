@@ -8,4 +8,21 @@
 		from board
 		order by no desc
 	</select>
+	<insert id="boardInsert">
+		insert into board(userid, subject, content, ip)
+		values (#{userid}, #{subject}, #{content}, #{ip})
+	</insert>
+	<select id="boardSelect" resultType="BoardVO">
+		select no, userid, subject, content, hit, writedate
+		from board
+		where no=${param1}
+	</select>
+	<update id="boardUpdate">
+		update board set subject=#{subject}, content=#{content}
+		where no=${no} and userid=#{userid}
+	</update>
+	<delete id="boardDelete">
+		delete from board
+		where no=${param1} and userid=#{param2}
+	</delete>
 </mapper>

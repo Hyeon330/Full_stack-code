@@ -1,3 +1,1 @@
 INDEX VERSION 1.131
-file:/D:/study/Multi%20Campus/Full_stack%20code/주요과제/Spring/.metadata/.plugins/org.eclipse.jdt.core/1865797976.index
-meta_index

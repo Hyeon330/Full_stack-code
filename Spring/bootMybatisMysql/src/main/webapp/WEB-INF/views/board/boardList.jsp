@@ -19,7 +19,7 @@
 <div class="container">
 	<h1>게시판 글목록</h1>
 	<div>
-		<a href="#">글쓰기</a>
+		<a href="/board/boardWrite">글쓰기</a>
 	</div>
 	<ul id="bList">
 		<li>번호</li>
@@ -30,7 +30,7 @@
 		
 		<c:forEach var="vo" items="${bList}">
 			<li>${vo.no }</li>
-			<li><a href="#">${vo.subject }</a></li>
+			<li><a href="/board/boardView?no=${vo.no}">${vo.subject }</a></li>
 			<li>${vo.userid }</li>
 			<li>${vo.hit }</li>
 			<li>${vo.writedate }</li>

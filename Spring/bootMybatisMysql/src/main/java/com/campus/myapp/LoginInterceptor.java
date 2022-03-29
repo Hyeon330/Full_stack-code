@@ -22,7 +22,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 		if(logStatus!=null && logStatus.equals("Y")) { // 로그인되었을때
 			return true;
 		} else { // 로그인 안된경우
-			res.sendRedirect("/member/loginForm");
+			res.sendRedirect("/member/login");
 			return false;
 		}
 	}

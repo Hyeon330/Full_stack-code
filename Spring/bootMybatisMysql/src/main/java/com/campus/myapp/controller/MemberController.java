@@ -1,5 +1,7 @@
 package com.campus.myapp.controller;
 
+import java.net.Socket;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
@@ -67,4 +69,5 @@ public class MemberController {
 		mav.setViewName("redirect:/");
 		return mav;
 	}
+	
 }

@@ -47,6 +47,9 @@
 				<input type="file" name="filename" id="filename2">
 			</li>
 			<li><input type="submit" value="파일 등록"></li>
+			
+			<br>
+			<input type="file" id="test"><label for="test"><img src="${url}/img/disk.png"></label>
 		</ul>
 	</form>
 </div>

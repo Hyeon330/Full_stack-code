@@ -167,33 +167,48 @@ public class ScheduleController {
 	
 	void repeat(int year, int month, int startYear, int startMonth, int startDay, int endDay, int cycleNum, ScheduleVO vo, List<ScheduleVO> list, Calendar cal) {
 		int repeatNum = vo.getRepeatNum() * cycleNum;
-		if(year==startYear && month==startMonth) {	// 반복된 일정이면서 시작일이 현재 보고있는 달 일때
-			scheduleSet(year, month, startDay, endDay, repeatNum, vo, list, cal);
-		} else {	// 반복된 일정이 현재보고있는 달과 다를 경우
-			Calendar prevCal = Calendar.getInstance();
-			prevCal.set(year, month-2, 1);
-			int prevMonthLastDay = prevCal.getActualMaximum(Calendar.DATE);
-			
-			int startToPrevMonthLastDay = (int) ChronoUnit.DAYS.between(LocalDate.of(startYear, startMonth, startDay), LocalDate.of(year, month-1, prevMonthLastDay));
-			
-			int gap = endDay - startDay;
-			startDay = repeatNum - startToPrevMonthLastDay % repeatNum;
-			endDay = startDay + gap;
-			if(startDay != 1) {
-				SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd");
-				Calendar firstCal = Calendar.getInstance();
+		Calendar repeatCal = Calendar.getInstance();
+		repeatCal.set(startYear, startMonth-1, 1);
+		
+		System.out.println(vo.getRepeatNumTimes());
+		System.out.println(cycleNum);
+		System.out.println((vo.getRepeatNumTimes()-1) * cycleNum * vo.getRepeatNum() + 1 + "-add repeatCal-");
+		
+		repeatCal.add(Calendar.DATE, (vo.getRepeatNumTimes()-1) * cycleNum * vo.getRepeatNum() + 1);
+		
+		System.out.println(vo);
+		System.out.println(repeatCal.get(Calendar.MONTH));
+		System.out.println(repeatCal.getActualMaximum(Calendar.DATE));
+		
+		if(month <= repeatCal.get(Calendar.MONTH)+1) {
+			if(year==startYear && month==startMonth) {	// 반복된 일정이면서 시작일이 현재 보고있는 달 일때
+				scheduleSet(year, month, startDay, endDay, repeatNum, vo, list, cal);
+			} else {	// 반복된 일정이 현재보고있는 달과 다를 경우
+				Calendar prevCal = Calendar.getInstance();
+				prevCal.set(year, month-2, 1);
+				int prevMonthLastDay = prevCal.getActualMaximum(Calendar.DATE);
 				
-				firstCal.set(year, month-1, startDay);
-				firstCal.add(Calendar.DATE, -repeatNum);
-				String firstStart = sdf.format(firstCal.getTime());
-				firstCal.add(Calendar.DATE, gap);
-				String firstEnd = sdf.format(firstCal.getTime());
+				int startToPrevMonthLastDay = (int) ChronoUnit.DAYS.between(LocalDate.of(startYear, startMonth, startDay), LocalDate.of(year, month-1, prevMonthLastDay));
 				
-				ScheduleVO firstVO = new ScheduleVO(vo.getTitle(), firstStart, firstEnd, vo.getColor(), vo.getPlace(), vo.getText());
-				firstVO.setRepeats(vo.getRepeats());
-				list.add(firstVO);
+				int gap = endDay - startDay;
+				startDay = repeatNum - startToPrevMonthLastDay % repeatNum;
+				endDay = startDay + gap;
+				if(startDay != 1) {
+					SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd");
+					Calendar firstCal = Calendar.getInstance();
+					
+					firstCal.set(year, month-1, startDay);
+					firstCal.add(Calendar.DATE, -repeatNum);
+					String firstStart = sdf.format(firstCal.getTime());
+					firstCal.add(Calendar.DATE, gap);
+					String firstEnd = sdf.format(firstCal.getTime());
+					
+					ScheduleVO firstVO = new ScheduleVO(vo.getTitle(), firstStart, firstEnd, vo.getColor(), vo.getPlace(), vo.getText());
+					firstVO.setRepeats(vo.getRepeats());
+					list.add(firstVO);
+				}
+				scheduleSet(year, month, startDay, endDay, repeatNum, vo, list, cal);
 			}
-			scheduleSet(year, month, startDay, endDay, repeatNum, vo, list, cal);
 		}
 	}
 }
