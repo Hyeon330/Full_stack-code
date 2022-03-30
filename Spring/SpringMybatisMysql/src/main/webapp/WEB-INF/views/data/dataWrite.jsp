@@ -48,8 +48,17 @@
 			</li>
 			<li><input type="submit" value="파일 등록"></li>
 			
-			<br>
+			<script>
+				$(function{
+					$('#test').change(function() {
+						
+					});
+				});
+			</script>
+			
 			<input type="file" id="test"><label for="test"><img src="${url}/img/disk.png"></label>
+			
+			
 		</ul>
 	</form>
 </div>

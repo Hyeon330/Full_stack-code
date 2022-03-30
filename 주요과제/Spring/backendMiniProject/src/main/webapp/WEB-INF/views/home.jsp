@@ -23,8 +23,8 @@
 	<form id="scheduleFrom" method="POST" action="${url}/schedule/register">
 	    <ul>
 	        <li><input type="text" id="title" name="title"  placeholder="제목"></li>
-	        <li><input type="text" id="start" name="start" placeholder="시작날짜(년-월-일)"></li>
-	        <li><input type="text" id="end" name="end" placeholder="종료날짜(년-월-일)"></li>
+	        <li><input type="text" id="start" name="start" placeholder="시작날짜(년-월-일)" autocomplete="off"></li>
+	        <li><input type="text" id="end" name="end" placeholder="종료날짜(년-월-일)" autocomplete="off"></li>
 	        <li>
 	            <select name="repeatCycle" id="repeatCycle">
 	                <option value="N">반복안함</option>
