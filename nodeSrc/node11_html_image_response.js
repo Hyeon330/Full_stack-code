@@ -9,6 +9,8 @@ var mime = require('mime');
 var server = http.createServer(function(req, res){
     var addr = req.url;
     console.log(addr);
+    console.log(__dirname);
+    console.log(addr.indexOf('/img')==0)
     
     if(addr=='/home') {
         // home.html파일의 내용을 읽어서 response에 쓰기를 한다.
@@ -16,6 +18,13 @@ var server = http.createServer(function(req, res){
             if(error){
                 console.log("파일 읽기 실패... home.html");
             }else {
+                res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
+                res.end(data);
+            }
+        });
+    } else if(addr=='/subpage') {
+        fs.readFile(__dirname + "/subpage.html", 'utf-8', function(err, data) {
+            if(!err){
                 res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
                 res.end(data);
             }
