@@ -2,12 +2,14 @@
 // npm install request-ip : 접속자 ip 구하는 모듈
 // npm install mysql2 : DB연동 모듈
 // npm install ejs : ejs 모듈
+// npm install express-session : 세션모듈
 
 var http = require('http');
 var express = require('express');
 var fs = require('fs');
 var ejs = require('ejs');
 var requestip = require('request-ip');
+var session = require('express-session');
 
 // 서버 생성
 var app = express();
@@ -21,6 +23,7 @@ app.use(bodyParser.urlencoded({extended:true})); // 한글인코딩
 var mysql = require('mysql2');
 const res = require('express/lib/response');
 const { url } = require('inspector');
+const { redirect } = require('express/lib/response');
 
 // DB연결
 var connection = mysql.createConnection({
@@ -36,11 +39,66 @@ connection.connect();
 // 홈페이지로 이동하기 : http://localhost:10010/index
 app.get('/index', function(req, res) {
     console.log(__dirname)
-    fs.readFile(__dirname + '/index.html', 'utf-8', function(err, indexData) {
+    fs.readFile(__dirname + '/index.ejs', 'utf-8', function(err, indexData) {
         res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
-        res.end(indexData);
+        res.end(ejs.render(indexData, {logStatus: 'N'}));
     });
 });
+// 로그인 
+app.get("/login", function(req, res){
+    fs.readFile(__dirname+"/login.html", 'utf-8', (err, loginData) => {
+        res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
+        res.end(loginData);
+    });
+});
+
+// 로그인 DB
+app.post('/loginOk', (req, res) => {
+    var userid = req.body.userid;
+    var userpwd = req.body.userpwd;
+
+    console.log('id='+userid+', pw='+userpwd);
+
+    var sql = 'select userid, username from member where userid=? and userpwd=?'
+
+    connection.execute(sql, [userid, userpwd], (err, result) => {
+        console.log(result);
+        if(err || result.length == 0){
+            res.redirect('/login');
+        }else {
+            session.user = {
+                userid: result[0].userid,
+                username: result[0].username,
+                autorized: true // 인증받은, 검정필
+            }
+            fs.readFile(__dirname+'/index.ejs', 'utf-8', (e, d) => {
+                res.writeHead(200, {"Content-Type":"text/html; charset=utf-8"});
+                if(e) {
+                    res.end("404 Page...");
+                }else {
+                    res.end(ejs.render(d, {
+                        user : session.user,
+                        logStatus: 'Y'
+                    })); 
+                }
+            });
+        }
+    });
+});
+
+// 로그아웃 
+app.get('/logout', (req, res) => {
+    if(session.user){
+        session.user = null; // 세션정보 지우기
+        fs.readFile(__dirname+'/index.ejs', 'utf-8', (e, d) => {
+            res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
+            res.end(ejs.render(d, {logStatus: 'N'}));
+        });
+    }else{
+        console.log('로그아웃 상태');
+    }
+});
+
 // 게시판 리스트 select
 app.get('/list', function(req, res) {
     var sql = 'select no, subject, userid, hit, date_format(writedate,"%m-%d %H:%i") writedate';
