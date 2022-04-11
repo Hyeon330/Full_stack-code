@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket;
+        $(function(){
+            $('#createRoom').click(() => {
+                if($('#roomName').val() != ''){   // 방 이름이 있을 때
+                    // socket객체 생성
+                    socket = io.connect();
+                    // 서버에 방생성
+                    socket.emit('join', $('#roomName').val());
+
+                    $('#roomDiv').css('display', 'none');
+                    $('#sendMessage').css('display', 'block');
+
+                    // 서버에서 보낸문자 받기
+                    socket.on('response', (recieveMsg) => {
+                        $('#msgView').append(recieveMsg + '<br>');
+                    });
+                }else {
+                    alert('방 이름을 입력 후 생성하세요.');
+                }
+
+                // 클라이언트가 서버로 문자 보내는 함수
+                function sendMessage() {
+                    var msg = $('#msg').val();
+                    if(msg == '') {
+                        alert('메시지 입력 후 전송하세요..');
+                    }else {
+                        socket.emit('message', msg);
+                        $('#msg').val('').focus();
+                    }
+                }
+                $('#sendMsg').click(function() {
+                    sendMessage();
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="roomDiv">
+        <h1>방만들기</h1>
+        방이름 : <input type="text" name="roomName" id="roomName">
+        <input type="button" value="방만들기" id="createRoom">
+    </div>
+    <hr>
+    <div id="sendMessage" style="display: none;">
+        <h1>Chatting</h1>
+        메시지 : <input type="text" id="msg">
+        <input type="button" value="send" id="sendMsg">
+    </div>
+    <hr>
+    <h1>채팅내용보기</h1>
+    <div id="msgView" style="background-color: bisque;"></div>
+</body>
+</html>

@@ -107,7 +107,7 @@ app.get('/list', function(req, res) {
     // 쿼리문 실행하기
     connection.execute(sql, (err, result) => {
         // 선택한 레코드 수
-        // console.log(result);
+        console.log(result);
         var totalRecord = result.length;
         if(totalRecord > 0){    // 선택한 레코드 존재할 시 list페이지로 보내기
             fs.readFile(__dirname + '/list.ejs', 'utf-8', (err2, listData) => {

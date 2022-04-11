@@ -32,7 +32,8 @@ num3 = ${num3}<br>
 name = ${name}<br>
 today = ${today}<br>
 sum = ${num2 + no }<br>
-aa : ${aa}
+aa : ${aa}<br>
+<%=request.getContextPath() %>
 
 <h1>변수 삭제</h1>
 <c:remove var="num2"></c:remove>

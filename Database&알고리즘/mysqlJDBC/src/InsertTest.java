@@ -1,3 +1,5 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -50,9 +52,54 @@ public class InsertTest {
 
 		}
 	}
+	
+	public void insertDistrict() {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+
+			conn = DriverManager.getConnection("jdbc:mysql://localhost/soboon", "root", "1234");
+			
+			BufferedReader br = new BufferedReader(new FileReader("D:/study/Multi Campus/Project-soboon/District.txt"));
+			
+			String line = null;
+			String[] line_s = null;
+			
+			while(true) {
+				line = br.readLine();
+				if(line == null) break;
+				line_s = line.split("\t");
+				
+				String sql = "insert into district(large, medium, small) values(?,?,?)";
+				ps = conn.prepareStatement(sql);
+				
+				ps.setString(1, line_s[0]);
+				ps.setString(2, line_s[1]);
+				ps.setString(3, line_s[2]);
+
+				int cnt = ps.executeUpdate();
+				System.out.println(line_s[0]+" || "+line_s[1]+" || "+line_s[2]);
+				if (cnt > 0) {
+					System.out.println("레코드가 추가 되었습니다.");
+				} else {
+					System.out.println("레코드추가 실패하였습니다.");
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (ps != null)
+					ps.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
 
 	public static void main(String[] args) {
-		new InsertTest().empInsert();
+		new InsertTest().insertDistrict();
 	}
 
 }

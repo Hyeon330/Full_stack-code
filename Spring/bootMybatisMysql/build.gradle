@@ -22,10 +22,12 @@ dependencies {
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	
+	// 뷰페이지를 jsp로 사용하기 위하여 프레임워크 추가하기
 	// Tomcat
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:9.0.60'
 	// JSTL
 	implementation 'javax.servlet:jstl:1.2'
+	
 	// javax Inject
 	implementation 'javax.inject:javax.inject:1'
 }
