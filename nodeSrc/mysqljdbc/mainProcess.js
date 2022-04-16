@@ -59,7 +59,7 @@ app.post('/loginOk', (req, res) => {
 
     console.log('id='+userid+', pw='+userpwd);
 
-    var sql = 'select userid, username from member where userid=? and userpwd=?'
+    var sql = 'select userid, username from member where userid=? and userpwd=?';
 
     connection.execute(sql, [userid, userpwd], (err, result) => {
         console.log(result);
