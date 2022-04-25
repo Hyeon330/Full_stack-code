@@ -90,6 +90,7 @@ public class BoardController {
 	// 글 내용 보기
 	@GetMapping("boardView")
 	public ModelAndView boardView(int no) {
+		System.out.println(no);
 		ModelAndView mav = new ModelAndView();
 		
 		service.hitCount(no); // 조회수 증가
