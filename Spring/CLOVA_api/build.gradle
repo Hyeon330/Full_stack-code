@@ -26,8 +26,12 @@ dependencies {
 	
 	// https://mvnrepository.com/artifact/org.json/json
 	implementation 'org.json:json:20211205'
+	
 	// https://mvnrepository.com/artifact/net.morimekta.utils/android-util
 	implementation 'net.morimekta.utils:android-util:1.2.0'
+	
+	// https://mvnrepository.com/artifact/org.json/json
+	implementation 'org.json:json:20211205'
 }
 
 tasks.named('test') {

@@ -77,7 +77,7 @@ $(function() {
     userpwdCk.on('input', pwCk);
 
     let emailCk = false;
-    let regEmail = /^\w{6,}[@][a-zA-Z]{2,8}[.][a-zA-Z]{2,4}([.][a-zA-Z]{2,4})?$/;
+    let regEmail = /^\w{6,}[@][a-zA-Z]{2,}[.][a-zA-Z]{2,3}([.][a-zA-Z]{2,3})?$/;
     $('#email').on('input', function(){
         emailCk = false;
         if(regEmail.test($('#email').val())){
