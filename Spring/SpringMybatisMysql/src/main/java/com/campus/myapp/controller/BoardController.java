@@ -1,7 +1,6 @@
 package com.campus.myapp.controller;
 
 import java.nio.charset.Charset;
-import java.util.Arrays;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;

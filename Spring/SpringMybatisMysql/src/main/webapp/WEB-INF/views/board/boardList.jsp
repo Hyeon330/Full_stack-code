@@ -103,7 +103,8 @@
 			<li>prev</li>
 		</c:if>
 		<c:if test="${pVO.pageNum>pVO.onePageCount}">
-			<li><a href="/myapp/board/boardList?pageNum=${pVO.pageNum-pVO.onePageCount}<c:if test='${pVO.searchWord!=null}'>&searchKey=${pVO.searchKey}&searchWord=${pVO.searchWord}</c:if>">prev</a></li>
+			<li><a href="/myapp/board/boardList?pageNum=${pVO.startPage-pVO.onePageCount}<c:if test='${pVO.searchWord!=null}'>&searchKey=${pVO.searchKey}&searchWord=${pVO.searchWord}</c:if>">prev</a></li>
+			<%-- <li><a href="/myapp/board/boardList?pageNum=${pVO.pageNum-pVO.onePageCount}<c:if test='${pVO.searchWord!=null}'>&searchKey=${pVO.searchKey}&searchWord=${pVO.searchWord}</c:if>">prev</a></li> --%>
 		</c:if>
 		<!-- 페이지 번호 -->
 		<c:forEach var="p" begin="${pVO.startPage}" end="${pVO.startPage+pVO.onePageCount-1}">
@@ -123,13 +124,13 @@
 			<li>next</li>
 		</c:if>
 		<c:if test="${pVO.totalPage-pVO.startPage>=pVO.onePageCount }">
-			<c:if test="${pVO.pageNum+pVO.onePageCount>pVO.totalPage}">
+			<%-- <c:if test="${pVO.pageNum+pVO.onePageCount>pVO.totalPage}">
 				<li><a href="/myapp/board/boardList?pageNum=${pVO.totalPage}<c:if test='${pVO.searchWord!=null}'>&searchKey=${pVO.searchKey}&searchWord=${pVO.searchWord}</c:if>">next</a></li>
 			</c:if>
 			<c:if test="${pVO.pageNum+pVO.onePageCount<=pVO.totalPage}">
 				<li><a href="/myapp/board/boardList?pageNum=${pVO.pageNum+pVO.onePageCount}<c:if test='${pVO.searchWord!=null}'>&searchKey=${pVO.searchKey}&searchWord=${pVO.searchWord}</c:if>">next</a></li>
-			</c:if>
-			
+			</c:if> --%>
+			<a href="/myapp/board/boardList?pageNum=${pVO.startPage+pVO.onePageCount}<c:if test='${pVO.searchWord!=null}'>&searchKey=${pVO.searchKey}&searchWord=${pVO.searchWord}</c:if>">next</a>
 		</c:if>
 	</ul>
 	<!-- 검색 -->

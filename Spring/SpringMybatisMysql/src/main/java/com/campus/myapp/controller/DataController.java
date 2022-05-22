@@ -98,7 +98,7 @@ public class DataController {
 						  
 						// 4. 파일업로드
 						try {
-							file.transferTo(f); // 실제 업소르가 발생한다.
+							file.transferTo(f); // 실제 업로드가 발생한다.
 						}catch(Exception ee){}
 						
 						// 5. 업로드한(새로운파일명) vo에 세팅
@@ -115,7 +115,6 @@ public class DataController {
 			// 레코드 추가 성공
 			String msg = "<script>alert('자료실글등록되었습니다.');location.href='/myapp/data/dataList';</script>";
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
-			  
 		}catch(Exception e){
 			e.printStackTrace();
 			// 레코드추가 실패
